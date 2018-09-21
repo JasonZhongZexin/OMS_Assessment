@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <password>smith987</password>
+        <phoneNumber>0420123123</phoneNumber>
+        <address>38 Albert St Pennant Hills</address>
+    </user>
+    <user>
+        <fullName>Jane Brwon</fullName>
+        <email>hashbrown@gmail.com</email>
+        <password>tomato</password>
+        <phoneNumber>0420234234 </phoneNumber>
+        <address>2 Oak Rd Becroft</address>
+    </user>
+    <user>
+        <fullName>David Williams</fullName>
+        <email>willdave@gmail.com</email>
+        <password>get100</password>
+        <phoneNumber>0420345345</phoneNumber>
+        <address>12 Clive Rd Eastwood</address>
+    </user>
+    <user>
+        <fullName>Linda Xu</fullName>
+        <email>lindalinda@gmail.com</email>
+        <password>XuXu123</password>
+        <phoneNumber>0420456456</phoneNumber>
+        <address>4 Karana Pl Chatswood</address>
+    </user>
+    <user>
+        <fullName>Emily Cho</fullName>
+        <email>ChuChuTrain@gmail.com</email>
+        <password>thomastrain</password>
+        <phoneNumber>0420567567</phoneNumber>
+        <address>26 Monse Av North Ryde</address>
+    </user>
+    <user>
+        <fullName>Latif</fullName>
+        <email>Latif@gmail.com</email>
+        <password>1234567890</password>
+        <phoneNumber>66666666</phoneNumber>
+        <address>UTS BUILDING11</address>
+    </user>
+</users>

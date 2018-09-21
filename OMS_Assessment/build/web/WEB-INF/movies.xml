@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<movies>
+    <movie>
+        <title>The Nun</title>
+        <genre>Action</genre>
+        <relase_date>2018</relase_date>
+        <price>23.5</price>
+        <available_copies>100</available_copies>
+    </movie>
+    <movie>
+        <title>Book Club</title>
+        <genre>Horror</genre>
+        <relase_date>2018</relase_date>
+        <price>13.5</price>
+        <available_copies>80</available_copies>
+    </movie>
+    <movie>
+        <title>Mile 22</title>
+        <genre>Action</genre>
+        <relase_date>2018</relase_date>
+        <price>23.5</price>
+        <available_copies>100</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 1</title>
+        <genre>Action</genre>
+        <relase_date>2008</relase_date>
+        <price>23.5</price>
+        <available_copies>120</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 2</title>
+        <genre>Action</genre>
+        <relase_date>2009</relase_date>
+        <price>23.5</price>
+        <available_copies>60</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 3</title>
+        <genre>Action</genre>
+        <relase_date>2014</relase_date>
+        <price>15.5</price>
+        <available_copies>50</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 4</title>
+        <genre>Action</genre>
+        <relase_date>2015</relase_date>
+        <price>18.5</price>
+        <available_copies>3</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 5</title>
+        <genre>Action</genre>
+        <relase_date>2016</relase_date>
+        <price>22.5</price>
+        <available_copies>200</available_copies>
+    </movie>
+    <movie>
+        <title>Mission Impossible 6</title>
+        <genre>Action</genre>
+        <relase_date>2017</relase_date>
+        <price>19.5</price>
+        <available_copies>180</available_copies>
+    </movie>
+    <movie>
+        <title>Arrival</title>
+        <genre>Sci-Fi</genre>
+        <relase_date>2016</relase_date>
+        <price>44.5</price>
+        <available_copies>100</available_copies>
+    </movie>
+</movies>
