@@ -43,8 +43,7 @@
                     response.sendRedirect("register.jsp");
                 } else {
                     userApp.addUser(user);
-                    users = userApp.getUsers();
-                    userApp.updateXML(usersPath, users);
+                    userApp.saveUsers();
                     session.setAttribute("userLogin", user);
                     response.sendRedirect("main.jsp");
                     
