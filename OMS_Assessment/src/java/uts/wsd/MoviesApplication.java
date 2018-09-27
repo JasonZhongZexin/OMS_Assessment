@@ -78,31 +78,8 @@ public class MoviesApplication implements Serializable {
         this.movies = movies;
     }
 
-    public ArrayList<Movie> getMoviesByTitile(String title) {
-        return movies.getMoviesByTitile(title);
+    public ArrayList<Movie> searchMovie(String title, String genre, String startYear, String endYear) throws ParseException {
+        return movies.searchMovies(title, genre, startYear, endYear);
     }
-
-    public ArrayList<Movie> getMoviesByGenre(String genre) {
-        return movies.getMoviesByGenre(genre);
-    }
-
-    public ArrayList<Movie> getMoviesByYears(String startYear, String endYear) throws ParseException {
-        return movies.getMoviesByYears(startYear, endYear);
-    }
-
-    public ArrayList<Movie> getMoviesByTG(String title, String genre) {
-        return movies.getMoviesByTG(title, genre);
-    }
-
-    public ArrayList<Movie> getMoviesByTD(String title, String startYear, String endYear) throws ParseException {
-        return movies.getMoviesByTD(title, startYear, endYear);
-    }
-
-    public ArrayList<Movie> getMoviesByGD(String genre, String startYear, String endYear) throws ParseException {
-        return movies.getMoviesByGD(genre, startYear, endYear);
-    }
-
-    public ArrayList<Movie> getMoviesByTGD(String title, String genre, String startYear, String endYear) throws ParseException {
-        return movies.getMoviesByTGD(title, genre, startYear, endYear);
-    }
+    
 }
