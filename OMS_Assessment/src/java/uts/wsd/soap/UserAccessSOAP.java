@@ -5,29 +5,16 @@
  */
 package uts.wsd.soap;
 
-import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.servlet.ServletContext;
-import javax.ws.rs.core.Context;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
-import uts.wsd.User;
-import uts.wsd.UsersApplication;
 
 /**
  *
- * @author Zexin Zhong
+ * @author zhongzexin
  */
 @WebService(serviceName = "userApp")
 public class UserAccessSOAP {
-    
-    @Context
-    private ServletContext application;
-    @Resource
-    private WebServiceContext context;
-
     @WebMethod
     private UsersApplication getUserApplication() throws Exception {
         application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
