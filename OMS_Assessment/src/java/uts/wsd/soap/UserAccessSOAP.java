@@ -48,7 +48,8 @@ public class UserAccessSOAP {
     }
     
     @WebMethod
-    public User logoutUser() throws Exception{
-        return getUserApplication().logoutUser();
+    public String logoutUser() throws Exception{
+        User user = getUserApplication().logoutUser();
+        return "User logout";
     }
 }
