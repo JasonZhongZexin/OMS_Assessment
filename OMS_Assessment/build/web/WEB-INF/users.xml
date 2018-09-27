@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <users>
     <user>
         <fullName>John Smith</fullName>
@@ -35,11 +36,5 @@
         <phoneNumber>0420567567</phoneNumber>
         <address>26 Monse Av North Ryde</address>
     </user>
-    <user>
-        <fullName>Latif</fullName>
-        <email>Latif@gmail.com</email>
-        <password>1234567890</password>
-        <phoneNumber>66666666</phoneNumber>
-        <address>UTS BUILDING11</address>
-    </user>
 </users>
+
