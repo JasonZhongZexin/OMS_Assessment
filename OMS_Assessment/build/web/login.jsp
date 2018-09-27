@@ -12,7 +12,16 @@
         <link rel="stylesheet" href="OMS.css"> 
         <title>OMS Login Page</title>
     </head>
+    <header>
+        <nav class="nav">
+                <div align="right" margin-left="200px">
+                    <a href = "index.jsp">Index page</a>
+                    <a href = "register.jsp">Register</a>
+                </div>
+            </nav>
+    </header>
     <body>
+        
         <%
             String error = request.getParameter("error");
         %>
