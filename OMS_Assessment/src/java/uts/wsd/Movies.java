@@ -47,6 +47,15 @@ public class Movies {
         return matchesMovies;
     }
     
+       public ArrayList<Movie> searchTG(String title, String genre){
+        
+        ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
+        for(Movie movie:movies){
+            if(movie.getMovie_title().equals(title) && )
+                matchesMovies.add(movie);
+        }
+        return matchesMovies;
+    }
     public ArrayList<Movie> getMoviesByGenre(String genre){
     
         ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
