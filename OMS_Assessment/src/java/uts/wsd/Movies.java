@@ -137,4 +137,30 @@ public class Movies {
         }
         return matchesMovies;
      }
+     
+     public ArrayList<Movie> searchMovies(String title, String genre, String startYear,String endYear) throws ParseException{
+         ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
+         if(!title.equals(null)&&genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
+             getMoviesByTitile(title);
+         }
+         if(title.equals(null)&& !genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
+             getMoviesByGenre(genre);
+         }
+         if(title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
+             getMoviesByYears(startYear,endYear);
+         }
+         if(!title.equals(null)&&!genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
+             getMoviesByTG(title,genre);
+         }
+         if(!title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
+             getMoviesByTD(title,startYear,endYear);
+         }
+         if(title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
+             getMoviesByGD(genre,startYear,endYear);
+         }
+         if(!title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
+             getMoviesByTGD(title,genre,startYear,endYear);
+         }
+         return matchesMovies;
+     }
 }

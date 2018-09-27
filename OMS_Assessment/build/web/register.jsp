@@ -14,6 +14,14 @@
         <title>OMS Register</title>
     </head>
     <body>
+        <header>
+            <nav class="nav">
+                <div align="right" margin-left="200px">
+                    <a href = "index.jsp">Index page</a>
+                    <a href = "login.jsp">Login</a>
+                </div>
+            </nav>
+        </header>
         <%
             String error = request.getParameter("error");
         %>
