@@ -94,4 +94,12 @@ public class UsersApplication implements Serializable{
         User user = users.getUser(email);
         return user;
     }
+    
+    public User loginUser(String emial, String password){
+        return users.login(emial, password);
+    }
+    
+    public User logoutUser(){
+        return null;
+    }
 }
