@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
- xmlns:xs="http://www.w3.org/2001/XMLSchema"
- targetNamespace="http://www.uts.edu.au/31284/oms-users"
- xmlns="http://www.uts.edu.au/31284/oms-users"
- elementFormDefault="qualified">
+    version="1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
  
- <!-- Insert your type declarations here -->
-  
- <!-- Insert your element declarations here -->
- 
+    <!-- Insert your type declarations here -->
+    <xs:simpleType name="fullNameType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Z][a-z]+[\s])+[A-Z][a-z]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="passwordType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9A-Za-z]{6,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="phoneNumberType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="addressType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-z0-9\D]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- Insert your element declarations here -->
+    <xs:element name="users">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="fullName" type="fullNameType"/>
+                            <xs:element name="email" type="emailType"/>
+                            <xs:element name="password" type="passwordType"/>
+                            <xs:element name="phoneNumber" type="phoneNumberType"/>
+                            <xs:element name="address" type="addressType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

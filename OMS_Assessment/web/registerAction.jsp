@@ -4,6 +4,7 @@
     Author     : zhongzexin
 --%>
 
+<%@page import="controller.Validator"%>
 <%@page import="uts.wsd.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,22 +33,30 @@
             /**
              * check if the input email has been used. if the input email has
              * been used show an error message in the register page, else ,
-             * registed the account and launch to the index page.
+             * registed the account and launch to the index page. validate the
+             * input.
              */
-            if (checkUser != null) {
-                session.setAttribute("existErr", "The input email has been used. Please change your email address.");
+            Validator v = new Validator();
+            if (!v.validateName(fullName)) {
+                session.setAttribute("nameErr", "Name format is incorrect!");
+                response.sendRedirect("register.jsp");
+            } else if (!v.validateEmail(email)) {
+                session.setAttribute("emailErr", "Email format is incorrect!");
+                response.sendRedirect("register.jsp");
+            } else if (!v.validatePassword(password)) {
+                session.setAttribute("passwordErr", "Password format is incorrect!");
+                response.sendRedirect("register.jsp");
+            } else if (!v.validatePhoneNumnber(phoneNumber)) {
+                session.setAttribute("phoneNumberErr", "Phone Number format is incorrect!");
+                response.sendRedirect("register.jsp");
+            } else if (checkUser != null) {
+                session.setAttribute("emailErr", "The input email has been used. Please change your email address.");
                 response.sendRedirect("register.jsp");
             } else {
-                if (user == null) {
-                    session.setAttribute("existErr", "Register account fail! Please double check your register detial!");
-                    response.sendRedirect("register.jsp");
-                } else {
-                    userApp.addUser(user);
-                    userApp.saveUsers();
-                    session.setAttribute("userLogin", user);
-                    response.sendRedirect("main.jsp");
-                    
-                }
+                userApp.addUser(user);
+                userApp.saveUsers();
+                session.setAttribute("userLogin", user);
+                response.sendRedirect("main.jsp");
             }
         %>
     </body>
