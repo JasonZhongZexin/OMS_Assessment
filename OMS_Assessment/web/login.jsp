@@ -24,11 +24,12 @@
         
         <%
             String error = request.getParameter("error");
+            String emailErr = request.getParameter("emailErr");
         %>
         <h1>Enter your details to login: <span class="error"><c:if test="${existErr!=null}"><span class="error"><c:out value="${existErr}"/></span></c:if></span></h1>
             <form action="loginAction.jsp" method="post">
                 <table>                
-                    <tr><td>Username</td><td><input type="text" name="email" placeholder="Email"></td></tr>
+                    <tr><td>Username</td><td><input type="text" name="email" placeholder="Email"><span class="error"><c:if test="${emailErr!=null}"><span class="error"><c:out value="${emailErr}"/></span></c:if></span></td></tr>
                     <tr><td>Password</td><td><input type="password" name="password" placeholder="password"></td></tr>                
                     <tr><td><input type="hidden" value="submitted" name="submitted"></td>
                         <td><input type="submit" value="Sign In"> 
@@ -39,7 +40,7 @@
         <%
             if (request.getParameter("submitted") != null) {
 
-                error = null;
+                emailErr=error = null;
             }
 
             session.invalidate();

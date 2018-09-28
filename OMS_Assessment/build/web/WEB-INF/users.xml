@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<users>
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:noNamespaceSchemaLocation="users.xsd">
     <user>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
@@ -12,7 +13,7 @@
         <fullName>Jane Brwon</fullName>
         <email>hashbrown@gmail.com</email>
         <password>tomato</password>
-        <phoneNumber>0420234234 </phoneNumber>
+        <phoneNumber>0420234234</phoneNumber>
         <address>2 Oak Rd Becroft</address>
     </user>
     <user>
