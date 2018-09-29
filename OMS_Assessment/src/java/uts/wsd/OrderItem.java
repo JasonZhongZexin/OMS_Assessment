@@ -29,4 +29,57 @@ public class OrderItem implements Serializable{
     private String releaseDate;
     @XmlElement(name = "copiesPurchased")
     private String copiesPurchased;
+
+    public OrderItem() {
+    }
+
+    public OrderItem(String movieTitle, String movieGenre, String moviePrice, String releaseDate, String copiesPurchased) {
+        this.movieTitle = movieTitle;
+        this.movieGenre = movieGenre;
+        this.moviePrice = moviePrice;
+        this.releaseDate = releaseDate;
+        this.copiesPurchased = copiesPurchased;
+    }
+
+    public String getMovieTitle() {
+        return movieTitle;
+    }
+
+    public String getMovieGenre() {
+        return movieGenre;
+    }
+
+    public String getMoviePrice() {
+        return moviePrice;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getCopiesPurchased() {
+        return copiesPurchased;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
+
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
+    }
+
+    public void setMoviePrice(String moviePrice) {
+        this.moviePrice = moviePrice;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setCopiesPurchased(String copiesPurchased) {
+        this.copiesPurchased = copiesPurchased;
+    }
+    
+    
 }
