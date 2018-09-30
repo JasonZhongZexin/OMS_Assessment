@@ -4,7 +4,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     elementFormDefault="qualified">
  
-    <!-- Insert your type declarations here -->
+    <!-- type declarations -->
     <xs:simpleType name="fullNameType">
         <xs:restriction base="xs:string">
             <xs:pattern value="([A-Z][a-z]+[\s])+[A-Z][a-z]*"/>
@@ -34,7 +34,8 @@
             <xs:pattern value="[a-zA-z0-9\D]*"/>
         </xs:restriction>
     </xs:simpleType>
-    <!-- Insert your element declarations here -->
+    
+    <!--element declarations-->
     <xs:element name="users">
         <xs:complexType>
             <xs:sequence>

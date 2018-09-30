@@ -19,20 +19,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "history")
 public class History implements Serializable {
+    
+    @XmlElement(name = "order")
+    private ArrayList<Order> orders = new ArrayList<>();
 
-    @XmlElement(name = "ID")
-    private String ID;
-    @XmlElement(name = "fullName")
-    private String fullName;
-    @XmlElement(name = "email")
-    private String email;
-    @XmlElement(name = "paymentMethod")
-    private String paymentMethod;
-    @XmlElement(name = "saleTotal")
-    private String saleTotal;
-    @XmlElement(name = "status")
-    private String status;
-    @XmlElement(name = "orders")
-    private ArrayList<Order> orders;
-
+    public ArrayList<Order> getOrders(){
+        return this.orders;
+    }
+    
+    public void addOrder(Order order){
+        orders.add(order);
+    }
+    
+    public ArrayList<Order> getUserOrder(User user){
+        ArrayList<Order> matches = new ArrayList<>();
+        for(Order order: orders){
+            if(order.matchEmail(user.getEmail()))
+                matches.add(order);
+        }
+        return matches;
+    }
+    
+    public void changeOrderStatus(String id,String status){
+        for(Order order:orders){
+            if(order.matchID(id))
+                order.setStatus(status);
+        }
+    }
 }
