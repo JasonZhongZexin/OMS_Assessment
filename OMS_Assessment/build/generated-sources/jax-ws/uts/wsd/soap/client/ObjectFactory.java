@@ -87,8 +87,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Exception }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "Exception")
     public JAXBElement<Exception> createException(Exception value) {
@@ -96,8 +100,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LoginUser }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "loginUser")
     public JAXBElement<LoginUser> createLoginUser(LoginUser value) {
@@ -105,8 +113,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginUserResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LoginUserResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "loginUserResponse")
     public JAXBElement<LoginUserResponse> createLoginUserResponse(LoginUserResponse value) {
@@ -114,8 +126,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutUser }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LogoutUser }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "logoutUser")
     public JAXBElement<LogoutUser> createLogoutUser(LogoutUser value) {
@@ -123,8 +139,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutUserResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link LogoutUserResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "logoutUserResponse")
     public JAXBElement<LogoutUserResponse> createLogoutUserResponse(LogoutUserResponse value) {
@@ -132,8 +152,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link User }{@code >}
      */
     @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "user")
     public JAXBElement<User> createUser(User value) {

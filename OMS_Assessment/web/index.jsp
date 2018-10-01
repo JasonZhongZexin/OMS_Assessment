@@ -41,7 +41,7 @@
             &nbsp;Title: <input type="text" name="title">  
             Genre: <select name="genre">
                         <option value="">Search by genre</option>>
-                        <option value = "action">Action</option>
+                        <option value = "Action">Action</option>
                         <option value = "Sci-Fi">Sci-Fi</option>
                         <option value = "Horror">Horror</option>
                         <option value = "Comedy">Comedy</option>
@@ -84,7 +84,7 @@
                 <%
                     } else {
 %>
-<p> Booked </p>
+<p> </p>
                 <%
                     }
 %>
