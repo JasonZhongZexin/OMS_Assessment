@@ -89,20 +89,14 @@ and open the template in the editor.
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="ID" type="IDType"/>
-                            <xs:element name="orderItems">
+                            <xs:element name="orderItem" maxOccurs = "unbounded">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="orderItem" maxOccurs = "unbounded">
-                                            <xs:complexType>
-                                                <xs:sequence>
-                                                    <xs:element name ="movieTitle" type="movieTitleType"/>
-                                                    <xs:element name = "movieGenre" type = "movieGenreType"/>
-                                                    <xs:element name = "moviePrice" type = "moviePriceType"/>
-                                                    <xs:element name = "releaseDate" type = "releaseDateType"/>
-                                                    <xs:element name = "copiesPurchased" type = "copiesPurchasedType"/>
-                                                </xs:sequence>
-                                            </xs:complexType>
-                                        </xs:element>
+                                        <xs:element name ="movieTitle" type="movieTitleType"/>
+                                        <xs:element name = "movieGenre" type = "movieGenreType"/>
+                                        <xs:element name = "moviePrice" type = "moviePriceType"/>
+                                        <xs:element name = "releaseDate" type = "releaseDateType"/>
+                                        <xs:element name = "copiesPurchased" type = "copiesPurchasedType"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
