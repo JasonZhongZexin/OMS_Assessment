@@ -4,6 +4,8 @@
     Author     : Zexin Zhong
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="uts.wsd.Movie"%>
 <%@page import="uts.wsd.Movies"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,10 +17,7 @@
         <title>Index Page</title>
     </head>
     <body>
-        <% String moviesPath = application.getRealPath("WEB-INF/movies.xml");%>
-        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
-            <jsp:setProperty name="movieApp" property="filePath" value="<%= moviesPath%>"/>
-        </jsp:useBean>
+
         <header>
             <nav class="nav">
                 <ul>
@@ -31,22 +30,63 @@
                 </div>
             </nav>
         </header>
-        <form action="index.jsp" method ="post">
-            <table>
-                <tr><td>Title: </td><td><input type="text" placeholder="Title of Movie" name = "search_bar"></td></tr>
-                <tr><td>Genre: </td><td><select>
-                            <option value="">Search by genre</option>>
-                            <option value = "action">Action</option>
-                            <option value = "Sci-Fi">Sci-Fi</option>
-                            <option value = "Horror">Horror</option>
-                            <option value = "Comedy">Comedy</option>
-                        </select></td></tr>
-                <tr><td>Release Year: </td><td><input type="text" name="start_date" placeholder="From">    <input type = "text" name="end_date" placeholder="To"></td></tr>
-                <tr><td><input type="hidden" value="submitted" name="submitted"></td><td><input class = "button" type="submit" value="Search"></td></tr>
-            </table>
+    <center>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
+        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
+            <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
+        </jsp:useBean>
+
+        <form action="searchAction.jsp" >
+
+            &nbsp;Title: <input type="text" name="title">  
+            Genre: <select name="genre">
+                <option value="">Search by genre</option>>
+                <option value = "Action">Action</option>
+                <option value = "Sci-Fi">Sci-Fi</option>
+                <option value = "Horror">Horror</option>
+                <option value = "Comedy">Comedy</option>
+            </select>
+            &nbsp;Release Year: <input type="text" name="start_date" placeholder="From">    <input type = "text" name="end_date" placeholder="To">&nbsp;
+            <input type="submit" value="submit" class="button">
+            <input type="hidden" value="submitted" name="submitted">
+
         </form>
-        <footer>
-            
-        </footer>
-    </body>
+    </center>
+    <center> <table border="2">
+            <%
+                if (request.getParameter("submitted") != null) {
+                    List<Movie> list = (List<Movie>) request.getAttribute("search");
+                    if (list != null && list.size()>0) {%>
+            <tr>
+                <td>Movie title</td>
+                <td>Genre</td>
+                <td>Release date</td>
+                <td>Price</td>
+                <td>Available copies</td>
+                <td>Check out</td>
+            </tr>
+            <%
+                for (Movie movie : list) {
+            %>
+            <tr>
+                <td><%=movie.getMovie_title()%></td>
+                <td><%=movie.getMovie_genre()%></td>
+                <td><%=movie.getMovie_release_date()%></td>
+                <td><%=movie.getMovie_price()%></td>
+                <td><%=movie.getAvailable_copies()%></td> 
+                <td>Check out now</a></td> 
+
+            </tr>   
+            <%
+                        }
+                    } else {
+                        response.sendRedirect("404.jsp");
+                    }
+                }
+            %>
+
+
+        </table>
+    </center>
+</body>
 </html>

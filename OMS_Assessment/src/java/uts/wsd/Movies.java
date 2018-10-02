@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,7 +28,16 @@ public class Movies {
 
     public ArrayList<Movie> getMovies() {
 
-        return this.movies;
+        return movies;
+    }
+    
+    public Movie getMovie(String title) {
+        for (Movie movie : movies) {
+            if (movie.matchTitle(title)) {
+                return movie; 
+            }
+        }
+        return null;
     }
 
     public void addMovie(Movie movie) {
@@ -44,7 +54,7 @@ public class Movies {
 
         ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
         for (Movie movie : movies) {
-            if (movie.getMovie_title().equals(title)) {
+            if (movie.getMovie_title().equals(title)) { 
                 matchesMovies.add(movie);
             }
         }
@@ -140,27 +150,25 @@ public class Movies {
      
      public ArrayList<Movie> searchMovies(String title, String genre, String startYear,String endYear) throws ParseException{
          ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
-         if(!title.equals(null)&&genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByTitile(title);
-         }
-         if(title.equals(null)&& !genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByGenre(genre);
-         }
-         if(title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByYears(startYear,endYear);
-         }
-         if(!title.equals(null)&&!genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByTG(title,genre);
-         }
-         if(!title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByTD(title,startYear,endYear);
-         }
-         if(title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByGD(genre,startYear,endYear);
-         }
-         if(!title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByTGD(title,genre,startYear,endYear);
+         if(title.equals("")&&genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMovies();
+         }else if(!title.equals("")&&genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByTitile(title);
+         }else if(title.equals("")&& !genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByGenre(genre);
+         }else if(title.equals("")&&genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByYears(startYear,endYear);
+         }else if(!title.equals("")&&!genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByTG(title,genre);
+         }else if(!title.equals("")&&genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByTD(title,startYear,endYear);
+         }else if(title.equals("")&&!genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByGD(genre,startYear,endYear);
+         }else if(!title.equals("")&&!genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByTGD(title,genre,startYear,endYear);
          }
          return matchesMovies;
      }
 }
+    
+

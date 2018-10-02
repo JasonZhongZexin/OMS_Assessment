@@ -82,4 +82,9 @@ public class MoviesApplication implements Serializable {
         return movies.searchMovies(title, genre, startYear, endYear);
     }
     
+    public Movie checkMovie(){
+        Movie movie = movies.getMovie(filePath);       
+        return movie; 
+    
+}
 }
