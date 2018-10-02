@@ -86,7 +86,7 @@ public class UsersApplication implements Serializable{
     
     public User checkUser(String email){
         User user = users.getUser(email);
-        return user;
+        return user;    
     }
     
     public User loginUser(String emial, String password){

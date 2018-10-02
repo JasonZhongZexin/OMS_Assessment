@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,7 +28,16 @@ public class Movies {
 
     public ArrayList<Movie> getMovies() {
 
-        return this.movies;
+        return movies;
+    }
+    
+    public Movie getMovie(String title) {
+        for (Movie movie : movies) {
+            if (movie.matchTitle(title)) {
+                return movie; 
+            }
+        }
+        return null;
     }
 
     public void addMovie(Movie movie) {
@@ -44,7 +54,7 @@ public class Movies {
 
         ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
         for (Movie movie : movies) {
-            if (movie.getMovie_title().equals(title)) {
+            if (movie.getMovie_title().equals(title)) { 
                 matchesMovies.add(movie);
             }
         }
@@ -163,4 +173,21 @@ public class Movies {
          }
          return matchesMovies;
      }
+     
+      public List<Movie> search (String title, String genre, String release_date) {
+    	List<Movie> list = new ArrayList<Movie>();
+    	
+    	for (Movie movie : getMovies()) {
+    		if (title != null && !title.equals("") && !title.equals(movie.getMovie_title())
+    				|| genre != null && !genre.equals("") && !genre.equals(movie.getMovie_genre())
+    				|| release_date != null && !release_date.equals("") && !release_date.equals(movie.getMovie_release_date())) {
+    			continue;
+    		}
+    		list.add(movie);
+    	}
+ 
+    	return list;
+      }
 }
+    
+
