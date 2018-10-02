@@ -22,7 +22,6 @@
             <nav class="nav">
                 <ul>
                     <li><a href = "index.jsp">Home</a></li>
-                    <li><a href="history.jsp">History</a></li>
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
@@ -36,7 +35,7 @@
             <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
         </jsp:useBean>
 
-        <form action="searchAction.jsp" >
+        <form action="searchAction.jsp"  >
 
             &nbsp;Title: <input type="text" name="title">  
             Genre: <select name="genre">
@@ -80,7 +79,7 @@
             <%
                         }
                     } else {
-                        response.sendRedirect("404.jsp");
+                        response.sendRedirect("404MovieNoFound.jsp");
                     }
                 }
             %>
