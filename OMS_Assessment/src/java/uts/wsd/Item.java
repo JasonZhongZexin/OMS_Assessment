@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "orderItem")
-public class OrderItem implements Serializable{
+public class Item implements Serializable{
     
     @XmlElement(name = "movieTitle")
     private String movieTitle;
@@ -28,12 +28,12 @@ public class OrderItem implements Serializable{
     @XmlElement(name = "releaseDate")
     private String releaseDate;
     @XmlElement(name = "copiesPurchased")
-    private String copiesPurchased;
+    private int copiesPurchased;
 
-    public OrderItem() {
+    public Item() {
     }
 
-    public OrderItem(String movieTitle, String movieGenre, String moviePrice, String releaseDate, String copiesPurchased) {
+    public Item(String movieTitle, String movieGenre, String moviePrice, String releaseDate, int copiesPurchased) {
         this.movieTitle = movieTitle;
         this.movieGenre = movieGenre;
         this.moviePrice = moviePrice;
@@ -57,7 +57,7 @@ public class OrderItem implements Serializable{
         return releaseDate;
     }
 
-    public String getCopiesPurchased() {
+    public int getCopiesPurchased() {
         return copiesPurchased;
     }
 
@@ -77,7 +77,7 @@ public class OrderItem implements Serializable{
         this.releaseDate = releaseDate;
     }
 
-    public void setCopiesPurchased(String copiesPurchased) {
+    public void setCopiesPurchased(int copiesPurchased) {
         this.copiesPurchased = copiesPurchased;
     }
     
