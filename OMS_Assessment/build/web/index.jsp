@@ -17,7 +17,7 @@
         <title>Index Page</title>
     </head>
     <body>
-        
+
         <header>
             <nav class="nav">
                 <ul>
@@ -35,61 +35,57 @@
         <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
         </jsp:useBean>
-        
+
         <form action="searchAction.jsp" >
 
             &nbsp;Title: <input type="text" name="title">  
             Genre: <select name="genre">
-                        <option value="">Search by genre</option>>
-                        <option value = "Action">Action</option>
-                        <option value = "Sci-Fi">Sci-Fi</option>
-                        <option value = "Horror">Horror</option>
-                        <option value = "Comedy">Comedy</option>
-                    </select>
+                <option value="">Search by genre</option>>
+                <option value = "Action">Action</option>
+                <option value = "Sci-Fi">Sci-Fi</option>
+                <option value = "Horror">Horror</option>
+                <option value = "Comedy">Comedy</option>
+            </select>
             &nbsp;Release Year: <input type="text" name="start_date" placeholder="From">    <input type = "text" name="end_date" placeholder="To">&nbsp;
-            <input type="submit" value="submitted" class="button">
-        
+            <input type="submit" value="submit" class="button">
+            <input type="hidden" value="submitted" name="submitted">
+
         </form>
     </center>
     <center> <table border="2">
-              <%
-             List<Movie> list = (List<Movie>) request.getAttribute("search");
-         if (list != null) {%>
-                
-         <tr>
-         <td>Movie title</td>
-         <td>Genre</td>
-         <td>Release date</td>
-         <td>Price</td>
-         <td>Available copies</td>
-         <td>Check out</td>
-         </tr>
-         
-                <%
-            for (Movie movie : list) {
-      %>
-      <tr>
-         <td><%=movie.getMovie_title()%></td>
-         <td><%=movie.getMovie_genre()%></td>
-         <td><%=movie.getMovie_release_date()%></td>
-         <td><%=movie.getMovie_price()%></td>
-         <td><%=movie.getAvailable_copies()%></td> 
-         <td>Check out now</a></td> 
-   
-      </tr>   
-                <%
-                    }
-%>
+            <%
+                if (request.getParameter("submitted") != null) {
+                    List<Movie> list = (List<Movie>) request.getAttribute("search");
+                    if (list != null && list.size()>0) {%>
+            <tr>
+                <td>Movie title</td>
+                <td>Genre</td>
+                <td>Release date</td>
+                <td>Price</td>
+                <td>Available copies</td>
+                <td>Check out</td>
+            </tr>
+            <%
+                for (Movie movie : list) {
+            %>
+            <tr>
+                <td><%=movie.getMovie_title()%></td>
+                <td><%=movie.getMovie_genre()%></td>
+                <td><%=movie.getMovie_release_date()%></td>
+                <td><%=movie.getMovie_price()%></td>
+                <td><%=movie.getAvailable_copies()%></td> 
+                <td>Check out now</a></td> 
 
-                <%
+            </tr>   
+            <%
+                        }
                     } else {
-%>
-<p> </p>
-                <%
+                        response.sendRedirect("404.jsp");
                     }
-%>
+                }
+            %>
 
-    
+
         </table>
     </center>
 </body>

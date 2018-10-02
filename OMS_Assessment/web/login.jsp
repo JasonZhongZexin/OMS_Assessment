@@ -42,7 +42,6 @@
 
                 emailErr=error = null;
             }
-
             session.invalidate();
 
         %>
