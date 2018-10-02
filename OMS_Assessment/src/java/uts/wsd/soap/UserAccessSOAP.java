@@ -14,6 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.User;
+import uts.wsd.Users;
 import uts.wsd.UsersApplication;
 
 /**
@@ -48,7 +49,8 @@ public class UserAccessSOAP {
     }
     
     @WebMethod
-    public User logoutUser() throws Exception{
-        return getUserApplication().logoutUser();
+    public String logoutUser() throws Exception{
+        User user = getUserApplication().logoutUser();
+        return "User has logged out";
     }
 }

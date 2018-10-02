@@ -34,8 +34,14 @@
         <form action="index.jsp" method ="post">
             <table>
                 <tr><td>Title: </td><td><input type="text" placeholder="Title of Movie" name = "search_bar"></td></tr>
-                <tr><td>Genre: </td><td><input type="radio"  name = "action_radio">action<input type="radio"  name = "Sci-Fi_radio">Sci-Fi<input type="radio"  name = "Horror_radio">Horror<input type="radio"  name = "comedy_radio">Comedy</td></tr>
-                <tr><td>Release Year: </td><td><input type="date" name="start_date" placeholder="From">    <input type = "date" name="end_date" placeholder="To"></td></tr>
+                <tr><td>Genre: </td><td><select>
+                            <option value="">Search by genre</option>>
+                            <option value = "action">Action</option>
+                            <option value = "Sci-Fi">Sci-Fi</option>
+                            <option value = "Horror">Horror</option>
+                            <option value = "Comedy">Comedy</option>
+                        </select></td></tr>
+                <tr><td>Release Year: </td><td><input type="text" name="start_date" placeholder="From">    <input type = "text" name="end_date" placeholder="To"></td></tr>
                 <tr><td><input type="hidden" value="submitted" name="submitted"></td><td><input class = "button" type="submit" value="Search"></td></tr>
             </table>
         </form>

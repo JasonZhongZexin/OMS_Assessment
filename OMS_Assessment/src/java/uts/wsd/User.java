@@ -55,13 +55,13 @@ public class User implements Serializable{
     
     public boolean matchEmail(String email){
     
-        return this.email.equals(email.trim());
+        return this.email.equals(email);
         
     }
     
     public boolean matchPassword(String password){
     
-        return this.password.equals(password.trim());
+        return this.password.equals(password);
         
     }
 
