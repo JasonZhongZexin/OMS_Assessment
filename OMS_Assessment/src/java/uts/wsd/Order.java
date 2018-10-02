@@ -32,13 +32,13 @@ public class Order implements Serializable{
     private String saleTotal;
     @XmlElement(name = "status")
     private String status;
-    @XmlElement(name = "orderItems")
-    private ArrayList<OrderItem> orderItems;
+    @XmlElement(name = "orderItem")
+    private ArrayList<Item> orderItems;
 
     public Order() {
     }
 
-    public Order(String ID, String fullName, String email, String paymentMethod, String saleTotal, String status, ArrayList<OrderItem> orderItems) {
+    public Order(String ID, String fullName, String email, String paymentMethod, String saleTotal, String status, ArrayList<Item> orderItems) {
         this.ID = ID;
         this.fullName = fullName;
         this.email = email;
@@ -80,7 +80,7 @@ public class Order implements Serializable{
         return status;
     }
 
-    public ArrayList<OrderItem> getOrderItems() {
+    public ArrayList<Item> getOrderItems() {
         return orderItems;
     }
 
@@ -108,9 +108,11 @@ public class Order implements Serializable{
         this.status = status;
     }
 
-    public void setOrderItems(ArrayList<OrderItem> orderItems) {
+    public void setOrderItems(ArrayList<Item> orderItems) {
         this.orderItems = orderItems;
     }
     
-    
+    public boolean verifyStatus(){
+        return status.equalsIgnoreCase("Submitted");
+    }
 }
