@@ -52,5 +52,4 @@ public class UserAccessSOAP {
         User user = getUserApplication().logoutUser();
         return "User has logged out";
     }
-    
 }
