@@ -150,44 +150,25 @@ public class Movies {
      
      public ArrayList<Movie> searchMovies(String title, String genre, String startYear,String endYear) throws ParseException{
          ArrayList<Movie> matchesMovies = new ArrayList<Movie>();
-         if(!title.equals(null)&&genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByTitile(title);
-         }
-         if(title.equals(null)&& !genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByGenre(genre);
-         }
-         if(title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByYears(startYear,endYear);
-         }
-         if(!title.equals(null)&&!genre.equals(null)&&startYear.equals(null)&&endYear.equals(null)){
-             getMoviesByTG(title,genre);
-         }
-         if(!title.equals(null)&&genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByTD(title,startYear,endYear);
-         }
-         if(title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByGD(genre,startYear,endYear);
-         }
-         if(!title.equals(null)&&!genre.equals(null)&&!startYear.equals(null)&&!endYear.equals(null)){
-             getMoviesByTGD(title,genre,startYear,endYear);
+         if(title.equals("")&&genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMovies();
+         }else if(!title.equals("")&&genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByTitile(title);
+         }else if(title.equals("")&& !genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByGenre(genre);
+         }else if(title.equals("")&&genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByYears(startYear,endYear);
+         }else if(!title.equals("")&&!genre.equals("")&&startYear.equals("")&&endYear.equals("")){
+             matchesMovies = getMoviesByTG(title,genre);
+         }else if(!title.equals("")&&genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByTD(title,startYear,endYear);
+         }else if(title.equals("")&&!genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByGD(genre,startYear,endYear);
+         }else if(!title.equals("")&&!genre.equals("")&&!startYear.equals("")&&!endYear.equals("")){
+             matchesMovies = getMoviesByTGD(title,genre,startYear,endYear);
          }
          return matchesMovies;
      }
-     
-      public List<Movie> search (String title, String genre, String release_date) {
-    	List<Movie> list = new ArrayList<Movie>();
-    	
-    	for (Movie movie : getMovies()) {
-    		if (title != null && !title.equals("") && !title.equals(movie.getMovie_title())
-    				|| genre != null && !genre.equals("") && !genre.equals(movie.getMovie_genre())
-    				|| release_date != null && !release_date.equals("") && !release_date.equals(movie.getMovie_release_date())) {
-    			continue;
-    		}
-    		list.add(movie);
-    	}
- 
-    	return list;
-      }
 }
     
 
