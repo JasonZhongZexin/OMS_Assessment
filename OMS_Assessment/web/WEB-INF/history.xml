@@ -60,10 +60,10 @@
                 <copiesPurchased>3</copiesPurchased>
             </orderItem>
             <orderItem>
-                <movieTitle>Mission Impossible 6</movieTitle>
-                <movieGenre>Action</movieGenre>
+                <movieTitle>Inception</movieTitle>
+                <movieGenre>Sci-Fi</movieGenre>
                 <moviePrice>19.5</moviePrice>
-                <releaseDate>2017</releaseDate>
+                <releaseDate>2010</releaseDate>
                 <copiesPurchased>1</copiesPurchased>
             </orderItem>
         </orderItems>

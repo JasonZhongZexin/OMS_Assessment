@@ -19,9 +19,10 @@
         <%
 	String movie_title = request.getParameter("title");
 	String movie_genre = request.getParameter("genre");
-	String movie_release_date = request.getParameter("release_date");
-	
-	List<Movie> list = movieApp.getMovies().search(movie_title, movie_genre, movie_release_date); 
+	String movie_release_start_date = request.getParameter("start_date");
+        String movie_release_end_date = request.getParameter("end_date");
+
+        List<Movie> list = movieApp.searchMovie(movie_title,movie_genre,movie_release_start_date,movie_release_end_date);
 	request.setAttribute("search", list);
 	request.getRequestDispatcher("index.jsp").forward(request, response);
         %>

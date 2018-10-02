@@ -17,6 +17,7 @@
             <xs:enumeration value="Action"/>
             <xs:enumeration value="Horror"/>
             <xs:enumeration value="Sci-Fi"/>
+            <xs:enumeration value="Comedy"/>
         </xs:restriction>
     </xs:simpleType>
     
