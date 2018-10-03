@@ -90,4 +90,16 @@ public class Movie implements Serializable{
     
         return this.movie_title.equals(movie_title);       
     }
+    
+    public void addCopies(int copies){
+        this.available_copies +=copies; 
+    }
+    
+    public void minusCopies(int copies){
+        this.available_copies -= copies;
+    }
+    
+    public boolean checkAvailable(){
+        return this.available_copies > 0 ;
+    }
 }

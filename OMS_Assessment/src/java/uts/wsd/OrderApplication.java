@@ -27,17 +27,17 @@ public class OrderApplication {
     public OrderApplication() {
     }
 
-    public OrderApplication(String filePath, Movies movies) {
+    public OrderApplication(String filePath, History history) {
         super();
         this.filePath = filePath;
         this.history = history;
     }
     
     public String getFilePath(){
-        return this.filePath;
+        return filePath;
     }
     
-    public void setFielPath(String filePath) throws JAXBException, FileNotFoundException, IOException{
+    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException{
         JAXBContext jc = JAXBContext.newInstance(History.class);
         Unmarshaller u = jc.createUnmarshaller();
         this.filePath = filePath;
@@ -78,11 +78,14 @@ public class OrderApplication {
         return history.getUserOrder(user);
     }
     
-    public void changeOrderStatus(String id,String status){
-        history.changeOrderStatus(id, status);
+    public void changeOrderStatus(String ID){
+        history.changeOrderStatus(ID);
     }
     
     public void addOrder(Order order){
         history.addOrder(order);
+    }
+    public Order getOrderByID(String ID){
+        return history.getOrderByID(ID);
     }
 }

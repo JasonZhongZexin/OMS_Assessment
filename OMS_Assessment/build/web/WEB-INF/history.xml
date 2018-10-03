@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="history"?>
 <history xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="history.xsd">
     <order>
         <ID>456</ID>
-        <orderItems>
-            <orderItem>
-                <movieTitle>Mission Impossible 1</movieTitle>
-                <movieGenre>Action</movieGenre>
-                <moviePrice>23.5</moviePrice>
-                <releaseDate>2008</releaseDate>
-                <copiesPurchased>1</copiesPurchased>
-            </orderItem>
-            <orderItem>
-                <movieTitle>Mission Impossible 5</movieTitle>
-                <movieGenre>Action</movieGenre>
-                <moviePrice>22.5</moviePrice>
-                <releaseDate>2016</releaseDate>
-                <copiesPurchased>2</copiesPurchased>
-            </orderItem>
-        </orderItems>
+        <orderItem>
+            <movieTitle>Mission Impossible 1</movieTitle>
+            <movieGenre>Action</movieGenre>
+            <moviePrice>23.5</moviePrice>
+            <releaseDate>2008</releaseDate>
+            <copiesPurchased>1</copiesPurchased>
+        </orderItem>
+        <orderItem>
+            <movieTitle>Mission Impossible 5</movieTitle>
+            <movieGenre>Action</movieGenre>
+            <moviePrice>22.5</moviePrice>
+            <releaseDate>2016</releaseDate>
+            <copiesPurchased>2</copiesPurchased>
+        </orderItem>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
@@ -27,15 +26,13 @@
     </order>
     <order>
         <ID>469</ID>
-        <orderItems>
-            <orderItem>
-                <movieTitle>Mile 22</movieTitle>
-                <movieGenre>Action</movieGenre>
-                <moviePrice>23.5</moviePrice>
-                <releaseDate>2018</releaseDate>
-                <copiesPurchased>10</copiesPurchased>
-            </orderItem>
-        </orderItems>
+        <orderItem>
+            <movieTitle>Mile 22</movieTitle>
+            <movieGenre>Action</movieGenre>
+            <moviePrice>23.5</moviePrice>
+            <releaseDate>2018</releaseDate>
+            <copiesPurchased>10</copiesPurchased>
+        </orderItem>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
@@ -44,29 +41,27 @@
     </order>
     <order>
         <ID>135</ID>
-        <orderItems>
-            <orderItem>
-                <movieTitle>Mile 22</movieTitle>
-                <movieGenre>Action</movieGenre>
-                <moviePrice>23.5</moviePrice>
-                <releaseDate>2018</releaseDate>
-                <copiesPurchased>1</copiesPurchased>
-            </orderItem>
-            <orderItem>
-                <movieTitle>Arrival</movieTitle>
-                <movieGenre>Sci-Fi</movieGenre>
-                <moviePrice>44.5</moviePrice>
-                <releaseDate>2016</releaseDate>
-                <copiesPurchased>3</copiesPurchased>
-            </orderItem>
-            <orderItem>
-                <movieTitle>Inception</movieTitle>
-                <movieGenre>Sci-Fi</movieGenre>
-                <moviePrice>19.5</moviePrice>
-                <releaseDate>2010</releaseDate>
-                <copiesPurchased>1</copiesPurchased>
-            </orderItem>
-        </orderItems>
+        <orderItem>
+            <movieTitle>Mile 22</movieTitle>
+            <movieGenre>Action</movieGenre>
+            <moviePrice>23.5</moviePrice>
+            <releaseDate>2018</releaseDate>
+            <copiesPurchased>1</copiesPurchased>
+        </orderItem>
+        <orderItem>
+            <movieTitle>Arrival</movieTitle>
+            <movieGenre>Sci-Fi</movieGenre>
+            <moviePrice>44.5</moviePrice>
+            <releaseDate>2016</releaseDate>
+            <copiesPurchased>3</copiesPurchased>
+        </orderItem>
+        <orderItem>
+            <movieTitle>Inception</movieTitle>
+            <movieGenre>Sci-Fi</movieGenre>
+            <moviePrice>19.5</moviePrice>
+            <releaseDate>2010</releaseDate>
+            <copiesPurchased>1</copiesPurchased>
+        </orderItem>
         <fullName>Linda Xu</fullName>
         <email>lindalinda@gmail.com</email>
         <paymentMethod>Credit Card</paymentMethod>

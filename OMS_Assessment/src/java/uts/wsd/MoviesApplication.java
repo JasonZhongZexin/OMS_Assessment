@@ -81,10 +81,17 @@ public class MoviesApplication implements Serializable {
     public ArrayList<Movie> searchMovie(String title, String genre, String startYear, String endYear) throws ParseException {
         return movies.searchMovies(title, genre, startYear, endYear);
     }
+
+    public Movie checkMovie() {
+        Movie movie = movies.getMovie(filePath);
+        return movie;
+    }
     
-    public Movie checkMovie(){
-        Movie movie = movies.getMovie(filePath);       
-        return movie; 
+    public void addCopies(String title,int copies){
+        movies.addCopies(title, copies);
+    }
     
-}
+    public void minusCopies(String title,int copies){
+        movies.minusCopies(title, copies);
+    }
 }
