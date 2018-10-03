@@ -98,4 +98,8 @@ public class Movie implements Serializable{
     public void minusCopies(int copies){
         this.available_copies -= copies;
     }
+    
+    public boolean checkAvailable(){
+        return this.available_copies > 0 ;
+    }
 }
