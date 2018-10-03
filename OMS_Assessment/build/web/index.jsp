@@ -53,30 +53,12 @@
     </center>
     <center> <table border="2">
             <%
+                Movies movies = movieApp.getMovies();
                 if (request.getParameter("submitted") != null) {
-                    List<Movie> list = (List<Movie>) request.getAttribute("search");
-                    if (list != null && list.size()>0) {%>
-            <tr>
-                <td>Movie title</td>
-                <td>Genre</td>
-                <td>Release date</td>
-                <td>Price</td>
-                <td>Available copies</td>
-                <td>Check out</td>
-            </tr>
-            <%
-                for (Movie movie : list) {
-            %>
-            <tr>
-                <td><%=movie.getMovie_title()%></td>
-                <td><%=movie.getMovie_genre()%></td>
-                <td><%=movie.getMovie_release_date()%></td>
-                <td><%=movie.getMovie_price()%></td>
-                <td><%=movie.getAvailable_copies()%></td> 
-                <td>Check out now</a></td> 
-
-            </tr>   
-            <%
+                    ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
+                    if (list != null && list.size()>0) {
+                        movies.printMovies(list, out);
+                        list = null;
                         }
                     } else {
                         response.sendRedirect("404MovieNoFound.jsp");
