@@ -7,36 +7,36 @@
         <orderItem>
             <movieTitle>Mission Impossible 1</movieTitle>
             <movieGenre>Action</movieGenre>
-            <moviePrice>23.5</moviePrice>
+            <moviePrice>23</moviePrice>
             <releaseDate>2008</releaseDate>
             <copiesPurchased>1</copiesPurchased>
         </orderItem>
         <orderItem>
             <movieTitle>Mission Impossible 5</movieTitle>
             <movieGenre>Action</movieGenre>
-            <moviePrice>22.5</moviePrice>
+            <moviePrice>22</moviePrice>
             <releaseDate>2016</releaseDate>
             <copiesPurchased>2</copiesPurchased>
         </orderItem>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>68.5</saleTotal>
-        <status>Cancel</status>
+        <saleTotal>67</saleTotal>
+        <status>Cancelled</status>
     </order>
     <order>
         <ID>469</ID>
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
-            <moviePrice>23.5</moviePrice>
+            <moviePrice>23</moviePrice>
             <releaseDate>2018</releaseDate>
             <copiesPurchased>10</copiesPurchased>
         </orderItem>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>235</saleTotal>
+        <saleTotal>230</saleTotal>
         <status>Submitted</status>
     </order>
     <order>
@@ -44,28 +44,28 @@
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
-            <moviePrice>23.5</moviePrice>
+            <moviePrice>23</moviePrice>
             <releaseDate>2018</releaseDate>
             <copiesPurchased>1</copiesPurchased>
         </orderItem>
         <orderItem>
             <movieTitle>Arrival</movieTitle>
             <movieGenre>Sci-Fi</movieGenre>
-            <moviePrice>44.5</moviePrice>
+            <moviePrice>44</moviePrice>
             <releaseDate>2016</releaseDate>
             <copiesPurchased>3</copiesPurchased>
         </orderItem>
         <orderItem>
             <movieTitle>Inception</movieTitle>
             <movieGenre>Sci-Fi</movieGenre>
-            <moviePrice>19.5</moviePrice>
+            <moviePrice>19</moviePrice>
             <releaseDate>2010</releaseDate>
             <copiesPurchased>1</copiesPurchased>
         </orderItem>
         <fullName>Linda Xu</fullName>
         <email>lindalinda@gmail.com</email>
         <paymentMethod>Credit Card</paymentMethod>
-        <saleTotal>176.5</saleTotal>
+        <saleTotal>174</saleTotal>
         <status>Submitted</status>
     </order>
 </history>

@@ -24,7 +24,7 @@ public class Item implements Serializable{
     @XmlElement(name = "movieGenre")
     private String movieGenre;
     @XmlElement(name = "moviePrice")
-    private String moviePrice;
+    private int moviePrice;
     @XmlElement(name = "releaseDate")
     private String releaseDate;
     @XmlElement(name = "copiesPurchased")
@@ -33,7 +33,7 @@ public class Item implements Serializable{
     public Item() {
     }
 
-    public Item(String movieTitle, String movieGenre, String moviePrice, String releaseDate, int copiesPurchased) {
+    public Item(String movieTitle, String movieGenre, int moviePrice, String releaseDate, int copiesPurchased) {
         this.movieTitle = movieTitle;
         this.movieGenre = movieGenre;
         this.moviePrice = moviePrice;
@@ -49,7 +49,7 @@ public class Item implements Serializable{
         return movieGenre;
     }
 
-    public String getMoviePrice() {
+    public int getMoviePrice() {
         return moviePrice;
     }
 
@@ -69,7 +69,7 @@ public class Item implements Serializable{
         this.movieGenre = movieGenre;
     }
 
-    public void setMoviePrice(String moviePrice) {
+    public void setMoviePrice(int moviePrice) {
         this.moviePrice = moviePrice;
     }
 
