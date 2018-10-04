@@ -7,6 +7,7 @@
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,6 +38,7 @@
             ArrayList<Order> orders = orderApp.getUserOrder(user);
             History history = orderApp.getHistory();%>
         <h1>Welcome, <%=user.getFullName()%>!</h1>
+        <p align="right"><a href = "account.jsp">Edit account details </a></p> 
     <center>
         <h2>Your Orders</h2>
         <%
