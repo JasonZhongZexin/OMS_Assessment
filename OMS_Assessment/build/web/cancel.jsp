@@ -26,7 +26,7 @@
                 Order order = orderApp.getOrderByID(ID);
                 ArrayList<Item> items = order.getOrderItems();
                 if (order != null) {%>
-            <h1>Do you want to cancel order <%=ID%>? </h1>
+            <h1>Do you want to cancel your order #<%=ID%>? </h1>
             <table border="2">
                 <tr>
                     <th>Title</th>
