@@ -50,7 +50,7 @@ public class History implements Serializable {
     public void changeOrderStatus(String ID) {
         for (Order order : orders) {
             if (order.matchID(ID)) {
-                order.setStatus("Cancel");
+                order.setStatus("Cancelled");
             }
         }
     }

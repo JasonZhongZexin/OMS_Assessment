@@ -31,7 +31,7 @@ and open the template in the editor.
     </xs:simpleType>
     
     <xs:simpleType name="saleTotalType">
-        <xs:restriction base="integer">
+        <xs:restriction base="xs:integer">
             <xs:minInclusive value="0"/>
         </xs:restriction>  
     </xs:simpleType>
@@ -39,7 +39,7 @@ and open the template in the editor.
     <xs:simpleType name="statusType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Submitted"/>
-            <xs:enumeration value="Cancel"/>
+            <xs:enumeration value="Cancelled"/>
         </xs:restriction>
     </xs:simpleType>
     
