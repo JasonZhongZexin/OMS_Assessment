@@ -14,7 +14,6 @@ import javax.ws.rs.core.Context;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.User;
-import uts.wsd.Users;
 import uts.wsd.UsersApplication;
 
 /**
