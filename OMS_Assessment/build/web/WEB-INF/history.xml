@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<history>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="history"?>
+<history xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="history.xsd">
     <order>
         <ID>456</ID>
-        <fullName>John Smith</fullName>
-        <email>js123@gmail.com</email>
-        <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>67</saleTotal>
-        <status>Cancel</status>
         <orderItem>
             <movieTitle>Mission Impossible 1</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -21,14 +18,14 @@
             <releaseDate>2016</releaseDate>
             <copiesPurchased>2</copiesPurchased>
         </orderItem>
-    </order>
-    <order>
-        <ID>469</ID>
         <fullName>John Smith</fullName>
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>230</saleTotal>
-        <status>Submitted</status>
+        <saleTotal>67</saleTotal>
+        <status>Cancelled</status>
+    </order>
+    <order>
+        <ID>469</ID>
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -36,14 +33,14 @@
             <releaseDate>2018</releaseDate>
             <copiesPurchased>10</copiesPurchased>
         </orderItem>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <paymentMethod>PayPal</paymentMethod>
+        <saleTotal>230</saleTotal>
+        <status>Submitted</status>
     </order>
     <order>
         <ID>135</ID>
-        <fullName>Linda Xu</fullName>
-        <email>lindalinda@gmail.com</email>
-        <paymentMethod>Credit Card</paymentMethod>
-        <saleTotal>174</saleTotal>
-        <status>Submitted</status>
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -65,42 +62,10 @@
             <releaseDate>2010</releaseDate>
             <copiesPurchased>1</copiesPurchased>
         </orderItem>
-    </order>
-    <order>
-        <ID>952</ID>
-        <fullName>John Smith</fullName>
-        <email>js123@gmail.com</email>
-        <paymentMethod>CreditCard</paymentMethod>
-        <saleTotal>230</saleTotal>
+        <fullName>Linda Xu</fullName>
+        <email>lindalinda@gmail.com</email>
+        <paymentMethod>Credit Card</paymentMethod>
+        <saleTotal>174</saleTotal>
         <status>Submitted</status>
-        <orderItem>
-            <movieTitle>Mile 22</movieTitle>
-            <movieGenre>Action</movieGenre>
-            <moviePrice>23</moviePrice>
-            <releaseDate>2018</releaseDate>
-            <copiesPurchased>10</copiesPurchased>
-        </orderItem>
-    </order>
-    <order>
-        <ID>777</ID>
-        <fullName>anonymous</fullName>
-        <email>anonymous</email>
-        <paymentMethod>CreditCard</paymentMethod>
-        <saleTotal>190</saleTotal>
-        <status>Submitted</status>
-        <orderItem>
-            <movieTitle>The Nun</movieTitle>
-            <movieGenre>Horror</movieGenre>
-            <moviePrice>23</moviePrice>
-            <releaseDate>2018</releaseDate>
-            <copiesPurchased>5</copiesPurchased>
-        </orderItem>
-        <orderItem>
-            <movieTitle>Mission Impossible 3</movieTitle>
-            <movieGenre>Action</movieGenre>
-            <moviePrice>15</moviePrice>
-            <releaseDate>2014</releaseDate>
-            <copiesPurchased>5</copiesPurchased>
-        </orderItem>
     </order>
 </history>

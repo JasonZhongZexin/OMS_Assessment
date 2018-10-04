@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<movies>
+<movies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="movies.xsd" >
     <movie>
         <title>The Nun</title>
         <genre>Horror</genre>
         <relase_date>2018</relase_date>
         <price>23</price>
-        <available_copies>95</available_copies>
+        <available_copies>100</available_copies>
     </movie>
     <movie>
         <title>Hereditary</title>
@@ -19,7 +20,7 @@
         <genre>Action</genre>
         <relase_date>2018</relase_date>
         <price>23</price>
-        <available_copies>90</available_copies>
+        <available_copies>100</available_copies>
     </movie>
     <movie>
         <title>Mission Impossible 1</title>
@@ -40,7 +41,7 @@
         <genre>Action</genre>
         <relase_date>2014</relase_date>
         <price>15</price>
-        <available_copies>45</available_copies>
+        <available_copies>50</available_copies>
     </movie>
     <movie>
         <title>Annabelle</title>
