@@ -21,27 +21,48 @@
         </jsp:useBean>
         <%
             User user = (User) session.getAttribute("userLogin");
-            if (user != null) {
-                ArrayList<Order> orders = orderApp.getUserOrder(user);
-                History history = orderApp.getHistory();%>
+            if (user != null) {%>
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "main.jsp">My History</a></li>
+                </ul>
+                <div align="right" margin-left="200px">
+                    <a href = "logout.jsp">Logout</a>
+                </div>
+            </nav>
+        </header>
+        <%
+            ArrayList<Order> orders = orderApp.getUserOrder(user);
+            History history = orderApp.getHistory();%>
         <h1>Welcome, <%=user.getFullName()%>!</h1>
     <center>
         <h2>Your Orders</h2>
-        <form>
-            <%
-                if (orders.size() > 0) {
-                    history.printHistory(orders, out);
-                    orders = null;
-                } else {%>
-            <p>You have not place any order!</p>
-            <%}%>
+        <%
+            if (orders.size() > 0) {
+                history.printHistory(orders, out);
+                orders = null;
+            } else {%>
+        <p>You have not place any order!</p>
+        <%}%>
     </center>
     <%} else {%>
+    <header>
+        <nav class="nav">
+            <ul>
+                <li><a href = "index.jsp">Home</a></li>
+                <li><a href = "main.jsp">My History</a></li>
+            </ul>
+            <div align="right" margin-left="200px">
+                <a href = "login.jsp">Login</a>
+                <a href = "register.jsp">Register</a>
+            </div>
+        </nav>
+    </header>
     <h1>You are not login to the system! Please click <a href="login.jsp">here </a>to login....</h1>
     <%
         }
     %>
-
-</form>
 </body>
 </html>
