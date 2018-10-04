@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -19,8 +20,8 @@ import javax.xml.bind.Unmarshaller;
  *
  * @author zhongzexin
  */
-public class OrderApplication {
-    
+public class OrderApplication implements Serializable {
+
     private String filePath;
     private History history;
 
@@ -32,12 +33,12 @@ public class OrderApplication {
         this.filePath = filePath;
         this.history = history;
     }
-    
-    public String getFilePath(){
+
+    public String getFilePath() {
         return filePath;
     }
-    
-    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException{
+
+    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
         JAXBContext jc = JAXBContext.newInstance(History.class);
         Unmarshaller u = jc.createUnmarshaller();
         this.filePath = filePath;
@@ -45,8 +46,8 @@ public class OrderApplication {
         history = (History) u.unmarshal(fin);
         fin.close();
     }
-    
-    public void updateXML(String filePath, History history) throws JAXBException, FileNotFoundException, IOException{
+
+    public void updateXML(String filePath, History history) throws JAXBException, FileNotFoundException, IOException {
         this.history = history;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(History.class);
@@ -56,8 +57,8 @@ public class OrderApplication {
         m.marshal(history, fout);
         fout.close();
     }
-    
-    public void saveHistory() throws JAXBException, FileNotFoundException, IOException{
+
+    public void saveHistory() throws JAXBException, FileNotFoundException, IOException {
         JAXBContext jc = JAXBContext.newInstance(History.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -65,27 +66,28 @@ public class OrderApplication {
         m.marshal(history, fout);
         fout.close();
     }
-    
-    public History getHistory(){
+
+    public History getHistory() {
         return this.history;
     }
-    
-    public void setHistory(History history){
+
+    public void setHistory(History history) {
         this.history = history;
     }
-    
-    public ArrayList<Order> getUserOrder(User user){
+
+    public ArrayList<Order> getUserOrder(User user) {
         return history.getUserOrder(user);
     }
-    
-    public void changeOrderStatus(String ID){
+
+    public void changeOrderStatus(String ID) {
         history.changeOrderStatus(ID);
     }
-    
-    public void addOrder(Order order){
+
+    public void addOrder(Order order) {
         history.addOrder(order);
     }
-    public Order getOrderByID(String ID){
+
+    public Order getOrderByID(String ID) {
         return history.getOrderByID(ID);
     }
 }

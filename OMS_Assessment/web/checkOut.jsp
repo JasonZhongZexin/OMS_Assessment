@@ -1,84 +1,71 @@
 <%-- 
-    Document   : check out
-    Created on : 27-Sep-2018, 09:19:51
-    Author     : Leo
+    Document   : checkOut
+    Created on : 4-Oct-2018, 04:30:51
+    Author     : Zexin Zhong
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="uts.wsd.*" import="java.util.*"%>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="OMS.css"> 
-        <title>Check out</title>
-        <style type="text/css">
-table{
-                    width:60%;
-                    }
-th, td {
-                    padding: 8px;
-                    }
-th {
-                    background-color: #0099FF;
-                    color: white;
-                    font-weight:bold;
-                    }
-h2,p{
-                    font-family:Arial;
-                    sans-serif;
-                    text-align:center;
-                    width:60%;
-                    font-weight:bold;
-                    }		
-tbody{
-                    background-color: white; 
-                    font-weight:bold;
-                    text-align:center;
-                    }		
-    </style>
+        <title>Check Out Page</title>
     </head>
-    
-    <% String moviePath = application.getRealPath("WEB-INF/movies.xml");%>
-    <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
-        <jsp:setProperty name="movieApp" property="filePath" value="<%=moviePath%>"/>
-    </jsp:useBean>
-    
-    
-    
-     <%
-        //Movie movie = (Movie) session.getAttribute("movieSelect");
-        Movies movies = movieApp.getMovies();
-        String title = request.getParameter("select");
-        ArrayList<Movie> purchases = movies.getMoviesByTitile(title);
-    %>
-    
-    <body>  
-            <h1>Shopping cart</h1>  
-            <table>
-            <%
-                for (Movie movie : purchases){    
-            %>
-            <tr>
-                <td>  <%= movie.getMovie_title()%> </td>
-                 <td>  <%= movie.getMovie_genre()%> </td>
-                  <td>  <%= movie.getMovie_release_date()%> </td>
-                   <td>  <%= movie.getMovie_price()%> </td>
-                    <td> <%= movie.getAvailable_copies()%>  </td>
-            </tr>
-             <%}%> 
-            
-            </table>
-             
-          
-       <button class="button" type="button" onclick="location.href = 'movieShopping.jsp'" >Continue Shopping </button>
-        &emsp;
-        <button class="button" type="button" onclick="location.href = 'movieShopping.jsp'" >Purchase order </button>
-    
-    <%
-                //Movie moviePurchase = 
-                session.setAttribute("moviePurchase", purchases);
-    %> 
-    
-    
+    <body>
+                <%
+            User user = (User) session.getAttribute("userLogin");
+            if (user == null) {%>
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li><a href = "index.jsp">Home</a></li>
+                </ul>
+                <div align="right" margin-left="200px">
+                    <a href = "login.jsp">Login</a>
+                    <a href = "register.jsp">Register</a>
+                </div>
+            </nav>
+        </header>
+        <%} else {%>
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "main.jsp">My History</a></li>
+                </ul>
+                <div align="right" margin-left="200px">
+                    <a href = "logout.jsp">Logout</a>
+                </div>
+            </nav>
+        </header>
+        <%}%>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
+        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
+            <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
+        </jsp:useBean>
+        <% String path = application.getRealPath("WEB-INF/history.xml");%>
+        <jsp:useBean id="orderApp" class="uts.wsd.OrderApplication" scope="application">
+            <jsp:setProperty name="orderApp" property="filePath" value="<%=path%>"/>
+        </jsp:useBean>
+        <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
+            <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
+            <jsp:getProperty name="shoppingCartApp" property="shoppingCart"/>
+        </jsp:useBean>
+        <%
+            String title = request.getParameter("movieSelect");
+            Movie movie = movieApp.getMovieByTitle(title);
+            Item item = new Item();
+            item.setMovieTitle(movie.getMovie_title());
+            item.setMovieGenre(movie.getMovie_genre());
+            item.setMoviePrice(movie.getMovie_price());
+            item.setReleaseDate(movie.getMovie_release_date());
+            ShoppingCart shoppingCart = new ShoppingCart();
+            shoppingCart.updateShoppingCart(item);
+            session.setAttribute("shoppingCart", shoppingCart);
+            response.sendRedirect("test.jsp");
+        %>
+        <h1>the select movie is <%=movie.getMovie_title()%></h1>
+        <h1>the items is <%=shoppingCart.getShoppingCart().size()%></h1>
+        <h1>the select movie available copies is <%=movie.getAvailable_copies()%></h1>
     </body>
 </html>

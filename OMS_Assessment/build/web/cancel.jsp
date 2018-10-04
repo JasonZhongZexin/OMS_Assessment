@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="OMS.css"> 
         <title>Cancel Page</title>
     </head>
     <body>
@@ -25,7 +26,7 @@
                 Order order = orderApp.getOrderByID(ID);
                 ArrayList<Item> items = order.getOrderItems();
                 if (order != null) {%>
-            <h1>Do you want to cancel order <%=ID%>?%> </h1>
+            <h1>Do you want to cancel order <%=ID%>? </h1>
             <table border="2">
                 <tr>
                     <th>Title</th>
