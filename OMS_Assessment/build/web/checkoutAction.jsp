@@ -46,7 +46,7 @@
             order.setID(Integer.toString(id));
             order.setOrderItems(shoppingCart.getShoppingCart());
             order.setSaleTotal(saleTotal);
-            order.setStatus("Submitted");
+            order.setStatus("submitted");
             order.setPaymentMethod(paymentMethod);
             if(user != null){
                 order.setEmail(user.getEmail());
