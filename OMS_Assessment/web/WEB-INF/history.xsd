@@ -30,8 +30,8 @@ and open the template in the editor.
     </xs:simpleType>
     
     <xs:simpleType name="saleTotalType">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="([0-9]{1,})+([.0-9]*)"/>
+        <xs:restriction base="integer">
+            <xs:minInclusive value="0"/>
         </xs:restriction>  
     </xs:simpleType>
     
