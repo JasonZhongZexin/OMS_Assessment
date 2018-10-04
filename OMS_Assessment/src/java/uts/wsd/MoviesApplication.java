@@ -82,10 +82,10 @@ public class MoviesApplication implements Serializable {
         return movies.searchMovies(title, genre, startYear, endYear);
     }
 
-    public Movie checkMovie() {
-        Movie movie = movies.getMovie(filePath);
-        return movie;
-    }
+//    public Movie checkMovie() {
+//        Movie movie = movies.getMovie(filePath);
+//        return movie;
+//    }
     
     public void addCopies(String title,int copies){
         movies.addCopies(title, copies);
@@ -93,5 +93,9 @@ public class MoviesApplication implements Serializable {
     
     public void minusCopies(String title,int copies){
         movies.minusCopies(title, copies);
+    }
+    
+    public Movie getMovieByTitle(String title){
+        return movies.getMovieByTitle(title);
     }
 }
