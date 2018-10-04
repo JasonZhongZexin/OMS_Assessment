@@ -6,6 +6,7 @@
 package uts.wsd;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.io.Writer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "movies")
-public class Movies {
+public class Movies implements Serializable{
 
     @XmlElement(name = "movie")
     private ArrayList<Movie> movies = new ArrayList<Movie>();
@@ -188,6 +189,15 @@ public class Movies {
         }
     }
     
+    public Movie getMovieByTitle(String title){
+        for(Movie movie:movies){
+            if(movie.getMovie_title().equals(title)){
+                return movie;
+            }
+        }
+        return null;
+    }
+    
         public void print(ArrayList<Movie> list, Writer sout) {
         PrintWriter out = new PrintWriter(sout);
         out.print("<table align=\"center\">");
@@ -219,10 +229,10 @@ public class Movies {
         PrintWriter out = new PrintWriter(sout);
 
         out.print("<table align=\"center\">");
-        out.print("\n<thead><th>Movie Titlre</th><th>Genre</th><th>Release Date</th><th>Price</th><th>Available Copies</th></thead>");
+        out.print("\n<thead><th>Movie Title</th><th>Genre</th><th>Release Date</th><th>Price</th><th>Available Copies</th></thead>");
 
         list.stream().map((movie) -> {
-            String href = movie.checkAvailable() ? "<a class=\"link\" href=\"shoppingCard.jsp?movieSelect=" + movie.getMovie_title() + "\" >" + movie.getMovie_title() + "</a>" : movie.getMovie_title();
+            String href = movie.checkAvailable() ? "<a class=\"link\" href=\"checkOut.jsp?movieSelect=" + movie.getMovie_title() + "\" >" + movie.getMovie_title() + "</a>" : movie.getMovie_title();
             out.println("<tr > ");
             out.println("<td>" + href + "</td>");
             return movie;

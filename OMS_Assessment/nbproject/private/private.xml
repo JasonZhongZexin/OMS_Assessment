@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/main.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/History.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Order.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Movies.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/searchAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/cancelAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/OrderApplication.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Movie.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/MoviesApplication.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/movieShopping.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/index.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/cancel.jsp</file>
+        </group>
     </open-files>
 </project-private>
