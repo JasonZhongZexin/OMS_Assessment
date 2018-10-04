@@ -36,6 +36,6 @@
                 orderApp.saveHistory();
             }
         %>
-        <h2>Order <%=order.getID()%> has been cancel. Click <a href="main.jsp">here</a> to back to your main page!</h2>
+        <h2>The order <%=order.getID()%> has been canceled. Click <a href="main.jsp">here</a> to back to your main page!</h2>
     </body>
 </html>

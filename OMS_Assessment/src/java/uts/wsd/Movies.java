@@ -229,7 +229,7 @@ public class Movies implements Serializable{
         PrintWriter out = new PrintWriter(sout);
 
         out.print("<table align=\"center\">");
-        out.print("\n<thead><th>Movie Titlre</th><th>Genre</th><th>Release Date</th><th>Price</th><th>Available Copies</th></thead>");
+        out.print("\n<thead><th>Movie Title</th><th>Genre</th><th>Release Date</th><th>Price</th><th>Available Copies</th></thead>");
 
         list.stream().map((movie) -> {
             String href = movie.checkAvailable() ? "<a class=\"link\" href=\"checkOut.jsp?movieSelect=" + movie.getMovie_title() + "\" >" + movie.getMovie_title() + "</a>" : movie.getMovie_title();
