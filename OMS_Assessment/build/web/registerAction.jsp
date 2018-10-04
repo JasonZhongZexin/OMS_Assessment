@@ -55,6 +55,7 @@
             } else {
                 userApp.addUser(user);
                 userApp.saveUsers();
+                userApp.updateXML(usersPath, users);
                 session.setAttribute("userLogin", user);
                 response.sendRedirect("main.jsp");
             }
