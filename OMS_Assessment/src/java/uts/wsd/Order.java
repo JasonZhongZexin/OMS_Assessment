@@ -29,7 +29,7 @@ public class Order implements Serializable{
     @XmlElement(name = "paymentMethod")
     private String paymentMethod;
     @XmlElement(name = "saleTotal")
-    private String saleTotal;
+    private int saleTotal;
     @XmlElement(name = "status")
     private String status;
     @XmlElement(name = "orderItem")
@@ -38,7 +38,7 @@ public class Order implements Serializable{
     public Order() {
     }
 
-    public Order(String ID, String fullName, String email, String paymentMethod, String saleTotal, String status, ArrayList<Item> orderItems) {
+    public Order(String ID, String fullName, String email, String paymentMethod, int saleTotal, String status, ArrayList<Item> orderItems) {
         this.ID = ID;
         this.fullName = fullName;
         this.email = email;
@@ -72,7 +72,7 @@ public class Order implements Serializable{
         return paymentMethod;
     }
 
-    public String getSaleTotal() {
+    public int getSaleTotal() {
         return saleTotal;
     }
 
@@ -100,7 +100,7 @@ public class Order implements Serializable{
         this.paymentMethod = paymentMethod;
     }
 
-    public void setSaleTotal(String saleTotal) {
+    public void setSaleTotal(int saleTotal) {
         this.saleTotal = saleTotal;
     }
 
