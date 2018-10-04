@@ -4,6 +4,7 @@
     Author     : Zexin Zhong
 --%>
 
+<%@page import="uts.wsd.ShoppingCart"%>
 <%@page import="uts.wsd.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,12 +17,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="OMS.css"> 
         <title>Index Page</title>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
     </head>
     <body>
-        <%
-            User user = (User) session.getAttribute("userLogin");
-            if (user == null) {%>
         <header>
+            <%
+                User user = (User) session.getAttribute("userLogin");
+                if (user == null) {%>
             <nav class="nav">
                 <ul>
                     <li><a href = "index.jsp">Home</a></li>
@@ -45,11 +47,13 @@
             </nav>
         </header>
         <%}%>
-    <center>
-        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
         <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
         </jsp:useBean>
+        <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
+            <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
+        </jsp:useBean>
+    <center>
         <form action="searchAction.jsp"  >
             &nbsp;Title: <input type="text" name="title">  
             Genre: <select name="genre">
@@ -67,9 +71,14 @@
     <%
         Movies movies = movieApp.getMovies();
         if (request.getParameter("submitted") != null) {
+            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+            if (shoppingCart == null) {
+                shoppingCart = new ShoppingCart();
+            }
             ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
             if (list != null && list.size() > 0) {
                 movies.printMovies(list, out);
+                session.setAttribute("shoppingCart", shoppingCart);
                 list = null;
             } else {
                 response.sendRedirect("404MovieNoFound.jsp");

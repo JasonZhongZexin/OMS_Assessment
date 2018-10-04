@@ -28,8 +28,8 @@
     </xs:simpleType>
     
     <xs:simpleType name="price">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="([0-9]{1,})+([.0-9]*)"/>
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
     

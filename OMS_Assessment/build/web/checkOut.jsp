@@ -12,7 +12,7 @@
         <title>Check Out Page</title>
     </head>
     <body>
-                <%
+        <%
             User user = (User) session.getAttribute("userLogin");
             if (user == null) {%>
         <header>
@@ -59,13 +59,42 @@
             item.setMovieGenre(movie.getMovie_genre());
             item.setMoviePrice(movie.getMovie_price());
             item.setReleaseDate(movie.getMovie_release_date());
-            ShoppingCart shoppingCart = new ShoppingCart();
-            shoppingCart.updateShoppingCart(item);
+            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+            if (!shoppingCart.isContainsItem(item)) {
+                shoppingCart.addShoppingCart(item);
+            }%>
+        <form action="checkoutAction.jsp" method="post">
+            <table align="center" border = "2">      
+                <tr>
+                    <td>Movie Title</td>
+                    <td>Moview Price</td>
+                    <td>Available Copies</td>
+                    <td>Copies Purchase</td>
+                </tr>
+                <%
+                    for (Item shoppingCartItem : shoppingCart.getShoppingCart()) {
+                %>
+                <tr>
+                    <td><%=shoppingCartItem.getMovieTitle()%></td>
+                    <td><%=shoppingCartItem.getMoviePrice()%></td>
+                    <td><%=movieApp.getMovieByTitle(shoppingCartItem.getMovieTitle()).getAvailable_copies()%></td>
+                    <td><input type="text" value="<%=shoppingCartItem.getCopiesPurchased()%>" name = "<%=shoppingCartItem.getMovieTitle()%>"/></td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+            <center>
+            Payment Method <select name="paymentMethod" required>
+                <option value="">choose a payment method</option>
+                <option value = "CreditCard">Credit Card</option>
+                <option value = "PayPal">PayPal</option>
+            </select>
+            <input type="submit" value="check out">
+            </center>
+        </form>
+        <%
             session.setAttribute("shoppingCart", shoppingCart);
-            response.sendRedirect("test.jsp");
         %>
-        <h1>the select movie is <%=movie.getMovie_title()%></h1>
-        <h1>the items is <%=shoppingCart.getShoppingCart().size()%></h1>
-        <h1>the select movie available copies is <%=movie.getAvailable_copies()%></h1>
     </body>
 </html>
