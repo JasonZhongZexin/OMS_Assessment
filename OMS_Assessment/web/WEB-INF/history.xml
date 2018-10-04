@@ -22,7 +22,7 @@
         <email>js123@gmail.com</email>
         <paymentMethod>PayPal</paymentMethod>
         <saleTotal>68.5</saleTotal>
-        <status>Cancel</status>
+        <status>Canceled</status>
     </order>
     <order>
         <ID>469</ID>

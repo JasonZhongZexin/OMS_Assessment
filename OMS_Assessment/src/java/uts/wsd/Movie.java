@@ -26,7 +26,7 @@ public class Movie implements Serializable{
     @XmlElement(name="relase_date")
     private String movie_release_date;
     @XmlElement(name="price")
-    private double movie_price;
+    private String movie_price;
     @XmlElement(name="available_copies")
     private int available_copies;
     
@@ -34,7 +34,7 @@ public class Movie implements Serializable{
     public Movie() {
     }
 
-    public Movie(String movie_title, String movie_genre, String movie_release_date, double movie_price, int available_copies) {
+    public Movie(String movie_title, String movie_genre, String movie_release_date, String movie_price, int available_copies) {
         this.movie_title = movie_title;
         this.movie_genre = movie_genre;
         this.movie_release_date = movie_release_date;
@@ -55,7 +55,7 @@ public class Movie implements Serializable{
     }
     
 
-    public double getMovie_price() {
+    public String getMovie_price() {
         return movie_price;
     }
 
@@ -75,7 +75,7 @@ public class Movie implements Serializable{
         this.movie_release_date = movie_release_date;
     }
 
-    public void setMovie_price(double movie_price) {
+    public void setMovie_price(String movie_price) {
         this.movie_price = movie_price;
     }
 
