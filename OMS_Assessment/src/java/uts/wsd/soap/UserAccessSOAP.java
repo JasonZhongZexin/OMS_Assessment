@@ -5,6 +5,7 @@
  */
 package uts.wsd.soap;
 
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -13,6 +14,9 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.core.Context;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
+import uts.wsd.History;
+import uts.wsd.Order;
+import uts.wsd.OrderApplication;
 import uts.wsd.User;
 import uts.wsd.UsersApplication;
 
@@ -20,7 +24,7 @@ import uts.wsd.UsersApplication;
  *
  * @author Zexin Zhong
  */
-@WebService(serviceName = "userApp")
+@WebService(serviceName = "omsApp")
 public class UserAccessSOAP {
     
     @Context
@@ -43,6 +47,20 @@ public class UserAccessSOAP {
     }
     
     @WebMethod
+    private OrderApplication getOrderApplication() throws Exception {
+        application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        synchronized (application) {
+            OrderApplication orderApp = (OrderApplication) application.getAttribute("orderApp");
+            if (orderApp == null) {
+                orderApp = new OrderApplication();
+                orderApp.setFilePath(application.getRealPath("WEB-INF/history.xml"));
+                application.setAttribute("orderApp", orderApp);
+            }
+            return orderApp;
+        }
+    }
+    
+    @WebMethod
     public User loginUser(String email, String password) throws Exception{
         return getUserApplication().loginUser(email, password);
     }
@@ -51,5 +69,30 @@ public class UserAccessSOAP {
     public String logoutUser() throws Exception{
         User user = getUserApplication().logoutUser();
         return "User has logged out";
+    }
+    
+    @WebMethod
+    public ArrayList<Order> getHistory() throws Exception{
+        return getOrderApplication().getHistory().getOrders();
+    }
+    
+    @WebMethod
+    public Order getHistoryByOrderID(String ID) throws Exception{
+        return getOrderApplication().getOrderByID(ID);
+    }
+    
+    @WebMethod
+    public  ArrayList<Order> getHistoryByEmail(String email) throws Exception{
+        return getOrderApplication().getOrdersByEmail(email);
+    }
+    
+    @WebMethod
+    public ArrayList<Order> getHistoryByTitle(String title) throws Exception{
+        return getOrderApplication().getOrdersByTitle(title);
+    }
+    
+    @WebMethod
+    public ArrayList<Order> getHistoryByStatus(String status) throws Exception{
+        return getOrderApplication().getHistoryByStatus(status);
     }
 }

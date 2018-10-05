@@ -3,6 +3,7 @@
     Created on : 14/09/2018, 10:47:28 PM
     Author     : zhongzexin
 --%>
+<%@page import="controller.Validator"%>
 <%@page import="uts.wsd.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +24,14 @@
             String password = request.getParameter("password");
             User user = users.login(email, password);
             
-            if (user != null) {
+            Validator v = new Validator();
+            if(!v.validateEmail(email)){
+                session.setAttribute("emailErr", "Email format is incorrect!");
+                response.sendRedirect("login.jsp");
+            }else if(!v.validatePassword(password)){
+                session.setAttribute("passwordErr", "Password format is incorrect!");
+                response.sendRedirect("login.jsp");
+            }else if (user != null) {
                 session.setAttribute("userLogin", user);
                 response.sendRedirect("main.jsp");                        
             }

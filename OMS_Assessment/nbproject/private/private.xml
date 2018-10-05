@@ -3,18 +3,47 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/main.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/jax-ws-catalog.xml</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/registerAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/users.xml</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/History.java</file>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Order.java</file>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Movies.java</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/searchAction.jsp</file>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/cancelAction.jsp</file>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/OrderApplication.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Movies.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/history.xsl</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/web.xml</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Movie.java</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/MoviesApplication.java</file>
-            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/movieShopping.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/history.xsd</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/index.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/login.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/main.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/users.xsd</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/UsersApplication.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/checkOut.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Order.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/User.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/cancelAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/register.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/nbproject/build-impl.xml</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/movies.xml</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Users.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/account.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/movies.xsl</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/Item.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/404MovieNoFound.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/loginAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/movies.xsd</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/OMS.css</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/rest/OrderService.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/soap/client/UserAccessClient.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/controller/Validator.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/soap/UserAccessSOAP.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/checkoutAction.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/OrderApplication.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/src/java/uts/wsd/ShoppingCart.java</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/logout.jsp</file>
             <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/cancel.jsp</file>
+            <file>file:/Users/zhongzexin/Documents/GitHub/OMS_Assessment/OMS_Assessment/web/WEB-INF/history.xml</file>
         </group>
     </open-files>
 </project-private>

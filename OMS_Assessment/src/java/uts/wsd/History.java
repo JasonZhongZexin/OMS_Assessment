@@ -50,7 +50,7 @@ public class History implements Serializable {
     public void changeOrderStatus(String ID) {
         for (Order order : orders) {
             if (order.matchID(ID)) {
-                order.setStatus("Cancel");
+                order.setStatus("cancelled");
             }
         }
     }
@@ -113,5 +113,33 @@ public class History implements Serializable {
             out.println("</tr>");
         });
         out.print("</table>");
+    }
+
+    public ArrayList<Order> getOrdersByEmail(String email) {
+        ArrayList<Order> matches = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.matchEmail(email)) {
+                matches.add(order);
+            }
+        }
+        return matches;
+    }
+    
+    public ArrayList<Order> getOrderByTitle(String title){
+        ArrayList<Order> matches = new ArrayList<>();
+        for(Order order: orders){
+            if(order.isContainsItem(title))
+                matches.add(order);
+        }
+        return matches;
+    }
+    
+    public ArrayList<Order> getHistoryByStatus(String status){
+        ArrayList<Order> matches = new ArrayList<>();
+        for(Order order: orders){
+            if(order.isMatchStatus(status))
+                matches.add(order);
+        }
+        return matches;
     }
 }

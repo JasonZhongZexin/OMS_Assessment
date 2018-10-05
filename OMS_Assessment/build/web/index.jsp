@@ -54,8 +54,18 @@
             <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
         </jsp:useBean>
     <center>
-        <form action="searchAction.jsp"  >
-            &nbsp;Title: <input type="text" name="title">  
+        <form action="searchAction.jsp">
+            <%
+                String startDateErr = (String) session.getAttribute("startDateErr");
+                String endDateErr = (String) session.getAttribute("endDateErr");
+            %>
+            <h1><%=(startDateErr != null ? startDateErr : "")%></h1>
+            <h1><%=(endDateErr != null ? endDateErr : "")%></h1>
+            <%
+                session.setAttribute("endDateErr", null);
+                session.setAttribute("startDateErr", null);
+            %>
+            Title: <input type="text" name="title">  
             Genre: <select name="genre">
                 <option value="">Search by genre</option>>
                 <option value = "Action">Action</option>
