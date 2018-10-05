@@ -37,8 +37,8 @@ and open the template in the editor.
     
     <xs:simpleType name="statusType">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Submitted"/>
-            <xs:enumeration value="Cancelled"/>
+            <xs:enumeration value="submitted"/>
+            <xs:enumeration value="cancelled"/>
         </xs:restriction>
     </xs:simpleType>
     

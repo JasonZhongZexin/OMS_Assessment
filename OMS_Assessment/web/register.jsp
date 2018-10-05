@@ -53,9 +53,7 @@
 
                 addressErr = phoneNumberErr=nameErr=emailErr=passwordErr=null;
             }
-
             session.invalidate();
-
         %>
     </body>
 </html>

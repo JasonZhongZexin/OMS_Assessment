@@ -15,6 +15,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  *
@@ -89,5 +90,18 @@ public class OrderApplication implements Serializable {
 
     public Order getOrderByID(String ID) {
         return history.getOrderByID(ID);
+    }
+    
+    @XmlElement
+    public ArrayList<Order> getOrdersByEmail(String email){
+        return history.getOrdersByEmail(email);
+    }
+    
+    public ArrayList<Order> getOrdersByTitle(String title){
+        return history.getOrderByTitle(title);
+    }
+    
+    public ArrayList<Order> getHistoryByStatus(String status){
+        return history.getHistoryByStatus(status);
     }
 }

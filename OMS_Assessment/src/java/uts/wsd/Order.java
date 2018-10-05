@@ -113,6 +113,18 @@ public class Order implements Serializable{
     }
     
     public boolean verifyStatus(){
-        return status.equalsIgnoreCase("Submitted");
+        return status.equalsIgnoreCase("submitted");
+    }
+    
+    public boolean isContainsItem(String title){
+        for(Item item: orderItems){
+            if(item.getMovieTitle().equals(title))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean isMatchStatus(String status){
+        return this.status.equals(status);
     }
 }

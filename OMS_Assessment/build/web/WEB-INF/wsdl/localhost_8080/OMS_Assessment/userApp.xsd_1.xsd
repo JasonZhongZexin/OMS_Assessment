@@ -2,6 +2,26 @@
 
 <xs:element name="Exception" type="tns:Exception"/>
 
+<xs:element name="getHistory" type="tns:getHistory"/>
+
+<xs:element name="getHistoryByEmail" type="tns:getHistoryByEmail"/>
+
+<xs:element name="getHistoryByEmailResponse" type="tns:getHistoryByEmailResponse"/>
+
+<xs:element name="getHistoryByOrderID" type="tns:getHistoryByOrderID"/>
+
+<xs:element name="getHistoryByOrderIDResponse" type="tns:getHistoryByOrderIDResponse"/>
+
+<xs:element name="getHistoryByStatus" type="tns:getHistoryByStatus"/>
+
+<xs:element name="getHistoryByStatusResponse" type="tns:getHistoryByStatusResponse"/>
+
+<xs:element name="getHistoryByTitle" type="tns:getHistoryByTitle"/>
+
+<xs:element name="getHistoryByTitleResponse" type="tns:getHistoryByTitleResponse"/>
+
+<xs:element name="getHistoryResponse" type="tns:getHistoryResponse"/>
+
 <xs:element name="loginUser" type="tns:loginUser"/>
 
 <xs:element name="loginUserResponse" type="tns:loginUserResponse"/>
@@ -10,7 +30,75 @@
 
 <xs:element name="logoutUserResponse" type="tns:logoutUserResponse"/>
 
+<xs:element name="order" type="tns:order"/>
+
+<xs:element name="orderItem" type="tns:item"/>
+
 <xs:element name="user" type="tns:user"/>
+
+<xs:complexType name="getHistoryByEmail">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="order">
+<xs:sequence>
+<xs:element name="ID" type="xs:string" minOccurs="0"/>
+<xs:element name="fullName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="paymentMethod" type="xs:string" minOccurs="0"/>
+<xs:element name="saleTotal" type="xs:int"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="orderItem" type="tns:item" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="item">
+<xs:sequence>
+<xs:element name="movieTitle" type="xs:string" minOccurs="0"/>
+<xs:element name="movieGenre" type="xs:string" minOccurs="0"/>
+<xs:element name="moviePrice" type="xs:int"/>
+<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
+<xs:element name="copiesPurchased" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByStatus">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByTitle">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByTitleResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="loginUser">
 <xs:sequence>
@@ -35,9 +123,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="Exception">
+<xs:complexType name="getHistoryByOrderID">
 <xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistoryByOrderIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -48,6 +142,16 @@
 <xs:complexType name="logoutUserResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistory">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getHistoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
