@@ -19,6 +19,17 @@
         <jsp:useBean id="orderApp" class="uts.wsd.OrderApplication" scope="application">
             <jsp:setProperty name="orderApp" property="filePath" value="<%=path%>"/>
         </jsp:useBean>
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "main.jsp">My History</a></li>
+                </ul>
+                <div align="right" margin-left="200px">
+                    <a href = "logout.jsp">Logout</a>
+                </div>
+            </nav>
+        </header>
     <center>
         <form action="cancelAction.jsp" method = "post">
             <%

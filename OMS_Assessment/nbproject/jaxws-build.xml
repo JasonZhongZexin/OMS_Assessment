@@ -19,11 +19,11 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </taskdef>
     </target>
-    <target name="wsgen-UserAccessSOAP" depends="wsgen-init">
+    <target name="wsgen-OMSSOAP" depends="wsgen-init">
         <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-uts.wsd.soap.UserAccessSOAP.xml"/>
+            <fileset dir="${webinf.dir}" includes="wsit-uts.wsd.soap.OMSSOAP.xml"/>
         </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="uts.wsd.soap.UserAccessSOAP" xendorsed="true">
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="uts.wsd.soap.OMSSOAP" xendorsed="true">
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
@@ -43,21 +43,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-userApp" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/userApp"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/userApp" destdir="${build.generated.dir}/jax-wsCache/userApp" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/userApp/wsdl/localhost_8080/OMS_Assessment/userApp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OMS_Assessment/userApp?wsdl" xnocompile="true" xendorsed="true" package="uts.wsd.soap.client">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/userApp/wsdl/localhost_8080/OMS_Assessment/userApp.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/userApp"/>
+    <target name="wsimport-client-omsApp" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/omsApp"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/omsApp" destdir="${build.generated.dir}/jax-wsCache/omsApp" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/omsApp/wsdl/localhost_8080/OMS_Assessment/omsApp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OMS_Assessment/omsApp?wsdl" xnocompile="true" xendorsed="true" package="uts.wsd.soap.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/omsApp/wsdl/localhost_8080/OMS_Assessment/omsApp.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/omsApp"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/userApp">
+            <fileset dir="${build.generated.dir}/jax-wsCache/omsApp">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-userApp" depends="-init-project">
+    <target name="wsimport-client-clean-omsApp" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/uts/wsd/soap/client"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/userApp"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/omsApp"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-userApp"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-omsApp"/>
 </project>
