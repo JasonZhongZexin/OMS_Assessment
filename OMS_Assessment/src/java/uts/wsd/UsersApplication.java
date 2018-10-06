@@ -32,23 +32,19 @@ public class UsersApplication implements Serializable{
     }
     
     public String getFilePath(){
-        
         return filePath;
     }
     
     public void setFilePath(String filePath) throws Exception{
-   
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller u = jc.createUnmarshaller();
         this.filePath = filePath;
         FileInputStream fin = new FileInputStream(filePath);
         users = (Users) u.unmarshal(fin);
         fin.close();
-        
     }
     
     public void updateXML(String filePath,Users users) throws Exception{
-   
         this.users = users;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Users.class);
@@ -56,12 +52,10 @@ public class UsersApplication implements Serializable{
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
         FileOutputStream fout = new FileOutputStream(filePath);
         m.marshal(users, fout);
-        fout.close();
-        
+        fout.close();  
     }
     
     public void saveUsers() throws JAXBException, IOException{
-    
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
@@ -92,7 +86,7 @@ public class UsersApplication implements Serializable{
     
     public User checkUser(String email){
         User user = users.getUser(email);
-        return user;
+        return user;    
     }
     
     public User loginUser(String emial, String password){
@@ -101,5 +95,9 @@ public class UsersApplication implements Serializable{
     
     public User logoutUser(){
         return null;
+    }
+    
+    public void updateUser(User user ){
+        users.updateUser(user);
     }
 }

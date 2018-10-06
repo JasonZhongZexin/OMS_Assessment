@@ -17,7 +17,7 @@ public class Validator {
     private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";    
     private String passwordPattern = "[0-9A-Za-z]{6,}";   
     private String phoneNumberPattern ="[0-9]{10}";
-    
+    private String yearPattern="[0-9]{4}";
     public Validator(){}
     
     public boolean validate(String pattern, String input){
@@ -25,7 +25,7 @@ public class Validator {
         Matcher match = regEx.matcher(input);
         return match.matches();
     }    
-    public boolean checkEmpty(String email, String password){
+    public boolean checkLoginEmpty(String email, String password){
         return  email.isEmpty() || password.isEmpty();
     }
     public boolean validateEmail(String email){                
@@ -39,5 +39,9 @@ public class Validator {
     }     
     public boolean validatePhoneNumnber(String phone){
         return validate(phoneNumberPattern,phone);
+    }
+    
+    public boolean validateYear(String year){
+        return validate(yearPattern,year);
     }
 }

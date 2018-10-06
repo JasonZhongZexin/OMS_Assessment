@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema 
+    version="1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    
+    <!-- type declarations -->
+    <xs:simpleType name="IDType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="fullNameType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Z][a-z]+[\s])+[A-Z][a-z]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="saleTotalType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>  
+    </xs:simpleType>
+    
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="submitted"/>
+            <xs:enumeration value="cancelled"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="movieTitleType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-z0-9\s]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="movieGenreType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Action"/>
+            <xs:enumeration value="Horror"/>
+            <xs:enumeration value="Sci-Fi"/>
+            <xs:enumeration value="Comedy"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="moviePriceType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]{1,})+([.0-9]*)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="releaseDateType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="copiesPurchasedType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="paymentMethodType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Credit Card"/>
+            <xs:enumeration value="PayPal"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--element declarations-->   
+    <xs:element name="history">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = "order" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ID" type="IDType"/>
+                            <xs:element name="orderItem" maxOccurs = "unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name ="movieTitle" type="movieTitleType"/>
+                                        <xs:element name = "movieGenre" type = "movieGenreType"/>
+                                        <xs:element name = "moviePrice" type = "moviePriceType"/>
+                                        <xs:element name = "releaseDate" type = "releaseDateType"/>
+                                        <xs:element name = "copiesPurchased" type = "copiesPurchasedType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="fullName" type="fullNameType"/>
+                            <xs:element name="email" type="emailType"/>
+                            <xs:element name="paymentMethod" type = "paymentMethodType"/>
+                            <xs:element name = "saleTotal" type = "saleTotalType"/>
+                            <xs:element name = "status" type = "statusType"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

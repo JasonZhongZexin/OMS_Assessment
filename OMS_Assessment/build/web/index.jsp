@@ -4,6 +4,10 @@
     Author     : Zexin Zhong
 --%>
 
+<%@page import="uts.wsd.ShoppingCart"%>
+<%@page import="uts.wsd.User"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="uts.wsd.Movie"%>
 <%@page import="uts.wsd.Movies"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,15 +19,14 @@
         <title>Index Page</title>
     </head>
     <body>
-        <% String moviesPath = application.getRealPath("WEB-INF/movies.xml");%>
-        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
-            <jsp:setProperty name="movieApp" property="filePath" value="<%= moviesPath%>"/>
-        </jsp:useBean>
         <header>
+            <%
+                User user = (User) session.getAttribute("userLogin");
+                if (user == null) {%>
             <nav class="nav">
                 <ul>
                     <li><a href = "index.jsp">Home</a></li>
-                    <li><a href="history.jsp">History</a></li>
+                    <li><a href = "checkOut.jsp">Checkout</a></li>
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
@@ -31,16 +34,70 @@
                 </div>
             </nav>
         </header>
-        <form action="index.jsp" method ="post">
-            <table>
-                <tr><td>Title: </td><td><input type="text" placeholder="Title of Movie" name = "search_bar"></td></tr>
-                <tr><td>Genre: </td><td><input type="radio"  name = "action_radio">action<input type="radio"  name = "Sci-Fi_radio">Sci-Fi<input type="radio"  name = "Horror_radio">Horror<input type="radio"  name = "comedy_radio">Comedy</td></tr>
-                <tr><td>Release Year: </td><td><input type="date" name="start_date" placeholder="From">    <input type = "date" name="end_date" placeholder="To"></td></tr>
-                <tr><td><input type="hidden" value="submitted" name="submitted"></td><td><input class = "button" type="submit" value="Search"></td></tr>
-            </table>
+        <%} else {%>
+        <header>
+            <nav class="nav">
+                <ul>
+                    <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "checkOut.jsp">Checkout</a></li>
+                    <li><a href = "main.jsp">My History</a></li>
+                </ul>
+                <div align="right" margin-left="200px">
+                    <a href = "logout.jsp">Logout</a>
+                </div>
+            </nav>
+        </header>
+        <%}%>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
+        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
+            <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
+        </jsp:useBean>
+        <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
+            <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
+        </jsp:useBean>
+    <center>
+        <form action="searchAction.jsp">
+            <%
+                String startDateErr = (String) session.getAttribute("startDateErr");
+                String endDateErr = (String) session.getAttribute("endDateErr");
+            %>
+            <h1><%=(startDateErr != null ? startDateErr : "")%></h1>
+            <h1><%=(endDateErr != null ? endDateErr : "")%></h1>
+            <%
+                session.setAttribute("endDateErr", null);
+                session.setAttribute("startDateErr", null);
+            %>
+            Title: <input type="text" name="title">  
+            Genre: <select name="genre">
+                <option value="">Search by genre</option>>
+                <option value = "Action">Action</option>
+                <option value = "Sci-Fi">Sci-Fi</option>
+                <option value = "Horror">Horror</option>
+                <option value = "Comedy">Comedy</option>
+            </select>
+            &nbsp;Release Year: <input type="text" name="start_date" placeholder="From">    <input type = "text" name="end_date" placeholder="To">&nbsp;
+            <input type="submit" value="submit" class="button">
+            <input type="hidden" value="submitted" name="submitted">
         </form>
-        <footer>
-            
-        </footer>
-    </body>
+    </center>
+       <%
+        Movies movies = movieApp.getMovies();
+        if (request.getParameter("submitted") != null) {
+            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+            if (shoppingCart == null) {
+                shoppingCart = new ShoppingCart();
+            }
+            ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
+            if (list != null && list.size() > 0) {%>
+            <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
+                <% session.setAttribute("shoppingCart", shoppingCart);
+                list = null;
+            } else {
+                response.sendRedirect("404MovieNoFound.jsp");
+            }
+        }
+
+    %>
+  
+</body>
 </html>

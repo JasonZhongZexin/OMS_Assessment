@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!-- type declarations -->
+<xs:schema 
+    version="1.0"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    
+    <xs:simpleType name="title">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-z0-9\s]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="genre">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Action"/>
+            <xs:enumeration value="Horror"/>
+            <xs:enumeration value="Sci-Fi"/>
+            <xs:enumeration value="Comedy"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="relase_date">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="price">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="available_copies">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<!--element declarations-->
+    <xs:element name="movies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="movie" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title" type="title"/>
+                            <xs:element name="genre" type="genre"/>
+                            <xs:element name="relase_date" type="relase_date"/>
+                            <xs:element name="price" type="price"/>
+                            <xs:element name="available_copies" type="available_copies"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

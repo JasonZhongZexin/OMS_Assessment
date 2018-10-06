@@ -9,12 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="OMS.css"> 
+        <title>OMS Logout Page</title>
     </head>
     <body>
         <%
             session.invalidate();
-            response.sendRedirect("index.jsp");
         %>
+        <p>You have been logged out. Click <a class="link" href="index.jsp">here</a> to return to the home page.</p>
     </body>
 </html>

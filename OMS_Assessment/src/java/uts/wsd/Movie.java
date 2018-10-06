@@ -26,14 +26,15 @@ public class Movie implements Serializable{
     @XmlElement(name="relase_date")
     private String movie_release_date;
     @XmlElement(name="price")
-    private double movie_price;
+    private int movie_price;
     @XmlElement(name="available_copies")
     private int available_copies;
+    
 
     public Movie() {
     }
 
-    public Movie(String movie_title, String movie_genre, String movie_release_date, double movie_price, int available_copies) {
+    public Movie(String movie_title, String movie_genre, String movie_release_date, int movie_price, int available_copies) {
         this.movie_title = movie_title;
         this.movie_genre = movie_genre;
         this.movie_release_date = movie_release_date;
@@ -52,8 +53,9 @@ public class Movie implements Serializable{
     public String getMovie_release_date() {
         return movie_release_date;
     }
+    
 
-    public double getMovie_price() {
+    public int getMovie_price() {
         return movie_price;
     }
 
@@ -73,7 +75,7 @@ public class Movie implements Serializable{
         this.movie_release_date = movie_release_date;
     }
 
-    public void setMovie_price(double movie_price) {
+    public void setMovie_price(int movie_price) {
         this.movie_price = movie_price;
     }
 
@@ -84,5 +86,20 @@ public class Movie implements Serializable{
     public void updateCopies(int sellCopies){
         this.available_copies -= sellCopies;
     }
+    public boolean matchTitle(String movie_title){
+    
+        return this.movie_title.equals(movie_title);       
+    }
+    
+    public void addCopies(int copies){
+        this.available_copies +=copies; 
+    }
+    
+    public void minusCopies(int copies){
+        this.available_copies -= copies;
+    }
+    
+    public boolean checkAvailable(){
+        return this.available_copies > 0 ;
+    }
 }
-
