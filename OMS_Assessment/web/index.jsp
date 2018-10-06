@@ -17,7 +17,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="OMS.css"> 
         <title>Index Page</title>
-        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
     </head>
     <body>
         <header>
@@ -27,6 +26,7 @@
             <nav class="nav">
                 <ul>
                     <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "checkOut.jsp">Checkout</a></li>
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
@@ -39,6 +39,7 @@
             <nav class="nav">
                 <ul>
                     <li><a href = "index.jsp">Home</a></li>
+                    <li><a href = "checkOut.jsp">Checkout</a></li>
                     <li><a href = "main.jsp">My History</a></li>
                 </ul>
                 <div align="right" margin-left="200px">
@@ -47,6 +48,7 @@
             </nav>
         </header>
         <%}%>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
         <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
         </jsp:useBean>

@@ -12,6 +12,18 @@
         <title>Check Out Page</title>
     </head>
     <body>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
+        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
+            <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
+        </jsp:useBean>
+        <% String path = application.getRealPath("WEB-INF/history.xml");%>
+        <jsp:useBean id="orderApp" class="uts.wsd.OrderApplication" scope="application">
+            <jsp:setProperty name="orderApp" property="filePath" value="<%=path%>"/>
+        </jsp:useBean>
+        <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
+            <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
+            <jsp:getProperty name="shoppingCartApp" property="shoppingCart"/>
+        </jsp:useBean>
         <%
             User user = (User) session.getAttribute("userLogin");
             if (user == null) {%>
@@ -39,35 +51,27 @@
             </nav>
         </header>
         <%}%>
-        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
-        <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
-            <jsp:setProperty name="movieApp" property="filePath" value="<%= filePath%>"/>
-        </jsp:useBean>
-        <% String path = application.getRealPath("WEB-INF/history.xml");%>
-        <jsp:useBean id="orderApp" class="uts.wsd.OrderApplication" scope="application">
-            <jsp:setProperty name="orderApp" property="filePath" value="<%=path%>"/>
-        </jsp:useBean>
-        <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
-            <jsp:setProperty name="shoppingCartApp" property="shoppingCart"/>
-            <jsp:getProperty name="shoppingCartApp" property="shoppingCart"/>
-        </jsp:useBean>
         <%
             String title = request.getParameter("movieSelect");
             Movie movie = movieApp.getMovieByTitle(title);
-            Item item = new Item();
-            item.setMovieTitle(movie.getMovie_title());
-            item.setMovieGenre(movie.getMovie_genre());
-            item.setMoviePrice(movie.getMovie_price());
-            item.setReleaseDate(movie.getMovie_release_date());
+            Item item = null;
+            if (movie != null) {
+                item = new Item();
+                item.setMovieTitle(movie.getMovie_title());
+                item.setMovieGenre(movie.getMovie_genre());
+                item.setMoviePrice(movie.getMovie_price());
+                item.setReleaseDate(movie.getMovie_release_date());
+            }
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
-            if (!shoppingCart.isContainsItem(item)) {
+            if (item != null && !shoppingCart.isContainsItem(item)) {
                 shoppingCart.addShoppingCart(item);
-            }%>
+            }
+        %>
         <form action="checkoutAction.jsp" method="post">
             <table align="center" border = "2">      
                 <tr>
                     <td>Movie Title</td>
-                    <td>Moview Price</td>
+                    <td>Movie Price</td>
                     <td>Available Copies</td>
                     <td>Copies Purchase</td>
                 </tr>
@@ -78,23 +82,28 @@
                     <td><%=shoppingCartItem.getMovieTitle()%></td>
                     <td><%=shoppingCartItem.getMoviePrice()%></td>
                     <td><%=movieApp.getMovieByTitle(shoppingCartItem.getMovieTitle()).getAvailable_copies()%></td>
-                    <td><input type="text" value="<%=shoppingCartItem.getCopiesPurchased()%>" name = "<%=shoppingCartItem.getMovieTitle()%>"/></td>
+                    <td><input type="text" value="<%=shoppingCartItem.getCopiesPurchased()%>" name = "<%=shoppingCartItem.getMovieTitle()%>"/>
+                        &nbsp; 
+                        <%
+                            session.setAttribute("shoppingCart", shoppingCart);
+                        %>
+                        <button type="button" onclick="location.href = 'removeItemAction.jsp?removeItem=<%=shoppingCartItem.getMovieTitle()%>'" > Remove Item </button>
+                    </td>
                 </tr>
                 <%
                     }
                 %>
             </table>
             <center>
-            Payment Method <select name="paymentMethod" required>
-                <option value="">choose a payment method</option>
-                <option value = "CreditCard">Credit Card</option>
-                <option value = "PayPal">PayPal</option>
-            </select>
-            <input type="submit" value="check out">
+                <button type="button" onclick="location.href = 'index.jsp'" > Add more </button>
+                <button type="button" onclick="location.href = 'clearShoppingCart.jsp'" > Clear Shopping Cart</button><br/>
+                Payment Method <select name="paymentMethod" required>
+                    <option value="">choose a payment method</option>
+                    <option value = "CreditCard">Credit Card</option>
+                    <option value = "PayPal">PayPal</option>
+                </select>
+                <input type="submit" value="check out">
             </center>
         </form>
-        <%
-            session.setAttribute("shoppingCart", shoppingCart);
-        %>
     </body>
 </html>

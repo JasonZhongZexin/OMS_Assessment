@@ -96,4 +96,8 @@ public class UsersApplication implements Serializable{
     public User logoutUser(){
         return null;
     }
+    
+    public void updateUser(User user ){
+        users.updateUser(user);
+    }
 }
