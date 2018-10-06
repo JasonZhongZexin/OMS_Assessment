@@ -34,6 +34,6 @@
         <%}%>
     </movies>
 </c:set>
-<c:import url = "file:\\C:\\Users\\Lenovo\\Documents\\GitHub\\OMS_Assessment\\OMS_Assessment\\web\\WEB-INF\\movies.xsl" var = "xslt"/>
+<c:import url = "//WEB-INF/movies.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
 
