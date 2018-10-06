@@ -13,9 +13,9 @@
         <title>404</title>
     </head>
     <body>
-    <centre>
+    <center>
         <h1>404</h1>
         <p>Movies that you search are not found ! Click <a href="index.jsp">here </a>to back to the home page and make a new search !</p>
-    </centre>
+    </center>
 </body>
 </html>
