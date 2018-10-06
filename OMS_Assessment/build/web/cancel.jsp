@@ -1,12 +1,15 @@
 <%-- 
     Document   : Cancel
     Created on : 02/10/2018, 9:20:40 PM
-    Author     : zhongzexin
+    Author     : Zexin Zhong
 --%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="uts.wsd.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<?xml-stylesheet type="text/xsl" href="xsl/orderItem.xsl"?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,32 +41,26 @@
                 ArrayList<Item> items = order.getOrderItems();
                 if (order != null) {%>
             <h1>Do you want to cancel your order #<%=ID%>? </h1>
-            <table border="2">
-                <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Release Year</th>
-                    <th>Copies Purchased</th>
-                </tr>
-                <%
-                    if (items.size() > 0) {
-                        for (Item item : items) {
-                            String title = item.getMovieTitle();
-                            String genre = item.getMovieGenre();
-                            String releaseDate = item.getReleaseDate();
-                            int copiesPurchased = item.getCopiesPurchased();
-                %>
-                <tr>
-                    <td><%=title%></td>
-                    <td><%=genre%></td>
-                    <td><%=releaseDate%></td>
-                    <td><%=copiesPurchased%></td>
-                </tr>
-                <%
-                            session.setAttribute("cancelOrder", order);
-                        }
-                    }%>
-            </table>
+            <c:set var = "xmltext">
+                <order>
+                    <%
+                        if (items.size() > 0) {
+                            for (Item item : items) {
+                    %>
+                    <orderItem>
+                        <movieTitle><%=item.getMovieTitle()%></movieTitle>
+                        <movieGenre><%=item.getMovieGenre()%></movieGenre>
+                        <releaseDate><%=item.getReleaseDate()%></releaseDate>
+                        <copiesPurchased><%=item.getCopiesPurchased()%></copiesPurchased>
+                    </orderItem>
+                    <%
+                                session.setAttribute("cancelOrder", order);
+                            }
+                        }%>
+                </order>
+            </c:set>
+            <c:import url = "//WEB-INF/orderItem.xsl" var = "xslt"/>
+            <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
             <%}%>
             <input type="submit" value="Cancel Order"/>
         </form>

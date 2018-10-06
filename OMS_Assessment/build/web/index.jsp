@@ -30,6 +30,7 @@
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
+                    &nbsp; 
                     <a href = "register.jsp">Register</a>
                 </div>
             </nav>
@@ -89,8 +90,8 @@
             }
             ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
             if (list != null && list.size() > 0) {%>
-            <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
-                <% session.setAttribute("shoppingCart", shoppingCart);
+                <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
+               <% session.setAttribute("shoppingCart", shoppingCart);
                 list = null;
             } else {
                 response.sendRedirect("404MovieNoFound.jsp");

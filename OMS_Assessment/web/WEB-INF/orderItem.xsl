@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : history.xsl
-    Created on : 3 October 2018, 12:50 AM
+    Document   : orderItem.xsl
+    Created on : 7 October 2018, 6:12 AM
     Author     : zhongzexin
     Description:
         Purpose of transformation follows.
@@ -14,7 +14,7 @@
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
-    <xsl:template match="history">
+<xsl:template match="order">
         <style>
             table{
             width:60%;
@@ -43,10 +43,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Payment Method</th>
-                    <th>Sale Total</th>
-                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Year</th>
+                    <th>Copies Purchased</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,31 +54,21 @@
             </tbody>
         </table>
     </xsl:template>
-    <xsl:template match="order">
+        <xsl:template match="orderItem">
         <tr>
             <td>
-                <xsl:value-of select="ID" />
+                <xsl:value-of select="movieTitle" />
             </td>
             <td>
-                <xsl:value-of select="paymentMethod" />
+                <xsl:value-of select="movieGenre" />
             </td>
             <td>
-                <xsl:value-of select="saleTotal" />
+                <xsl:value-of select="releaseDate" />
             </td>
             <td>
-                <xsl:value-of select="status" />
-            </td>
-            <td>
-                <xsl:if test="status = 'submitted' ">
-                    <a>
-                        <xsl:attribute name="href">
-                            <xsl:text>cancel.jsp?bookingIDSelect=</xsl:text>
-                            <xsl:value-of select="ID"/>
-                        </xsl:attribute>
-                        Cancel Order
-                    </a>
-                </xsl:if>
+                <xsl:value-of select="copiesPurchased" />
             </td>
         </tr>
     </xsl:template>
+
 </xsl:stylesheet>
