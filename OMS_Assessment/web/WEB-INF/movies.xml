@@ -23,11 +23,19 @@
         <available_copies>100</available_copies>
     </movie>
     <movie>
+<<<<<<< HEAD
+        <title>White Chicks</title>
+        <genre>Comedy</genre>
+        <relase_date>2004</relase_date>
+        <price>18</price>
+        <available_copies>150</available_copies>
+=======
         <title>Mission Impossible 1</title>
         <genre>Action</genre>
         <relase_date>2008</relase_date>
         <price>23</price>
         <available_copies>120</available_copies>
+>>>>>>> 4617df2e13a1b70652d264249c313abedee245f4
     </movie>
     <movie>
         <title>White Chicks</title>
