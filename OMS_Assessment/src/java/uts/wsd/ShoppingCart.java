@@ -45,4 +45,15 @@ public class ShoppingCart implements Serializable {
     public void clearShoppingCart(){
         shoppingCart.clear();
     }
+    
+    public void removeItem(String title){
+        int pos = -1;
+        for(int i=0;i<shoppingCart.size();i++){
+            if(shoppingCart.get(i).getMovieTitle().equals(title))
+                pos = i;
+        }
+        if(pos!=-1){
+            shoppingCart.remove(pos);
+        }
+    }
 }

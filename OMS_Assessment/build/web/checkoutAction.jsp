@@ -15,7 +15,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="OMS.css"> 
+        <title>Place Order</title>
     </head>
     <body>
         <jsp:useBean id="shoppingCartApp" class="uts.wsd.ShoppingCart" scope="session">
@@ -38,20 +39,20 @@
                 int copies = Integer.parseInt(request.getParameter(item.getMovieTitle()));
                 item.setCopiesPurchased(copies);
                 movieApp.minusCopies(item.getMovieTitle(), copies);
-                saleTotal += item.getMoviePrice()*copies;
+                saleTotal += item.getMoviePrice() * copies;
             }
             String paymentMethod = request.getParameter("paymentMethod");
             Order order = new Order();
-            int id=(int)(Math.random()*900)+100;
+            int id = (int) (Math.random() * 900) + 100;
             order.setID(Integer.toString(id));
             order.setOrderItems(shoppingCart.getShoppingCart());
             order.setSaleTotal(saleTotal);
             order.setStatus("submitted");
             order.setPaymentMethod(paymentMethod);
-            if(user != null){
+            if (user != null) {
                 order.setEmail(user.getEmail());
                 order.setFullName(user.getFullName());
-            }else{
+            } else {
                 order.setEmail("anonymous");
                 order.setFullName("anonymous");
             }
@@ -64,6 +65,6 @@
             ShoppingCart newShoppingCart = new ShoppingCart();
             session.setAttribute("shoppingCart", newShoppingCart);
         %>
-        <h1>Complete Order ! Click <a href="index.jsp">here </a>for keep shopping....</h1>
+        <h1>Your order has been placed ! Click <a href="index.jsp">here </a>for keep shopping....</h1>
     </body>
 </html>

@@ -2,4 +2,11 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/OMS_Assessment/userApp?wsdl" uri="src/conf/xml-resources/web-service-references/userApp/wsdl/localhost_8080/OMS_Assessment/userApp.wsdl"/>
     <system systemId="http://localhost:8080/OMS_Assessment/userApp?xsd=1" uri="src/conf/xml-resources/web-service-references/userApp/wsdl/localhost_8080/OMS_Assessment/userApp.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/omsApp?WSDL" uri="src/conf/xml-resources/web-service-references/omsApp/wsdl/localhost_8080/OMS_Assessment/omsApp.wsdl"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/OmsSOAP?wsdl" uri="src/conf/xml-resources/web-service-references/OmsSOAP/wsdl/localhost_8080/OMS_Assessment/OmsSOAP.wsdl"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/OmsSOAP?xsd=1" uri="src/conf/xml-resources/web-service-references/OmsSOAP/wsdl/localhost_8080/OMS_Assessment/OmsSOAP.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/OMSSOAP?wsdl" uri="src/conf/xml-resources/web-service-references/OMSSOAP/wsdl/localhost_8080/OMS_Assessment/OMSSOAP.wsdl"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/OMSSOAP?xsd=1" uri="src/conf/xml-resources/web-service-references/OMSSOAP/wsdl/localhost_8080/OMS_Assessment/OMSSOAP.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/omsApp?wsdl" uri="src/conf/xml-resources/web-service-references/omsApp/wsdl/localhost_8080/OMS_Assessment/omsApp.wsdl"/>
+    <system systemId="http://localhost:8080/OMS_Assessment/omsApp?xsd=1" uri="src/conf/xml-resources/web-service-references/omsApp/wsdl/localhost_8080/OMS_Assessment/omsApp.xsd_1.xsd"/>
 </catalog>

@@ -31,6 +31,7 @@
             User checkUser = userApp.checkUser(email);
 
             /**
+             * validate the user input. if any input is invalid, return error message to the register page.
              * check if the input email has been used. if the input email has
              * been used show an error message in the register page, else ,
              * registed the account and launch to the index page. validate the
