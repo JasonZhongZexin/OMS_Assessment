@@ -18,6 +18,7 @@
             <nav class="nav">
                 <div align="right" margin-left="200px">
                     <a href = "index.jsp">Index page</a>
+                    &nbsp; 
                     <a href = "login.jsp">Login</a>
                 </div>
             </nav>

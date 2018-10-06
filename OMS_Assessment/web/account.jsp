@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="button" value="Remove account" onclick="window.location.href = 'accountAcction.jsp?sub=cancelled'"></td>
+                    <td><input type="button" value="Remove account" onclick="window.location.href = 'accountAcction.jsp?sub=canceled'"></td>
                 </tr>
             </table>
             </center>
