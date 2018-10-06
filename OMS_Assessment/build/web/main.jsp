@@ -7,6 +7,9 @@
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<?xml-stylesheet type="text/xsl" href="xsl/history.xsl"?>
 
 <!DOCTYPE html>
 <html>
@@ -30,6 +33,8 @@
                     <li><a href = "main.jsp">My History</a></li>
                 </ul>
                 <div align="right" margin-left="200px">
+                    <a href = "account.jsp">Edit account details </a>
+                    &nbsp; 
                     <a href = "logout.jsp">Logout</a>
                 </div>
             </nav>
@@ -38,14 +43,30 @@
             ArrayList<Order> orders = orderApp.getUserOrder(user);
             History history = orderApp.getHistory();%>
         <h1>Welcome, <%=user.getFullName()%>!</h1>
-        <p align="right"><a href = "account.jsp">Edit account details </a></p> 
     <center>
         <h2>Your Orders</h2>
         <%
-            if (orders.size() > 0) {
-                history.printHistory(orders, out);
-                orders = null;
-            } else {%>
+            if (orders.size() > 0) {%>
+        <c:set var = "xmltext">
+            <history>
+                <%
+                    for (Order order : orders) {
+                %>
+                <order>
+                    <ID><%=order.getID()%></ID>
+                    <paymentMethod><%=order.getPaymentMethod()%></paymentMethod>
+                    <saleTotal><%=order.getSaleTotal()%></saleTotal>
+                    <status><%=order.getStatus()%></status>
+                </order>
+                <%
+                    }
+                %>
+            </history>
+        </c:set>
+        <c:import url = "//WEB-INF/history.xsl" var = "xslt"/>
+        <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
+        <% orders = null;
+        } else {%>
         <p>You have not place any order!</p>
         <%}%>
     </center>
@@ -58,6 +79,7 @@
             </ul>
             <div align="right" margin-left="200px">
                 <a href = "login.jsp">Login</a>
+                &nbsp; 
                 <a href = "register.jsp">Register</a>
             </div>
         </nav>

@@ -16,32 +16,32 @@
     -->
    
 
- <xsl:template match="movies">
-            <style>
-                    table{
-                    width:60%;
-                    }
-                    th, td {
-                    padding: 8px;
-                    }
-                    th {
-                    background-color: #0099FF;
-                    color: white;
-                    font-weight:bold;
-                    }
-                    h2,p{
-                    font-family:Arial;
-                    sans-serif;
-                    text-align:center;
-                    width:60%;
-                    font-weight:bold;
-                    }		
-                    tbody{
-                    background-color: white; 
-                    font-weight:bold;
-                    text-align:center;
-                    }			
-                </style>
+    <xsl:template match="movies">
+        <style>
+            table{
+            width:60%;
+            }
+            th, td {
+            padding: 8px;
+            }
+            th {
+            background-color: #0099FF;
+            color: white;
+            font-weight:bold;
+            }
+            h2,p{
+            font-family:Arial;
+            sans-serif;
+            text-align:center;
+            width:60%;
+            font-weight:bold;
+            }		
+            tbody{
+            background-color: white; 
+            font-weight:bold;
+            text-align:center;
+            }			
+        </style>
         <table>
             <thead>
                 <tr>
@@ -76,7 +76,14 @@
                 <xsl:value-of select="available_copies" />
             </td>
             <td>
-                <a href="checkOut.jsp"> Order Now</a>
+                <xsl:if test="available_copies &gt; 1">
+                <a>
+                    <xsl:attribute name="href">
+                        <xsl:text>checkOut.jsp?movieSelect=</xsl:text><xsl:value-of select="title"/>
+                    </xsl:attribute>
+                    Order Now
+                </a>
+                </xsl:if>
             </td>
         </tr>
         
