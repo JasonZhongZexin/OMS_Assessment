@@ -29,7 +29,7 @@
             <relase_date><%= movie.getMovie_release_date()%></relase_date>
             <price><%= movie.getMovie_price()%></price>
             <available_copies><%=movie.getAvailable_copies()%></available_copies>
-            <td></td>
+          
         </movie>
         <%}%>
     </movies>

@@ -1,6 +1,5 @@
-
-<%@ page import="uts.wsd.*"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@page import="uts.wsd.Users,uts.wsd.User, uts.wsd.Movie, uts.wsd.Movies,uts.wsd.Order,uts.wsd.History, java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,67 +9,58 @@
 <body>
 	<%
 		String userFilePath = application.getRealPath("WEB-INF/users.xml");
-                String historyFilePath = application.getRealPath("WEB-INF/history.xml");
-		String movieFilePath = application.getRealPath("WEB-INF/movie.xml");
+		String historyFilePath = application.getRealPath("WEB-INF/history.xml");
+		String filePath = application.getRealPath("WEB-INF/movies.xml");
 	%>
-	<jsp:useBean id="usersApplication" class="UsersApplication"
+	<jsp:useBean id="UsersApplication" class="uts.wsd.UsersApplication"
 		scope="application">
-		<jsp:setProperty name="usersApplication" property="filePath"
+		<jsp:setProperty name="studentApplication" property="filePath"
 			value="<%=userFilePath%>" />
 	</jsp:useBean>
-        <jsp:useBean id="orderApplication" class="OrderApplication"
+	
+	<jsp:useBean id="MoviesApplication" class="uts.wsd.MoviesApplication"
 		scope="application">
+		<jsp:setProperty name="tutorApplication" property="filePath"
+			value="<%=filePath%>" />
+	</jsp:useBean>
+
+	<jsp:useBean id="orderApplication" class="uts.wsd.OrderApplication" 
+                     scope="application">
 		<jsp:setProperty name="orderApplication" property="filePath"
 			value="<%=historyFilePath%>" />
 	</jsp:useBean>
 
-	<jsp:useBean id="moviesApplication"
-		class="MoviesApplication" scope="application">
-		<jsp:setProperty name="moviesApplication" property="filePath"
-			value="<%=movieFilePath%>" />
-	</jsp:useBean>
-        
-
 <%
-	String sub= request.getParameter("sub");
+	String sub = request.getParameter("sub");
 
-	if ("cancelled".equals(sub)) {
-		User user = (User)request.getSession().getAttribute("user");
-		for (Order order : orderApplication.getHistory().getHistory()) {
-			if (order.getFullName().equals(user.getFullName()())) {
-				booking.setStatus("cancelled");
-				Tutor tutor = tutorApplication.getTutors().getTutorByEmail(booking.getTutorEmail());
-				tutor.setStatus("available");
+	if ("canceled".equals(sub)) {
+		User user = (User)request.getSession().getAttribute("userLogin");
+		for (Order order : orderApplication.getHistory().getOrdersByEmail(user.getEmail())) {
+			if (order.getFullName().equals(user.getFullName())) {
+                                orderApplication.getHistory().changeOrderStatus(order.getID());
+                                orderApplication.saveHistory();
 			}	
 		}
-		bookingApplication.updateXML(bookingApplication.getBookings(), bookingFilePath);
-		studentApplication.getStudents().removeStudent(student);
-		studentApplication.updateXML(studentApplication.getStudents(), studentFilePath);
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	} else {
-		String name = request.getParameter("name");
+		String fullName = request.getParameter("fullName");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String birthday = request.getParameter("birthday");
+                String phoneNumber = request.getParameter("phoneNumber");
+                String address = request.getParameter("address");
 		
-		if (request.getSession().getAttribute("user") instanceof Student) {
-			Student student = (Student)request.getSession().getAttribute("user");
-			Student s = studentApplication.getStudents().getStudentByEmail(student.getEmail());
-			s.setBirthday(birthday);
-			s.setPassword(password);
-			s.setName(name);
-			studentApplication.updateXML(studentApplication.getStudents(), studentFilePath);
-			request.getSession().setAttribute("user", s);
-		} else {
-			Tutor tutor = (Tutor)request.getSession().getAttribute("user");
-			Tutor t = tutorApplication.getTutors().getTutorByEmail(tutor.getEmail());
-			t.setBirthday(birthday);
-			t.setName(name);
-			t.setPassword(password);
-			tutorApplication.updateXML(tutorApplication.getTutors(), filePath);
-			request.getSession().setAttribute("user", t);
-		}
-		
+		if (request.getSession().getAttribute("userLogin") instanceof User) {
+			User user = (User)request.getSession().getAttribute("userLogin");
+			User u = UsersApplication.getUsers().getUser(user.getEmail());
+			u.setFullName(fullName);
+			u.setEmail(email);
+			u.setPassword(password);
+                        u.setPhoneNumber(phoneNumber);
+                        u.setAddress(address);
+			UsersApplication.updateXML(userFilePath, UsersApplication.getUsers());
+			request.getSession().setAttribute("userLogin", u);
+		} 
 		response.sendRedirect("account.jsp");
 	}
 %>

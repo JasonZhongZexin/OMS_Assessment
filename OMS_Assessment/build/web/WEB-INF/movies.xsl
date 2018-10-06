@@ -76,12 +76,14 @@
                 <xsl:value-of select="available_copies" />
             </td>
             <td>
+                <xsl:if test="available_copies &gt; 1">
                 <a>
                     <xsl:attribute name="href">
                         <xsl:text>checkOut.jsp?movieSelect=</xsl:text><xsl:value-of select="title"/>
                     </xsl:attribute>
                     Order Now
                 </a>
+                </xsl:if>
             </td>
         </tr>
         
