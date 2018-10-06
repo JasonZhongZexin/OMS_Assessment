@@ -100,7 +100,7 @@ public class SOAPClient {
             System.out.println("customer name: " + omsSOAP.fetchHistory().get(i).getFullName());
             System.out.println("payment method:" + omsSOAP.fetchHistory().get(i).getPaymentMethod());
             System.out.print("sale total: AU$" + omsSOAP.fetchHistory().get(i).getSaleTotal() + "   ");
-            System.out.println("order status: " + omsSOAP.fetchHistory().get(i).getSaleTotal());
+            System.out.println("order status: " + omsSOAP.fetchHistory().get(i).getStatus());
             ArrayList<Item> items = (ArrayList<Item>) omsSOAP.fetchHistory().get(i).getOrderItem();
             items.forEach((item) -> {
                 System.out.println(item.getMovieTitle() + " " + item.getMovieGenre() + " " + item.getReleaseDate() + " " + item.getCopiesPurchased() + " " + item.getMoviePrice());
@@ -122,7 +122,7 @@ public class SOAPClient {
                 System.out.println("customer name: " + omsSOAP.fetchHistoryByEmail(email).get(i).getFullName());
                 System.out.println("payment method:" + omsSOAP.fetchHistoryByEmail(email).get(i).getPaymentMethod());
                 System.out.print("sale total: AU$" + omsSOAP.fetchHistoryByEmail(email).get(i).getSaleTotal() + "   ");
-                System.out.println("order status: " + omsSOAP.fetchHistoryByEmail(email).get(i).getSaleTotal());
+                System.out.println("order status: " + omsSOAP.fetchHistoryByEmail(email).get(i).getStatus());
                 ArrayList<Item> items = (ArrayList<Item>) omsSOAP.fetchHistoryByEmail(email).get(i).getOrderItem();
                 items.forEach((item) -> {
                     System.out.println(item.getMovieTitle() + " " + item.getMovieGenre() + " " + item.getReleaseDate() + " " + item.getCopiesPurchased() + " " + item.getMoviePrice());
@@ -145,7 +145,7 @@ public class SOAPClient {
                 System.out.println("customer name: " + omsSOAP.fetchHistoryByStatus(status).get(i).getFullName());
                 System.out.println("payment method:" + omsSOAP.fetchHistoryByStatus(status).get(i).getPaymentMethod());
                 System.out.print("sale total: AU$" + omsSOAP.fetchHistoryByStatus(status).get(i).getSaleTotal() + "   ");
-                System.out.println("order status: " + omsSOAP.fetchHistoryByStatus(status).get(i).getSaleTotal());
+                System.out.println("order status: " + omsSOAP.fetchHistoryByStatus(status).get(i).getStatus());
                 ArrayList<Item> items = (ArrayList<Item>) omsSOAP.fetchHistoryByStatus(status).get(i).getOrderItem();
                 items.forEach((item) -> {
                     System.out.println(item.getMovieTitle() + " " + item.getMovieGenre() + " " + item.getReleaseDate() + " " + item.getCopiesPurchased() + " " + item.getMoviePrice());
@@ -168,7 +168,7 @@ public class SOAPClient {
                 System.out.println("customer name: " + omsSOAP.fetchHistoryByTitle(title).get(i).getFullName());
                 System.out.println("payment method:" + omsSOAP.fetchHistoryByTitle(title).get(i).getPaymentMethod());
                 System.out.print("sale total: AU$" + omsSOAP.fetchHistoryByTitle(title).get(i).getSaleTotal() + "   ");
-                System.out.println("order status: " + omsSOAP.fetchHistoryByTitle(title).get(i).getSaleTotal());
+                System.out.println("order status: " + omsSOAP.fetchHistoryByTitle(title).get(i).getStatus());
                 ArrayList<Item> items = (ArrayList<Item>) omsSOAP.fetchHistoryByTitle(title).get(i).getOrderItem();
                 items.forEach((item) -> {
                     System.out.println(item.getMovieTitle() + " " + item.getMovieGenre() + " " + item.getReleaseDate() + " " + item.getCopiesPurchased() + " " + item.getMoviePrice());
@@ -188,7 +188,7 @@ public class SOAPClient {
             System.out.println("customer name: " + order.getFullName());
             System.out.println("payment method:" + order.getPaymentMethod());
             System.out.print("sale total: AU$" + order.getSaleTotal() + "   ");
-            System.out.println("order status: " + order.getSaleTotal());
+            System.out.println("order status: " + order.getStatus());
             ArrayList<Item> items = (ArrayList<Item>) order.getOrderItem();
             items.forEach((item) -> {
                 System.out.println(item.getMovieTitle() + " " + item.getMovieGenre() + " " + item.getReleaseDate() + " " + item.getCopiesPurchased() + " " + item.getMoviePrice());
