@@ -28,6 +28,7 @@
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
+                    &nbsp; 
                     <a href = "register.jsp">Register</a>
                 </div>
             </nav>

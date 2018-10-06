@@ -1,9 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="history"?>
-<history xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="history.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<history>
     <order>
         <ID>456</ID>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <paymentMethod>PayPal</paymentMethod>
+        <saleTotal>67</saleTotal>
+        <status>cancelled</status>
         <orderItem>
             <movieTitle>Mission Impossible 1</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -18,14 +21,14 @@
             <releaseDate>2016</releaseDate>
             <copiesPurchased>2</copiesPurchased>
         </orderItem>
-        <fullName>John Smith</fullName>
-        <email>js123@gmail.com</email>
-        <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>67</saleTotal>
-        <status>cancelled</status>
     </order>
     <order>
         <ID>469</ID>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <paymentMethod>PayPal</paymentMethod>
+        <saleTotal>230</saleTotal>
+        <status>submitted</status>
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -33,14 +36,14 @@
             <releaseDate>2018</releaseDate>
             <copiesPurchased>10</copiesPurchased>
         </orderItem>
-        <fullName>John Smith</fullName>
-        <email>js123@gmail.com</email>
-        <paymentMethod>PayPal</paymentMethod>
-        <saleTotal>230</saleTotal>
-        <status>submitted</status>
     </order>
     <order>
         <ID>135</ID>
+        <fullName>Linda Xu</fullName>
+        <email>lindalinda@gmail.com</email>
+        <paymentMethod>Credit Card</paymentMethod>
+        <saleTotal>174</saleTotal>
+        <status>submitted</status>
         <orderItem>
             <movieTitle>Mile 22</movieTitle>
             <movieGenre>Action</movieGenre>
@@ -62,10 +65,49 @@
             <releaseDate>2010</releaseDate>
             <copiesPurchased>1</copiesPurchased>
         </orderItem>
-        <fullName>Linda Xu</fullName>
-        <email>lindalinda@gmail.com</email>
-        <paymentMethod>Credit Card</paymentMethod>
-        <saleTotal>174</saleTotal>
+    </order>
+    <order>
+        <ID>249</ID>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <paymentMethod>CreditCard</paymentMethod>
+        <saleTotal>230</saleTotal>
         <status>submitted</status>
+        <orderItem>
+            <movieTitle>The Nun</movieTitle>
+            <movieGenre>Horror</movieGenre>
+            <moviePrice>23</moviePrice>
+            <releaseDate>2018</releaseDate>
+            <copiesPurchased>10</copiesPurchased>
+        </orderItem>
+    </order>
+    <order>
+        <ID>898</ID>
+        <fullName>John Smith</fullName>
+        <email>js123@gmail.com</email>
+        <paymentMethod>CreditCard</paymentMethod>
+        <saleTotal>800</saleTotal>
+        <status>submitted</status>
+        <orderItem>
+            <movieTitle>Hereditary</movieTitle>
+            <movieGenre>Horror</movieGenre>
+            <moviePrice>13</moviePrice>
+            <releaseDate>2018</releaseDate>
+            <copiesPurchased>10</copiesPurchased>
+        </orderItem>
+        <orderItem>
+            <movieTitle>White Chicks</movieTitle>
+            <movieGenre>Comedy</movieGenre>
+            <moviePrice>23</moviePrice>
+            <releaseDate>2004</releaseDate>
+            <copiesPurchased>10</copiesPurchased>
+        </orderItem>
+        <orderItem>
+            <movieTitle>Arrival</movieTitle>
+            <movieGenre>Sci-Fi</movieGenre>
+            <moviePrice>44</moviePrice>
+            <releaseDate>2016</releaseDate>
+            <copiesPurchased>10</copiesPurchased>
+        </orderItem>
     </order>
 </history>

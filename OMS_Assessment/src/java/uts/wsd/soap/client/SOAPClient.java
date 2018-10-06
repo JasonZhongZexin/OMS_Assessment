@@ -201,7 +201,7 @@ public class SOAPClient {
     }
 
     private static void invalidInput() {
-        System.out.println("Please enter a number between 1 and 7 or press X to exit.");
+        System.out.println("Please enter a number between 1 and 8 or press X to exit.");
     }
 
     private static char readChoice() {
