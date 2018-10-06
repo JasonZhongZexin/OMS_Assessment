@@ -22,6 +22,10 @@
 
 <xs:element name="fetchHistoryResponse" type="tns:fetchHistoryResponse"/>
 
+<xs:element name="findMovieByTitle" type="tns:findMovieByTitle"/>
+
+<xs:element name="findMovieByTitleResponse" type="tns:findMovieByTitleResponse"/>
+
 <xs:element name="login" type="tns:login"/>
 
 <xs:element name="loginResponse" type="tns:loginResponse"/>
@@ -30,9 +34,19 @@
 
 <xs:element name="logoutResponse" type="tns:logoutResponse"/>
 
+<xs:element name="movie" type="tns:movie"/>
+
 <xs:element name="order" type="tns:order"/>
 
 <xs:element name="orderItem" type="tns:item"/>
+
+<xs:element name="placeOrder" type="tns:placeOrder"/>
+
+<xs:element name="placeOrderResponse" type="tns:placeOrderResponse"/>
+
+<xs:element name="updateCopies" type="tns:updateCopies"/>
+
+<xs:element name="updateCopiesResponse" type="tns:updateCopiesResponse"/>
 
 <xs:element name="user" type="tns:user"/>
 
@@ -65,6 +79,26 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="updateCopies">
+<xs:sequence>
+<xs:element name="arg0" type="tns:item" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="item">
+<xs:sequence>
+<xs:element name="movieTitle" type="xs:string" minOccurs="0"/>
+<xs:element name="movieGenre" type="xs:string" minOccurs="0"/>
+<xs:element name="moviePrice" type="xs:int"/>
+<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
+<xs:element name="copiesPurchased" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateCopiesResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="fetchHistoryByEmail">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
@@ -89,16 +123,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="item">
-<xs:sequence>
-<xs:element name="movieTitle" type="xs:string" minOccurs="0"/>
-<xs:element name="movieGenre" type="xs:string" minOccurs="0"/>
-<xs:element name="moviePrice" type="xs:int"/>
-<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
-<xs:element name="copiesPurchased" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="fetchHistoryByTitle">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
@@ -119,6 +143,18 @@
 <xs:sequence>
 <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="placeOrder">
+<xs:sequence>
+<xs:element name="arg0" type="tns:user" minOccurs="0"/>
+<xs:element name="arg1" type="tns:item" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="placeOrderResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="fetchHistoryByOrderID">
@@ -151,7 +187,29 @@
 
 <xs:complexType name="logoutResponse">
 <xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
+<xs:element name="return" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMovieByTitle">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findMovieByTitleResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movie">
+<xs:sequence>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="genre" type="xs:string" minOccurs="0"/>
+<xs:element name="relase_date" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:int"/>
+<xs:element name="available_copies" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

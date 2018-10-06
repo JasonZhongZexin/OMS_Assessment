@@ -28,6 +28,49 @@ public interface OMSSOAP {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns uts.wsd.soap.client.Movie
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findMovieByTitle", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.FindMovieByTitle")
+    @ResponseWrapper(localName = "findMovieByTitleResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.FindMovieByTitleResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/findMovieByTitleRequest", output = "http://soap.wsd.uts/OMSSOAP/findMovieByTitleResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/findMovieByTitle/Fault/Exception")
+    })
+    public Movie findMovieByTitle(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "placeOrder", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrder")
+    @ResponseWrapper(localName = "placeOrderResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrderResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/placeOrderRequest", output = "http://soap.wsd.uts/OMSSOAP/placeOrderResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception")
+    })
+    public void placeOrder(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        List<Item> arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      * @return
@@ -52,7 +95,7 @@ public interface OMSSOAP {
     /**
      * 
      * @return
-     *     returns java.lang.String
+     *     returns uts.wsd.soap.client.User
      * @throws Exception_Exception
      */
     @WebMethod
@@ -62,7 +105,24 @@ public interface OMSSOAP {
     @Action(input = "http://soap.wsd.uts/OMSSOAP/logoutRequest", output = "http://soap.wsd.uts/OMSSOAP/logoutResponse", fault = {
         @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception")
     })
-    public String logout()
+    public User logout()
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @throws Exception_Exception
+     */
+    @WebMethod
+    @RequestWrapper(localName = "updateCopies", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.UpdateCopies")
+    @ResponseWrapper(localName = "updateCopiesResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.UpdateCopiesResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/updateCopiesRequest", output = "http://soap.wsd.uts/OMSSOAP/updateCopiesResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/updateCopies/Fault/Exception")
+    })
+    public void updateCopies(
+        @WebParam(name = "arg0", targetNamespace = "")
+        List<Item> arg0)
         throws Exception_Exception
     ;
 

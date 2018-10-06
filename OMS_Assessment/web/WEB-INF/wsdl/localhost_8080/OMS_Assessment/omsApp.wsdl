@@ -4,20 +4,38 @@
 <xsd:import namespace="http://soap.wsd.uts/" schemaLocation="http://localhost:8080/OMS_Assessment/omsApp?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="findMovieByTitle">
+<part name="parameters" element="tns:findMovieByTitle"/>
+</message>
+<message name="findMovieByTitleResponse">
+<part name="parameters" element="tns:findMovieByTitleResponse"/>
+</message>
+<message name="Exception">
+<part name="fault" element="tns:Exception"/>
+</message>
+<message name="placeOrder">
+<part name="parameters" element="tns:placeOrder"/>
+</message>
+<message name="placeOrderResponse">
+<part name="parameters" element="tns:placeOrderResponse"/>
+</message>
 <message name="login">
 <part name="parameters" element="tns:login"/>
 </message>
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"/>
 </message>
-<message name="Exception">
-<part name="fault" element="tns:Exception"/>
-</message>
 <message name="logout">
 <part name="parameters" element="tns:logout"/>
 </message>
 <message name="logoutResponse">
 <part name="parameters" element="tns:logoutResponse"/>
+</message>
+<message name="updateCopies">
+<part name="parameters" element="tns:updateCopies"/>
+</message>
+<message name="updateCopiesResponse">
+<part name="parameters" element="tns:updateCopiesResponse"/>
 </message>
 <message name="fetchHistory">
 <part name="parameters" element="tns:fetchHistory"/>
@@ -50,6 +68,16 @@
 <part name="parameters" element="tns:fetchHistoryByTitleResponse"/>
 </message>
 <portType name="OMSSOAP">
+<operation name="findMovieByTitle">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitleRequest" message="tns:findMovieByTitle"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitleResponse" message="tns:findMovieByTitleResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitle/Fault/Exception"/>
+</operation>
+<operation name="placeOrder">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderRequest" message="tns:placeOrder"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderResponse" message="tns:placeOrderResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception"/>
+</operation>
 <operation name="login">
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/loginRequest" message="tns:login"/>
 <output wsam:Action="http://soap.wsd.uts/OMSSOAP/loginResponse" message="tns:loginResponse"/>
@@ -59,6 +87,11 @@
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutRequest" message="tns:logout"/>
 <output wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutResponse" message="tns:logoutResponse"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception"/>
+</operation>
+<operation name="updateCopies">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/updateCopiesRequest" message="tns:updateCopies"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/updateCopiesResponse" message="tns:updateCopiesResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/updateCopies/Fault/Exception"/>
 </operation>
 <operation name="fetchHistory">
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/fetchHistoryRequest" message="tns:fetchHistory"/>
@@ -88,6 +121,30 @@
 </portType>
 <binding name="OMSSOAPPortBinding" type="tns:OMSSOAP">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="findMovieByTitle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="placeOrder">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
 <operation name="login">
 <soap:operation soapAction=""/>
 <input>
@@ -101,6 +158,18 @@
 </fault>
 </operation>
 <operation name="logout">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="updateCopies">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

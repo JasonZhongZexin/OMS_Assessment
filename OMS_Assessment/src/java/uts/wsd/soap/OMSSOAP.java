@@ -27,6 +27,10 @@ public class OMSSOAP {
     private ServletContext application;
     @Resource
     private WebServiceContext context;
+    @Context
+    private ServletContext movieApplication;
+    @Context
+    private ServletContext orderApplication;
 
     @WebMethod
     private UsersApplication getUserApplication() throws Exception {
@@ -41,54 +45,99 @@ public class OMSSOAP {
             return userApp;
         }
     }
-    
+
+    @WebMethod
+    private MoviesApplication getMoviesApplication() throws Exception {
+        movieApplication = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        synchronized (movieApplication) {
+            MoviesApplication movieApp = (MoviesApplication) movieApplication.getAttribute("movieApp");
+            if (movieApp == null) {
+                movieApp = new MoviesApplication();
+                movieApp.setFilePath(movieApplication.getRealPath("WEB-INF/movies.xml"));
+                movieApplication.setAttribute("movieApp", movieApp);
+            }
+            return movieApp;
+        }
+    }
+
     @WebMethod
     private OrderApplication getOrderApplication() throws Exception {
-        application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        synchronized (application) {
-            OrderApplication orderApp = (OrderApplication) application.getAttribute("orderApp");
+        orderApplication = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        synchronized (orderApplication) {
+            OrderApplication orderApp = (OrderApplication) orderApplication.getAttribute("orderApp");
             if (orderApp == null) {
                 orderApp = new OrderApplication();
-                orderApp.setFilePath(application.getRealPath("WEB-INF/history.xml"));
-                application.setAttribute("orderApp", orderApp);
+                orderApp.setFilePath(orderApplication.getRealPath("WEB-INF/history.xml"));
+                orderApplication.setAttribute("orderApp", orderApp);
             }
             return orderApp;
         }
     }
-    
+
     @WebMethod
-    public User login(String email, String password) throws Exception{
+    public User login(String email, String password) throws Exception {
         return getUserApplication().loginUser(email, password);
     }
-    
+
     @WebMethod
-    public String logout() throws Exception{
-        User user = getUserApplication().logoutUser();
-        return "User has logged out";
+    public User logout() throws Exception {
+        return getUserApplication().logoutUser();
     }
-    
+
     @WebMethod
-    public ArrayList<Order> fetchHistory() throws Exception{
+    public ArrayList<Order> fetchHistory() throws Exception {
         return getOrderApplication().getHistory().getOrders();
     }
-    
+
     @WebMethod
-    public Order fetchHistoryByOrderID(String ID) throws Exception{
+    public Order fetchHistoryByOrderID(String ID) throws Exception {
         return getOrderApplication().getOrderByID(ID);
     }
-    
+
     @WebMethod
-    public  ArrayList<Order> fetchHistoryByEmail(String email) throws Exception{
+    public ArrayList<Order> fetchHistoryByEmail(String email) throws Exception {
         return getOrderApplication().getOrdersByEmail(email);
     }
-    
+
     @WebMethod
-    public ArrayList<Order> fetchHistoryByTitle(String title) throws Exception{
+    public ArrayList<Order> fetchHistoryByTitle(String title) throws Exception {
         return getOrderApplication().getOrdersByTitle(title);
+    }
+
+    @WebMethod
+    public ArrayList<Order> fetchHistoryByStatus(String status) throws Exception {
+        return getOrderApplication().getHistoryByStatus(status);
+    }
+
+    @WebMethod
+    public void placeOrder(User user, ArrayList<Item> items,String paymentMethod) throws Exception {
+        Order order = new Order();
+        order.setEmail(user.getEmail());
+        order.setFullName(user.getFullName());
+        order.setStatus("submitted");
+        int id = (int) (Math.random() * 900) + 100;
+        order.setID(Integer.toString(id));
+        order.setOrderItems(items);
+        order.setPaymentMethod(paymentMethod);
+        int saleTotal = 0;
+        for (Item item : items) {
+            saleTotal += item.getCopiesPurchased() * item.getMoviePrice();
+        }
+        order.setSaleTotal(saleTotal);
+        getOrderApplication().getHistory().addOrder(order);
+        getOrderApplication().saveHistory();
     }
     
     @WebMethod
-    public ArrayList<Order> fetchHistoryByStatus(String status) throws Exception{
-        return getOrderApplication().getHistoryByStatus(status);
+    public Movie findMovieByTitle(String title) throws Exception{
+        return getMoviesApplication().getMovieByTitle(title);
+    }
+    
+    @WebMethod
+    public void updateCopies(ArrayList<Item> items) throws Exception{
+        for(Item item:items){
+            getMoviesApplication().minusCopies(item.getMovieTitle(), item.getCopiesPurchased());
+        }
+        getMoviesApplication().saveMovies();
     }
 }

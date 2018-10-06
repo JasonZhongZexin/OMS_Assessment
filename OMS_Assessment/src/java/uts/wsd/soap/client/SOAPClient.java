@@ -13,20 +13,16 @@ import java.util.ArrayList;
  */
 public class SOAPClient {
 
-    static OmsApp locator = new OmsApp();
-    static OMSSOAP omsSOAP = locator.getOMSSOAPPort();
+    private static OmsApp locator = new OmsApp();
+    private static OMSSOAP omsSOAP = locator.getOMSSOAPPort();
+    private static User user;
+    private static ArrayList<Item> items = new ArrayList<>();
 
     public static void main(String[] arg) throws Exception_Exception {
-//        String email = "js123@gmail.com";
-//        String password = "smith987";
-//        User user = omsSOAP.login(email, password);
-//        if (user != null) {
-//            System.out.println(user.getFullName());
-//        }
         menu();
     }
 
-    public static void menu() throws Exception_Exception {
+    private static void menu() throws Exception_Exception {
         printHelp();
         char choice;
         while ((choice = readChoice()) != 'X') {
@@ -52,6 +48,9 @@ public class SOAPClient {
                 case '7':
                     getHistorybyStatus();
                     break;
+                case '8':
+                    placeOrder();
+                    break;
                 default:
                     invalidInput();
                     break;
@@ -68,18 +67,22 @@ public class SOAPClient {
         System.out.println("5.Search order by email");
         System.out.println("6.Search order by movie title");
         System.out.println("7.Search order by order status");
+        System.out.println("8.Place Order");
         System.out.println("X.Exit the system.");
     }
 
     private static void logout() throws Exception_Exception {
-        System.out.println(omsSOAP.logout());
+        user = omsSOAP.logout();
+        if (user == null) {
+            System.out.println("User has logged out");
+        }
         printHelp();
     }
 
     private static void login() throws Exception_Exception {
         String email = readEmail();
         String password = readPassword();
-        User user = omsSOAP.login(email, password);
+        user = omsSOAP.login(email, password);
         if (user != null) {
             System.out.println("Welcome, " + user.getFullName() + "! You have successfully logged in.");
             printHelp();
@@ -89,7 +92,7 @@ public class SOAPClient {
         }
     }
 
-    public static void getHistory() throws Exception_Exception {
+    private static void getHistory() throws Exception_Exception {
         System.out.println("Order History:");
         for (int i = 0; i < omsSOAP.fetchHistory().size(); i++) {
             System.out.println("Order " + omsSOAP.fetchHistory().get(i).getID());
@@ -107,7 +110,7 @@ public class SOAPClient {
         printHelp();
     }
 
-    public static void getHistorybyEmail() throws Exception_Exception {
+    private static void getHistorybyEmail() throws Exception_Exception {
         String email = readEmail();
         if (omsSOAP.fetchHistoryByEmail(email).size() < 1) {
             System.out.println(email + " do not have any order.");
@@ -130,7 +133,7 @@ public class SOAPClient {
         printHelp();
     }
 
-    public static void getHistorybyStatus() throws Exception_Exception {
+    private static void getHistorybyStatus() throws Exception_Exception {
         String status = readOrderStatus();
         if (omsSOAP.fetchHistoryByStatus(status).size() < 1) {
             System.out.println("Cannot find any " + status + " order.");
@@ -153,7 +156,7 @@ public class SOAPClient {
         printHelp();
     }
 
-    public static void getHistorybyTitle() throws Exception_Exception {
+    private static void getHistorybyTitle() throws Exception_Exception {
         String title = readMovieTitle();
         if (omsSOAP.fetchHistoryByTitle(title).size() < 1) {
             System.out.println(title + " do not have any order.");
@@ -229,5 +232,103 @@ public class SOAPClient {
     private static String readOrderStatus() {
         System.out.print("Enter an order status: ");
         return In.nextLine();
+    }
+
+    private static String readCopies() {
+        System.out.print("Enter the copies to purchase: ");
+        return In.nextLine();
+    }
+
+    private static void placeOrderMenuHelper() {
+        System.out.println("1.Add an item");
+        System.out.println("2.Place order");
+        System.out.println("R.Return to previous menu");
+    }
+
+    private static String readPaymentMethod() {
+        System.out.print("Enter an payment method(payment method could be only Credit Card or PayPal): ");
+        return In.nextLine();
+    }
+
+    /**
+     * This method ask user to input a movie title. Then search movie by title.
+     * if movie are found add to the order items list. Otherwise, print out the
+     * error message.
+     *
+     * @throws Exception_Exception
+     */
+    private static void AddItem() throws Exception_Exception {
+        String title = readMovieTitle();
+        Movie movie = omsSOAP.findMovieByTitle(title);
+        if (movie == null) {
+            System.out.println("Movie " + title + " not found.");
+            placeOrderMenuHelper();
+        } else {
+            int copies = Integer.parseInt(readCopies());
+            Item item = new Item();
+            item.setCopiesPurchased(copies);
+            item.setMovieGenre(movie.getGenre());
+            item.setMoviePrice(movie.getPrice());
+            item.setMovieTitle(title);
+            item.setReleaseDate(movie.getRelaseDate());
+            items.add(item);
+            System.out.println(title+" has been add successfully.");
+            placeOrderMenuHelper();
+        }
+    }
+
+    /**
+     * This method will check if user already add at least item into the order
+     * item list and place the order. if user already add at least 1 item, check
+     * out the item and place an order. otherwise, print out an error message.
+     */
+    private static void checkoutOrder() throws Exception_Exception {
+        if (items.size() > 0) {
+            String paymentMethod = "";
+            String input="";
+            while(!input.equals("Credit Card")&&!input.equals("PayPal")){
+                input = readPaymentMethod();
+            }
+            paymentMethod = input;
+            omsSOAP.updateCopies(items);
+            omsSOAP.placeOrder(user, items, paymentMethod);
+            items.clear();
+            placeOrderMenuHelper();
+        } else {
+            System.out.println("You have not add any items. Pleas add at least 1 item before placing an order.");
+            placeOrderMenuHelper();
+        }
+    }
+
+    private static void placeOrder() throws Exception_Exception {
+        while (user == null) {
+            System.out.println("You have to login for placing an order.");
+            System.out.println("User not found.");
+            String email = readEmail();
+            String password = readPassword();
+            user = omsSOAP.login(email, password);
+        }
+        placeOrderMenu();
+    }
+
+    private static void placeOrderMenu() throws Exception_Exception {
+        placeOrderMenuHelper();
+        char choice;
+        while ((choice = readChoice()) != 'R') {
+            switch (choice) {
+                case '1':
+                    AddItem();
+                    break;
+                case '2':
+                    checkoutOrder();
+                    break;
+                case 'R':
+                    menu();
+                    break;
+            }
+        }
+        if(choice == 'R'){
+            printHelp();
+        }
     }
 }
