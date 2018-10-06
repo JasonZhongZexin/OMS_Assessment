@@ -30,6 +30,7 @@
                 </ul>
                 <div align="right" margin-left="200px">
                     <a href = "login.jsp">Login</a>
+                    &nbsp; 
                     <a href = "register.jsp">Register</a>
                 </div>
             </nav>
@@ -80,7 +81,7 @@
             <input type="hidden" value="submitted" name="submitted">
         </form>
     </center>
-    <%
+       <%
         Movies movies = movieApp.getMovies();
         if (request.getParameter("submitted") != null) {
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
@@ -88,9 +89,9 @@
                 shoppingCart = new ShoppingCart();
             }
             ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
-            if (list != null && list.size() > 0) {
-                movies.printMovies(list, out);
-                session.setAttribute("shoppingCart", shoppingCart);
+            if (list != null && list.size() > 0) {%>
+                <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
+               <% session.setAttribute("shoppingCart", shoppingCart);
                 list = null;
             } else {
                 response.sendRedirect("404MovieNoFound.jsp");
@@ -98,5 +99,6 @@
         }
 
     %>
+  
 </body>
 </html>
