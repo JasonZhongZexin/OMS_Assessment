@@ -81,7 +81,7 @@
             <input type="hidden" value="submitted" name="submitted">
         </form>
     </center>
-    <%
+       <%
         Movies movies = movieApp.getMovies();
         if (request.getParameter("submitted") != null) {
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
@@ -99,5 +99,6 @@
         }
 
     %>
+  
 </body>
 </html>

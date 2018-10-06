@@ -3,7 +3,6 @@
     Created on : 06/10/2018, 5:02:27 AM
     Author     : Hyein Yu
 --%>
-
 <%@page import="uts.wsd.*" import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
@@ -42,3 +41,4 @@
 </c:set>
 <c:import url = "//WEB-INF/movies.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
+

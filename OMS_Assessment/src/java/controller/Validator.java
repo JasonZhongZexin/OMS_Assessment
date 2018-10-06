@@ -25,6 +25,10 @@ public class Validator {
         Matcher match = regEx.matcher(input);
         return match.matches();
     }    
+    
+    public boolean edit(String fullName, String email, String password, String phoneNumber, String address){
+        return fullName!=null && email!= null && password!= null && phoneNumber!=null && address!=null;
+    }
     public boolean checkLoginEmpty(String email, String password){
         return  email.isEmpty() || password.isEmpty();
     }
