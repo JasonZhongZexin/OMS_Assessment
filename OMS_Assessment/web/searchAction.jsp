@@ -15,8 +15,6 @@
         <jsp:useBean id="movieApp" class="uts.wsd.MoviesApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%=filepath%>"/>
         </jsp:useBean>
-
-
         <%
             String movie_title = request.getParameter("title");
             String movie_genre = request.getParameter("genre");

@@ -92,7 +92,6 @@ public class OrderApplication implements Serializable {
         return history.getOrderByID(ID);
     }
     
-    @XmlElement
     public ArrayList<Order> getOrdersByEmail(String email){
         return history.getOrdersByEmail(email);
     }
