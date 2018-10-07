@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.UsersDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "users")
-public class Users implements Serializable {
+public class Users implements Serializable,UsersDAO {
 
     @XmlElement(name = "user")
     private ArrayList<User> users = new ArrayList<>();
@@ -27,10 +28,12 @@ public class Users implements Serializable {
         return this.users;
     }
 
+    @Override
     public void addUser(User user) {
         users.add(user);
     }
 
+    @Override
     public User getUser(String email) {
         for (User user : users) {
             if (user.matchEmail(email)) {
@@ -40,6 +43,7 @@ public class Users implements Serializable {
         return null;
     }
 
+    @Override
     public User login(String email, String password) {
 
         for (User user : users) {
@@ -50,6 +54,7 @@ public class Users implements Serializable {
         return null;
     }
 
+    @Override
     public ArrayList<User> getRemoveList(String email) {
         ArrayList<User> removelist = new ArrayList<>();
         for (User user : users) {
@@ -60,12 +65,14 @@ public class Users implements Serializable {
         return removelist;
     }
 
+    @Override
     public void remove(User user) {
 
         users.removeAll(getRemoveList(user.getEmail()));
 
     }
 
+    @Override
     public void updateUser(User user) {
         remove(user);
         addUser(user);

@@ -18,12 +18,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import uts.wsd.dao.MoviesApplicationDAO;
 
 /**
  *
  * @author Zexin Zhong
  */
-public class MoviesApplication implements Serializable {
+public class MoviesApplication implements Serializable,MoviesApplicationDAO {
 
     private String filePath;
     private Movies movies;
@@ -50,6 +51,7 @@ public class MoviesApplication implements Serializable {
         fin.close();
     }
 
+    @Override
     public void updateXML(String filePath, Movies movies) throws JAXBException, FileNotFoundException, IOException {
         this.movies = movies;
         this.filePath = filePath;
@@ -61,6 +63,7 @@ public class MoviesApplication implements Serializable {
         fout.close();
     }
 
+    @Override
     public void saveMovies() throws JAXBException, FileNotFoundException, IOException {
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
         Marshaller m = jc.createMarshaller();
@@ -78,6 +81,7 @@ public class MoviesApplication implements Serializable {
         this.movies = movies;
     }
 
+    @Override
     public ArrayList<Movie> searchMovie(String title, String genre, String startYear, String endYear) throws ParseException {
         return movies.searchMovies(title, genre, startYear, endYear);
     }
@@ -87,14 +91,17 @@ public class MoviesApplication implements Serializable {
 //        return movie;
 //    }
     
+    @Override
     public void addCopies(String title,int copies){
         movies.addCopies(title, copies);
     }
     
+    @Override
     public void minusCopies(String title,int copies){
         movies.minusCopies(title, copies);
     }
     
+    @Override
     public Movie getMovieByTitle(String title){
         return movies.getMovieByTitle(title);
     }

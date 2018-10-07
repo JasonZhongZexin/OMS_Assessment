@@ -13,12 +13,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import uts.wsd.dao.UsersApplicationDAO;
 
 /**
  *
  * @author Zexin Zhong
  */
-public class UsersApplication implements Serializable{
+public class UsersApplication implements Serializable,UsersApplicationDAO{
     
     private String filePath;
     private Users users;
@@ -44,6 +45,7 @@ public class UsersApplication implements Serializable{
         fin.close();
     }
     
+    @Override
     public void updateXML(String filePath,Users users) throws Exception{
         this.users = users;
         this.filePath = filePath;
@@ -55,6 +57,7 @@ public class UsersApplication implements Serializable{
         fout.close();  
     }
     
+    @Override
     public void saveUsers() throws JAXBException, IOException{
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Marshaller m = jc.createMarshaller();
@@ -72,6 +75,7 @@ public class UsersApplication implements Serializable{
         this.users=users;
     }
     
+    @Override
     public void editUsers(User user, String fullName, String email, String password
     ,String phoneNumber,String address) throws Exception{
         users.remove(user);
@@ -80,10 +84,12 @@ public class UsersApplication implements Serializable{
         updateXML(filePath,users);
     }
     
+    @Override
     public void addUser(User user){
         users.addUser(user);
     }
     
+    @Override
     public User checkUser(String email){
         User user = users.getUser(email);
         return user;    

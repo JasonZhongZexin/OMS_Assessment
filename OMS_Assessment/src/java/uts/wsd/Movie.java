@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.MovieDAO;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="movie")
-public class Movie implements Serializable{
+public class Movie implements Serializable,MovieDAO{
     
     @XmlElement(name="title")
     private String movie_title;
@@ -83,22 +84,27 @@ public class Movie implements Serializable{
         this.available_copies = available_copies;
     }
     
+    @Override
     public void updateCopies(int sellCopies){
         this.available_copies -= sellCopies;
     }
+    @Override
     public boolean matchTitle(String movie_title){
     
         return this.movie_title.equals(movie_title);       
     }
     
+    @Override
     public void addCopies(int copies){
         this.available_copies +=copies; 
     }
     
+    @Override
     public void minusCopies(int copies){
         this.available_copies -= copies;
     }
     
+    @Override
     public boolean checkAvailable(){
         return this.available_copies > 0 ;
     }

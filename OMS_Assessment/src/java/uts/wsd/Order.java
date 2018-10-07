@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.OrderDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "order")
-public class Order implements Serializable{
+public class Order implements Serializable,OrderDAO{
     
     @XmlElement(name = "ID")
     private String ID;
@@ -48,10 +49,12 @@ public class Order implements Serializable{
         this.orderItems = orderItems;
     }
     
+    @Override
     public boolean matchID(String ID){
         return this.ID.equals(ID);
     }
     
+    @Override
     public boolean matchEmail(String email){
         return this.email.equals(email);
     }
@@ -112,10 +115,12 @@ public class Order implements Serializable{
         this.orderItems = orderItems;
     }
     
+    @Override
     public boolean verifyStatus(){
         return status.equalsIgnoreCase("submitted");
     }
     
+    @Override
     public boolean isContainsItem(String title){
         for(Item item: orderItems){
             if(item.getMovieTitle().equals(title))
@@ -124,6 +129,7 @@ public class Order implements Serializable{
         return false;
     }
     
+    @Override
     public boolean isMatchStatus(String status){
         return this.status.equals(status);
     }

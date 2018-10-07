@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.MoviesDAO;
 
 /**
  *
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "movies")
-public class Movies implements Serializable{
+public class Movies implements Serializable,MoviesDAO{
 
     @XmlElement(name = "movie")
     private ArrayList<Movie> movies = new ArrayList<Movie>();

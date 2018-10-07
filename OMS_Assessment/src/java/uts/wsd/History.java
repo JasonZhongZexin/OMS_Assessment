@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.HistoryDAO;
 
 /**
  *
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "history")
-public class History implements Serializable {
+public class History implements Serializable,HistoryDAO {
 
     @XmlElement(name = "order")
     private ArrayList<Order> orders = new ArrayList<>();
@@ -29,6 +30,7 @@ public class History implements Serializable {
         return this.orders;
     }
 
+    @Override
     public void addOrder(Order order) {
         orders.add(order);
     }
@@ -37,6 +39,7 @@ public class History implements Serializable {
         this.orders = orders;
     }
 
+    @Override
     public ArrayList<Order> getUserOrder(User user) {
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : orders) {
@@ -47,6 +50,7 @@ public class History implements Serializable {
         return matches;
     }
 
+    @Override
     public void changeOrderStatus(String ID) {
         for (Order order : orders) {
             if (order.matchID(ID)) {
@@ -55,6 +59,7 @@ public class History implements Serializable {
         }
     }
 
+    @Override
     public Order getOrderByID(String ID) {
         Order match = new Order();
         for (Order order : orders) {
@@ -65,6 +70,7 @@ public class History implements Serializable {
         return match;
     }
 
+    @Override
     public void print(ArrayList<Order> list, Writer sout) {
         PrintWriter out = new PrintWriter(sout);
         out.print("<table align=\"center\">");
@@ -115,6 +121,7 @@ public class History implements Serializable {
         out.print("</table>");
     }
 
+    @Override
     public ArrayList<Order> getOrdersByEmail(String email) {
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : orders) {
@@ -125,6 +132,7 @@ public class History implements Serializable {
         return matches;
     }
     
+    @Override
     public ArrayList<Order> getOrderByTitle(String title){
         ArrayList<Order> matches = new ArrayList<>();
         for(Order order: orders){
@@ -134,6 +142,7 @@ public class History implements Serializable {
         return matches;
     }
     
+    @Override
     public ArrayList<Order> getHistoryByStatus(String status){
         ArrayList<Order> matches = new ArrayList<>();
         for(Order order: orders){

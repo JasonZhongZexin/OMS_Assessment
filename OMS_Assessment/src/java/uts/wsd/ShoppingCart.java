@@ -7,12 +7,13 @@ package uts.wsd;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import uts.wsd.dao.ShoppingCartDAO;
 
 /**
  *
  * @author zhongzexin
  */
-public class ShoppingCart implements Serializable {
+public class ShoppingCart implements Serializable,ShoppingCartDAO {
 
     private ArrayList<Item> shoppingCart;
 
@@ -28,10 +29,12 @@ public class ShoppingCart implements Serializable {
         return shoppingCart;
     }
 
+    @Override
     public void addShoppingCart(Item item) {
         shoppingCart.add(item);
     }
     
+    @Override
     public boolean isContainsItem(Item item) {
 
         for (Item items : shoppingCart) {
@@ -42,10 +45,12 @@ public class ShoppingCart implements Serializable {
         return false;
     }
     
+    @Override
     public void clearShoppingCart(){
         shoppingCart.clear();
     }
     
+    @Override
     public void removeItem(String title){
         int pos = -1;
         for(int i=0;i<shoppingCart.size();i++){

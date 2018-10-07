@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.ItemDAO;
 
 /**
  *
@@ -17,7 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "orderItem")
-public class Item implements Serializable{
+public class Item implements Serializable,ItemDAO{
+    
     
     @XmlElement(name = "movieTitle")
     private String movieTitle;

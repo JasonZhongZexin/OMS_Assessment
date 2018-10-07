@@ -16,12 +16,13 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlElement;
+import uts.wsd.dao.OrderApplicationDAO;
 
 /**
  *
  * @author zhongzexin
  */
-public class OrderApplication implements Serializable {
+public class OrderApplication implements Serializable,OrderApplicationDAO{
 
     private String filePath;
     private History history;

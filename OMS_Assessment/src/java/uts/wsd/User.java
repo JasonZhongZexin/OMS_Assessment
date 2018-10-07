@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import uts.wsd.dao.UserDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
-public class User implements Serializable{
+public class User implements Serializable,UserDAO{
     
     @XmlElement(name="fullName")
     private String fullName;
@@ -43,6 +44,7 @@ public class User implements Serializable{
     }
         
     
+    @Override
     public void updateDetails(String fullName,String email,String password,String phoneNumber,String address){
     
         this.fullName = fullName;
@@ -53,12 +55,14 @@ public class User implements Serializable{
         
     }
     
+    @Override
     public boolean matchEmail(String email){
     
         return this.email.equals(email);
         
     }
     
+    @Override
     public boolean matchPassword(String password){
     
         return this.password.equals(password);
