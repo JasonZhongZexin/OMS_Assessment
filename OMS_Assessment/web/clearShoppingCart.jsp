@@ -47,7 +47,9 @@
         </header>
         <%}%>
         <%
+            //get the shoppingCart form the session 
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+            //if there are item that stored in the shoppingCart, clear the shoppingCart
             if (shoppingCart.getShoppingCart().size() > 0) {
                 shoppingCart.clearShoppingCart();
             }

@@ -24,6 +24,7 @@
     
 %>
 
+<!-- XSL transfer the searching result -->
 <c:set var = "xmltext"> 
     <movies>
         <%

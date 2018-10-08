@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author zhongzexin
+ * @author Zexin Zhong
  */
 public class SOAPClient {
 
@@ -22,6 +22,11 @@ public class SOAPClient {
         menu();
     }
 
+    /**
+     * This is the menu function of the OMS client.It will read the user's chosen and 
+     * execute the user's chose.
+     * @throws Exception_Exception 
+     */
     private static void menu() throws Exception_Exception {
         printHelp();
         char choice;
@@ -58,6 +63,9 @@ public class SOAPClient {
         }
     }
 
+    /**
+     * This method will print out the menu for the user.
+     */
     private static void printHelp() {
         System.out.println("Welcome to OMS! Please make a selection from the menu:");
         System.out.println("1.Login");
@@ -71,6 +79,12 @@ public class SOAPClient {
         System.out.println("X.Exit the system.");
     }
 
+    /**
+     * This is the logout function. It will called the logout method from the
+     * SOAP services and update the user object.
+     *
+     * @throws Exception_Exception
+     */
     private static void logout() throws Exception_Exception {
         user = omsSOAP.logout();
         if (user == null) {
@@ -79,6 +93,15 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This is the login function. It will called the read the user input email
+     * and password. Then called the login method from the SOAP web services and
+     * pass the input email and password as a parameter to login. Finally,
+     * update the user detail. If login fail, display the error message for the
+     * user. otherwise, feedback a login successful message.
+     *
+     * @throws Exception_Exception
+     */
     private static void login() throws Exception_Exception {
         String email = readEmail();
         String password = readPassword();
@@ -92,6 +115,13 @@ public class SOAPClient {
         }
     }
 
+    /**
+     * This method will get all order history that store in the history XNL and
+     * print out the order detail. It will call the fetchHistory function to get
+     * the history data and print out the data.
+     *
+     * @throws Exception_Exception
+     */
     private static void getHistory() throws Exception_Exception {
         System.out.println("Order History:");
         for (int i = 0; i < omsSOAP.fetchHistory().size(); i++) {
@@ -110,6 +140,15 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This function will get the order that match with the user input email. it
+     * will asked the user to input an valid email. Then, it will call the
+     * fetchHistoryByEmail method from the SOAP web service. If there are any
+     * order that match with this input email, print out the order detail.
+     * otherwise, output the error message for the user.
+     *
+     * @throws Exception_Exception
+     */
     private static void getHistorybyEmail() throws Exception_Exception {
         String email = readEmail();
         if (omsSOAP.fetchHistoryByEmail(email).size() < 1) {
@@ -133,6 +172,15 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This function will get the order that match with the user input order
+     * status. it will asked user to input an valid order status. Then, it will
+     * call the fetchHistoryByStatus method from the SOAP web service. If there
+     * are any order that match with this input status, print out the order
+     * detail.otherwise, output the error message for the user.
+     *
+     * @throws Exception_Exception
+     */
     private static void getHistorybyStatus() throws Exception_Exception {
         String status = readOrderStatus();
         if (omsSOAP.fetchHistoryByStatus(status).size() < 1) {
@@ -156,6 +204,15 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This function will get the order that match with the user input movie
+     * title. it will asked user to input an movie title. Then, it will call the
+     * fetchHistoryByTitle method from the SOAP web service. If there are any
+     * order that contains a input movie, print out the order detail. otherwise,
+     * output the error message for the user.
+     *
+     * @throws Exception_Exception
+     */
     private static void getHistorybyTitle() throws Exception_Exception {
         String title = readMovieTitle();
         if (omsSOAP.fetchHistoryByTitle(title).size() < 1) {
@@ -179,6 +236,14 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This function will get the order that match with the user input Order ID.
+     * it will asked user to input an 3 digital Order ID. Then, it will call the
+     * fetchHistoryByOrderID method from the SOAP web service. if any order that
+     * return from the Web service, print out the order detail.
+     *
+     * @throws Exception_Exception
+     */
     private static void getOrderByID() throws Exception_Exception {
         String ID = readOrderID();
         Order order = omsSOAP.fetchHistoryByOrderID(ID);
@@ -200,51 +265,111 @@ public class SOAPClient {
         printHelp();
     }
 
+    /**
+     * This method print out an error message for the user when user input a
+     * invalid input at the menu.
+     *
+     * @throws Exception_Exception
+     */
     private static void invalidInput() {
         System.out.println("Please enter a number between 1 and 8 or press X to exit.");
     }
 
+    /**
+     * This method will read asked user to input a choice for the menu, then
+     * return the user input.
+     *
+     * @return
+     */
     private static char readChoice() {
         System.out.print("Enter a choice: ");
         return In.nextChar();
     }
 
+    /**
+     * This method will read asked user to input email address, then return the
+     * user's input email.
+     *
+     * @return
+     */
     private static String readEmail() {
         System.out.print("Enter an email: ");
         return In.nextLine();
     }
 
+    /**
+     * This method will read asked user to input a password, then return the
+     * user's input password.
+     *
+     * @return
+     */
     private static String readPassword() {
         System.out.print("Enter a password: ");
         return In.nextLine();
     }
 
+    /**
+     * This method will read asked user to input an Order ID, then return the
+     * user's input Order ID.
+     *
+     * @return
+     */
     private static String readOrderID() {
         System.out.print("Enter a 3 digital Order ID: ");
         return In.nextLine();
     }
 
+    /**
+     * This method will read asked user to input movie title, then return the
+     * user's input movie title.
+     *
+     * @return
+     */
     private static String readMovieTitle() {
         System.out.print("Enter a movie title: ");
         return In.nextLine();
     }
 
+    /**
+     * This method will read asked user to input an order status, then return
+     * the user's status.
+     *
+     * @return
+     */
     private static String readOrderStatus() {
         System.out.print("Enter an order status: ");
         return In.nextLine();
     }
 
+    /**
+     * This method will read asked user to input a purchase copies , then return
+     * the user's input .
+     *
+     * @return
+     */
     private static String readCopies() {
         System.out.print("Enter the copies to purchase: ");
         return In.nextLine();
     }
 
+    /**
+     * This method is the place order menu function. it will print out the place order 
+     * menu for the user.
+     *
+     * @return
+     */
     private static void placeOrderMenuHelper() {
         System.out.println("1.Add an item");
         System.out.println("2.Place order");
         System.out.println("R.Return to previous menu");
     }
 
+    /**
+     * This is a read payment method. it will asked user to input an valid payment method.
+     * Then return the user's input payment method.
+     *
+     * @return
+     */
     private static String readPaymentMethod() {
         System.out.print("Enter an payment method(payment method could be only Credit Card or PayPal): ");
         return In.nextLine();
@@ -272,7 +397,7 @@ public class SOAPClient {
             item.setMovieTitle(title);
             item.setReleaseDate(movie.getRelaseDate());
             items.add(item);
-            System.out.println(title+" has been add successfully.");
+            System.out.println(title + " has been add successfully.");
             placeOrderMenuHelper();
         }
     }
@@ -285,8 +410,8 @@ public class SOAPClient {
     private static void checkoutOrder() throws Exception_Exception {
         if (items.size() > 0) {
             String paymentMethod = "";
-            String input="";
-            while(!input.equals("Credit Card")&&!input.equals("PayPal")){
+            String input = "";
+            while (!input.equals("Credit Card") && !input.equals("PayPal")) {
                 input = readPaymentMethod();
             }
             paymentMethod = input;
@@ -300,6 +425,12 @@ public class SOAPClient {
         }
     }
 
+    /**
+     * This is the place order function. it will asked user who has not login to
+     * input an email and password then login the user with the input email 
+     * and password. if user are login successfully, print out the place order menu for the user.
+     * @throws Exception_Exception 
+     */
     private static void placeOrder() throws Exception_Exception {
         while (user == null) {
             System.out.println("You have to login for placing an order.");
@@ -311,6 +442,11 @@ public class SOAPClient {
         placeOrderMenu();
     }
 
+    /**
+     * This is the place order menu of the OMS client. it will read the user chosen then
+     * execute the user's chosen.
+     * @throws Exception_Exception 
+     */
     private static void placeOrderMenu() throws Exception_Exception {
         placeOrderMenuHelper();
         char choice;
@@ -327,7 +463,7 @@ public class SOAPClient {
                     break;
             }
         }
-        if(choice == 'R'){
+        if (choice == 'R') {
             printHelp();
         }
     }
