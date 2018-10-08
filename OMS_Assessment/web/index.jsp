@@ -82,7 +82,7 @@
             <input type="hidden" value="submitted" name="submitted">
         </form>
     </center>
-    <%
+       <%
         Movies movies = movieApp.getMovies();
         if (request.getParameter("submitted") != null) {
             //get the shoppingCart from the seesion
@@ -104,7 +104,6 @@
                     response.sendRedirect("404MovieNoFound.jsp");
                 }
             }
-
         %>
 </body>
 </html>

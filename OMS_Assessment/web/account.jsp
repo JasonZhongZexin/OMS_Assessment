@@ -43,7 +43,6 @@
                         <td><input name="address" type="text" value="<%=user.getAddress()%>"></td>
                     </tr>
                     <tr>
-
                         <td>
                             <input type="submit" value="Save">
                             &nbsp;

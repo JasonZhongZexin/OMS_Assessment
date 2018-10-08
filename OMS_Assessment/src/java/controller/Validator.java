@@ -89,5 +89,5 @@ public class Validator {
      */
     public boolean validateYear(String year) {
         return validate(yearPattern, year);
-    }
+    }    
 }
