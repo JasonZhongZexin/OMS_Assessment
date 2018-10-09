@@ -14,6 +14,7 @@
     </head>
     <body>
         <%
+            //invalidate all sessions
             session.invalidate();
         %>
         <p>You have been logged out. Click <a class="link" href="index.jsp">here</a> to return to the home page.</p>

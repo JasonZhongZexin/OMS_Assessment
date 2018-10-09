@@ -24,17 +24,19 @@
             </nav>
         </header>
         <%
-            String nameErr = (String)session.getAttribute("nameErr");
-            String emailErr = (String)session.getAttribute("emailErr");
-            String passwordErr = (String)session.getAttribute("passwordErr");
-            String phoneNumberErr = (String)session.getAttribute("phoneNumberErr");
-            String addressErr = (String)session.getAttribute("addressErr");
+            //get the field error message from the session
+            String nameErr = (String) session.getAttribute("nameErr");
+            String emailErr = (String) session.getAttribute("emailErr");
+            String passwordErr = (String) session.getAttribute("passwordErr");
+            String phoneNumberErr = (String) session.getAttribute("phoneNumberErr");
+            String addressErr = (String) session.getAttribute("addressErr");
         %>
+        <!-- the user register form-->
         <h1>Enter your details to create an account:</h1>
-            <form action="registerAction.jsp" method="post">
-                <table>
-                    <tr><td>Full Name</td><td><input type="text" name="fullName" 
-                                                     placeholder="full name" required><span class="error"><c:if test="${nameErr!=null}"><span class="error"><c:out value="${nameErr}"/></span></c:if></span></td></tr>
+        <form action="registerAction.jsp" method="post">
+            <table>
+                <tr><td>Full Name</td><td><input type="text" name="fullName" 
+                                                 placeholder="full name" required><span class="error"><c:if test="${nameErr!=null}"><span class="error"><c:out value="${nameErr}"/></span></c:if></span></td></tr>
                     <tr><td>Email</td><td><input type="text" name="username" 
                                                  placeholder="email address"required><span class="error"><c:if test="${emailErr!=null}"><span class="error"><c:out value="${emailErr}"/></span></c:if></span></td></tr>
                     <tr><td>Password</td><td><input type="password" name="password" 
@@ -52,7 +54,7 @@
         <%
             if (request.getParameter("submitted") != null) {
 
-                addressErr = phoneNumberErr=nameErr=emailErr=passwordErr=null;
+                addressErr = phoneNumberErr = nameErr = emailErr = passwordErr = null;
             }
             session.invalidate();
         %>

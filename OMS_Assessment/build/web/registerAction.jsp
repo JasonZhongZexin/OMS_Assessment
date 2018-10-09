@@ -1,7 +1,7 @@
 <%-- 
     Document   : registerAction
     Created on : 21/09/2018, 10:10:12 PM
-    Author     : zhongzexin
+    Author     : Zexin Zhong
 --%>
 
 <%@page import="controller.Validator"%>
@@ -21,21 +21,22 @@
         </jsp:useBean>
         <%
             Users users = userApp.getUsers();
+            
+            //get user's input registerd user detail 
             String fullName = request.getParameter("fullName");
             String email = request.getParameter("username");
             String password = request.getParameter("password");
             String phoneNumber = request.getParameter("phoneNumber");
             String address = request.getParameter("address");
-            User user = new User();
-            user.updateDetails(fullName, email, password, phoneNumber, address);
+            //check if the input email address has been used
             User checkUser = userApp.checkUser(email);
 
             /**
-             * validate the user input. if any input is invalid, return error message to the register page.
-             * check if the input email has been used. if the input email has
-             * been used show an error message in the register page, else ,
-             * registed the account and launch to the index page. validate the
-             * input.
+             * validate the user input. if any input is invalid, return error
+             * message to the register page. check if the input email has been
+             * used. if the input email has been used show an error message in
+             * the register page, else , registed the account and launch to the
+             * index page. validate the input.
              */
             Validator v = new Validator();
             if (!v.validateName(fullName)) {
@@ -54,6 +55,8 @@
                 session.setAttribute("emailErr", "The input email has been used. Please change your email address.");
                 response.sendRedirect("register.jsp");
             } else {
+                User user = new User();
+                user.updateDetails(fullName, email, password, phoneNumber, address);
                 userApp.addUser(user);
                 userApp.saveUsers();
                 userApp.updateXML(usersPath, users);
