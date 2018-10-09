@@ -25,14 +25,19 @@
             <jsp:setProperty name="orderApp" property="filePath" value="<%=path%>"/>
         </jsp:useBean>
         <%
+            //get the order that user want to cancel from the session
             Order order = (Order) session.getAttribute("cancelOrder");
             ArrayList<Item> items = order.getOrderItems();
             if(order!=null){
                 for(Item item : items){
+                    //return the copies to the movie available copies
                     movieApp.addCopies(item.getMovieTitle(), item.getCopiesPurchased());
+                    //save and update the MOVIE XML
                     movieApp.saveMovies();
                 }
+                //update the order status
                 orderApp.changeOrderStatus(order.getID());
+                //save and update the history XML
                 orderApp.saveHistory();
             }
         %>

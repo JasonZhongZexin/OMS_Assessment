@@ -21,6 +21,7 @@
     <body>
         <header>
             <%
+                //get user from the session 
                 User user = (User) session.getAttribute("userLogin");
                 if (user == null) {%>
             <nav class="nav">
@@ -84,21 +85,25 @@
        <%
         Movies movies = movieApp.getMovies();
         if (request.getParameter("submitted") != null) {
+            //get the shoppingCart from the seesion
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
             if (shoppingCart == null) {
+                //create a shoppingCart instance if there are not shoppingCart store in the session
                 shoppingCart = new ShoppingCart();
             }
             ArrayList<Movie> list = (ArrayList<Movie>) request.getAttribute("search");
             if (list != null && list.size() > 0) {%>
-                <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
-               <% session.setAttribute("shoppingCart", shoppingCart);
-                list = null;
-            } else {
-                response.sendRedirect("404MovieNoFound.jsp");
+    <!-- SXLT transfer the search movie result by the using the XSL template -->
+    <center><br><jsp:include page="searchResult.jsp" flush="true" /><br></center>
+        <%
+                    //update the shoppingCart in the session
+                    session.setAttribute("shoppingCart", shoppingCart);
+                    list = null;
+                } else {
+                    //display the 404 page when there are not movie found in the searching result
+                    response.sendRedirect("404MovieNoFound.jsp");
+                }
             }
-        }
-
-    %>
-  
+        %>
 </body>
 </html>

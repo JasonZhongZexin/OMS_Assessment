@@ -36,11 +36,15 @@
     <center>
         <form action="cancelAction.jsp" method = "post">
             <%
+                //get the order id that user select at the mian page
                 String ID = request.getParameter("bookingIDSelect");
+                //get the order that match the order ID
                 Order order = orderApp.getOrderByID(ID);
+                //get all order items of the order 
                 ArrayList<Item> items = order.getOrderItems();
                 if (order != null) {%>
             <h1>Do you want to cancel your order #<%=ID%>? </h1>
+            <!-- xslt transfer the order items and display the order item table-->
             <c:set var = "xmltext">
                 <order>
                     <%
@@ -54,6 +58,7 @@
                         <copiesPurchased><%=item.getCopiesPurchased()%></copiesPurchased>
                     </orderItem>
                     <%
+                        //stored the cancel order into the session 
                                 session.setAttribute("cancelOrder", order);
                             }
                         }%>

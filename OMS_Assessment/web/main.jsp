@@ -25,6 +25,7 @@
         </jsp:useBean>
         <%
             User user = (User) session.getAttribute("userLogin");
+            //check if the user has login 
             if (user != null) {%>
         <header>
             <nav class="nav">
@@ -41,8 +42,10 @@
         </header>
         <%
             ArrayList<Order> orders = orderApp.getUserOrder(user);
-            History history = orderApp.getHistory();%>
+            History history = orderApp.getHistory();
+        %>
         <h1>Welcome, <%=user.getFullName()%>!</h1>
+    <!-- display user's order history-->
     <center>
         <h2>Your Orders</h2>
         <%
@@ -67,6 +70,7 @@
         <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
         <% orders = null;
         } else {%>
+        <!-- display the message when the user have not place any order-->
         <p>You have not place any order!</p>
         <%}%>
     </center>

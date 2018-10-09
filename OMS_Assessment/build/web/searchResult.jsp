@@ -23,6 +23,7 @@
     
 %>
 
+<!-- XSL transfer the searching result -->
 <c:set var = "xmltext"> 
     <movies>
         <%
@@ -41,4 +42,3 @@
 </c:set>
 <c:import url = "//WEB-INF/movies.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
-
