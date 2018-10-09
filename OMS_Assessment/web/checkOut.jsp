@@ -52,6 +52,7 @@
         </header>
         <%}%>
         <%
+            //get the movie title that user select at the index page
             String title = request.getParameter("movieSelect");
             Movie movie = movieApp.getMovieByTitle(title);
             Item item = null;
@@ -62,12 +63,15 @@
                 item.setMoviePrice(movie.getMovie_price());
                 item.setReleaseDate(movie.getMovie_release_date());
             }
+            //get the shopping cart from the session
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
             if (item != null && !shoppingCart.isContainsItem(item)) {
+                //add item to the shopping cart
                 shoppingCart.addShoppingCart(item);
             }
         %>
         <form action="checkoutAction.jsp" method="post">
+            <!-- display all items that stored in the shopping cart-->
             <table align="center" border = "2">      
                 <tr>
                     <td>Movie Title</td>
@@ -85,6 +89,7 @@
                     <td><input type="text" value="<%=shoppingCartItem.getCopiesPurchased()%>" name = "<%=shoppingCartItem.getMovieTitle()%>"/>
                         &nbsp; 
                         <%
+                            //store the shopping cart into the session
                             session.setAttribute("shoppingCart", shoppingCart);
                         %>
                         <button type="button" onclick="location.href = 'removeItemAction.jsp?removeItem=<%=shoppingCartItem.getMovieTitle()%>'" > Remove Item </button>

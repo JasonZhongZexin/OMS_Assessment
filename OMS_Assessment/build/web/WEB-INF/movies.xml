@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<movies>
+<?xml-stylesheet type="text/xsl" href="movies.xsl"?>
+<movies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="movies.xsd">
     <movie>
         <title>The Nun</title>
         <genre>Horror</genre>
         <relase_date>2018</relase_date>
         <price>23</price>
-        <available_copies>90</available_copies>
+        <available_copies>100</available_copies>
     </movie>
     <movie>
         <title>Hereditary</title>
         <genre>Horror</genre>
         <relase_date>2018</relase_date>
         <price>13</price>
-        <available_copies>70</available_copies>
+        <available_copies>80</available_copies>
     </movie>
     <movie>
         <title>Mile 22</title>
@@ -33,7 +35,7 @@
         <genre>Comedy</genre>
         <relase_date>2004</relase_date>
         <price>23</price>
-        <available_copies>50</available_copies>
+        <available_copies>60</available_copies>
     </movie>
     <movie>
         <title>Mission Impossible 3</title>
@@ -68,6 +70,6 @@
         <genre>Sci-Fi</genre>
         <relase_date>2016</relase_date>
         <price>44</price>
-        <available_copies>90</available_copies>
+        <available_copies>100</available_copies>
     </movie>
 </movies>

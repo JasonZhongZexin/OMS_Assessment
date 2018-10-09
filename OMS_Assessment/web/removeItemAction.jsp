@@ -1,7 +1,7 @@
 <%-- 
     Document   : removeItemAction
     Created on : 06/10/2018, 12:30:06 AM
-    Author     : zhongzexin
+    Author     : Zexin Zhong
 --%>
 
 <%@page import="uts.wsd.ShoppingCart"%>
@@ -18,9 +18,15 @@
     </jsp:useBean>
     <body>
         <%
+            //get the shopping cart from the session
             ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+            
+            //get the movie title that user choose to remove from the request parameter
             String title = request.getParameter("removeItem");
+            
+            // remove the item from the shopping cart
             shoppingCart.removeItem(title);
+            //send back to checkout page
             response.sendRedirect("checkOut.jsp");
         %>
     </body>

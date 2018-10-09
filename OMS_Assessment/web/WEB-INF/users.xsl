@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-    Document   : movies.xsl
-    Created on : 30 September 2018, 12:32
-    Author     : User
+    Document   : users.xsl
+    Created on : 8 October 2018, 12:09 AM
+    Author     : zhongzexin
     Description:
         Purpose of transformation follows.
 -->
@@ -14,9 +14,8 @@
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
-   
-
-    <xsl:template match="movies">
+    -->
+    <xsl:template match="users">
         <style>
             table{
             width:60%;
@@ -45,11 +44,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Movie Title</th>
-                    <th>Genre</th>
-                    <th>Relase date</th>
-                    <th>Price</th>
-                    <th>Available copies</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,36 +56,24 @@
             </tbody>
         </table>
     </xsl:template>
-
-    <xsl:template match="movie">
+    <xsl:template match="user">
         <tr>
             <td>
-                <xsl:value-of select="title" />
+                <xsl:value-of select="fullName" />
             </td>
             <td>
-                <xsl:value-of select="genre" />
+                <xsl:value-of select="email" />
             </td>
             <td>
-                <xsl:value-of select="relase_date" />
+                <xsl:value-of select="password" />
             </td>
             <td>
-                <xsl:value-of select="price" />
+                <xsl:value-of select="phoneNumber" />
             </td>
             <td>
-                <xsl:value-of select="available_copies" />
-            </td>
-            <td>
-                <xsl:if test="available_copies &gt; 0">
-                <a>
-                    <xsl:attribute name="href">
-                        <xsl:text>checkOut.jsp?movieSelect=</xsl:text><xsl:value-of select="title"/>
-                    </xsl:attribute>
-                    Order Now
-                </a>
-                </xsl:if>
+                <xsl:value-of select="address"/>
             </td>
         </tr>
-        
     </xsl:template>
 
 </xsl:stylesheet>
