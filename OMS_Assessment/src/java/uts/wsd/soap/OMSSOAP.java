@@ -31,13 +31,14 @@ public class OMSSOAP {
     private ServletContext movieApplication;
     @Context
     private ServletContext orderApplication;
-    
+
     /**
-     * This is a SOAP web method which will check if the user application are created on the server.
-     * if the application are not created, it will generator the Oder application instance and return the 
-     * user application.
+     * This is a SOAP web method which will check if the user application are
+     * created on the server. if the application are not created, it will
+     * generator the Oder application instance and return the user application.
+     *
      * @return user application.
-     * @throws Exception 
+     * @throws Exception
      */
     @WebMethod
     private UsersApplication getUserApplication() throws Exception {
@@ -52,13 +53,14 @@ public class OMSSOAP {
             return userApp;
         }
     }
-    
+
     /**
-     * This is a SOAP web method which will check if the movie application are created on the server.
-     * if the application are not created, it will generator the move application instance and return the 
-     * movie application.
-     * @return movie  application.
-     * @throws Exception 
+     * This is a SOAP web method which will check if the movie application are
+     * created on the server. if the application are not created, it will
+     * generator the move application instance and return the movie application.
+     *
+     * @return movie application.
+     * @throws Exception
      */
     @WebMethod
     private MoviesApplication getMoviesApplication() throws Exception {
@@ -75,11 +77,12 @@ public class OMSSOAP {
     }
 
     /**
-     * This is a SOAP web method which will check if the order application are created on the server.
-     * if the application are not created, it will generator the Oder application instance and return the 
-     * order application.
+     * This is a SOAP web method which will check if the order application are
+     * created on the server. if the application are not created, it will
+     * generator the Oder application instance and return the order application.
+     *
      * @return order application.
-     * @throws Exception 
+     * @throws Exception
      */
     @WebMethod
     private OrderApplication getOrderApplication() throws Exception {
@@ -101,9 +104,11 @@ public class OMSSOAP {
     }
 
     /**
-     * This is a SOAP web method which will logout the user and return the current the current user.
+     * This is a SOAP web method which will logout the user and return the
+     * current the current user.
+     *
      * @return the current user
-     * @throws Exception 
+     * @throws Exception
      */
     @WebMethod
     public User logout() throws Exception {
@@ -111,7 +116,8 @@ public class OMSSOAP {
     }
 
     /**
-     * This is a SOAP web method which will fetch all orders that stored in the history XML.
+     * This is a SOAP web method which will fetch all orders that stored in the
+     * history XML.
      *
      * @return
      * @throws Exception
@@ -200,6 +206,7 @@ public class OMSSOAP {
         order.setSaleTotal(saleTotal);
         getOrderApplication().getHistory().addOrder(order);
         getOrderApplication().saveHistory();
+        getMoviesApplication().saveMovies();
     }
 
     /**
@@ -228,5 +235,49 @@ public class OMSSOAP {
             getMoviesApplication().minusCopies(item.getMovieTitle(), item.getCopiesPurchased());
         }
         getMoviesApplication().saveMovies();
+    }
+
+    /**
+     * This method is a soap web method. It will cancel the specified order and
+     * return the number of copies to the available copies.
+     *
+     * @param order the given order
+     * @throws Exception
+     */
+    @WebMethod
+    public void CancelOrder(Order order) throws Exception {
+        getOrderApplication().changeOrderStatus(order.getID());
+        ArrayList<Item> items = order.getOrderItems();
+        for (Item item : items) {
+            getMoviesApplication().addCopies(item.getMovieTitle(), item.getCopiesPurchased());
+        }
+        getMoviesApplication().saveMovies();
+        getOrderApplication().saveHistory();
+        getMoviesApplication().updateXML(getMoviesApplication().getFilePath(), getMoviesApplication().getMovies());
+        getOrderApplication().updateXML(getOrderApplication().getFilePath(), getOrderApplication().getHistory());
+    }
+
+    /**
+     * This method is a SOAP web method. it will cancel the specified user
+     * account and cancel all order that refer to this account and return the
+     * available copies to the movies.
+     *
+     * @param user is the login user
+     * @throws Exception
+     */
+    @WebMethod
+    public void CancelAccount(User user) throws Exception {
+        ArrayList<Order> orders = fetchHistoryByEmail(user.getEmail());
+        for (Order order : orders) {
+            getOrderApplication().changeOrderStatus(order.getID());
+            ArrayList<Item> items = order.getOrderItems();
+            for (Item item : items) {
+                getMoviesApplication().addCopies(item.getMovieTitle(), item.getCopiesPurchased());
+            }
+        }
+        getUserApplication().cancelUser(user);
+        getUserApplication().saveUsers();
+        getMoviesApplication().saveMovies();
+        getOrderApplication().saveHistory();
     }
 }

@@ -13,11 +13,11 @@
 <message name="Exception">
 <part name="fault" element="tns:Exception"/>
 </message>
-<message name="placeOrder">
-<part name="parameters" element="tns:placeOrder"/>
+<message name="logout">
+<part name="parameters" element="tns:logout"/>
 </message>
-<message name="placeOrderResponse">
-<part name="parameters" element="tns:placeOrderResponse"/>
+<message name="logoutResponse">
+<part name="parameters" element="tns:logoutResponse"/>
 </message>
 <message name="login">
 <part name="parameters" element="tns:login"/>
@@ -25,11 +25,11 @@
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"/>
 </message>
-<message name="logout">
-<part name="parameters" element="tns:logout"/>
+<message name="placeOrder">
+<part name="parameters" element="tns:placeOrder"/>
 </message>
-<message name="logoutResponse">
-<part name="parameters" element="tns:logoutResponse"/>
+<message name="placeOrderResponse">
+<part name="parameters" element="tns:placeOrderResponse"/>
 </message>
 <message name="updateCopies">
 <part name="parameters" element="tns:updateCopies"/>
@@ -67,26 +67,38 @@
 <message name="fetchHistoryByTitleResponse">
 <part name="parameters" element="tns:fetchHistoryByTitleResponse"/>
 </message>
+<message name="CancelOrder">
+<part name="parameters" element="tns:CancelOrder"/>
+</message>
+<message name="CancelOrderResponse">
+<part name="parameters" element="tns:CancelOrderResponse"/>
+</message>
+<message name="CancelAccount">
+<part name="parameters" element="tns:CancelAccount"/>
+</message>
+<message name="CancelAccountResponse">
+<part name="parameters" element="tns:CancelAccountResponse"/>
+</message>
 <portType name="OMSSOAP">
 <operation name="findMovieByTitle">
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitleRequest" message="tns:findMovieByTitle"/>
 <output wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitleResponse" message="tns:findMovieByTitleResponse"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/findMovieByTitle/Fault/Exception"/>
 </operation>
-<operation name="placeOrder">
-<input wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderRequest" message="tns:placeOrder"/>
-<output wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderResponse" message="tns:placeOrderResponse"/>
-<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception"/>
+<operation name="logout">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutRequest" message="tns:logout"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutResponse" message="tns:logoutResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception"/>
 </operation>
 <operation name="login">
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/loginRequest" message="tns:login"/>
 <output wsam:Action="http://soap.wsd.uts/OMSSOAP/loginResponse" message="tns:loginResponse"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/login/Fault/Exception"/>
 </operation>
-<operation name="logout">
-<input wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutRequest" message="tns:logout"/>
-<output wsam:Action="http://soap.wsd.uts/OMSSOAP/logoutResponse" message="tns:logoutResponse"/>
-<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception"/>
+<operation name="placeOrder">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderRequest" message="tns:placeOrder"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrderResponse" message="tns:placeOrderResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception"/>
 </operation>
 <operation name="updateCopies">
 <input wsam:Action="http://soap.wsd.uts/OMSSOAP/updateCopiesRequest" message="tns:updateCopies"/>
@@ -118,6 +130,16 @@
 <output wsam:Action="http://soap.wsd.uts/OMSSOAP/fetchHistoryByTitleResponse" message="tns:fetchHistoryByTitleResponse"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/fetchHistoryByTitle/Fault/Exception"/>
 </operation>
+<operation name="CancelOrder">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelOrderRequest" message="tns:CancelOrder"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelOrderResponse" message="tns:CancelOrderResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelOrder/Fault/Exception"/>
+</operation>
+<operation name="CancelAccount">
+<input wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelAccountRequest" message="tns:CancelAccount"/>
+<output wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelAccountResponse" message="tns:CancelAccountResponse"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/OMSSOAP/CancelAccount/Fault/Exception"/>
+</operation>
 </portType>
 <binding name="OMSSOAPPortBinding" type="tns:OMSSOAP">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
@@ -133,7 +155,7 @@
 <soap:fault name="Exception" use="literal"/>
 </fault>
 </operation>
-<operation name="placeOrder">
+<operation name="logout">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -157,7 +179,7 @@
 <soap:fault name="Exception" use="literal"/>
 </fault>
 </operation>
-<operation name="logout">
+<operation name="placeOrder">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -230,6 +252,30 @@
 </fault>
 </operation>
 <operation name="fetchHistoryByTitle">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="CancelOrder">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="CancelAccount">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
