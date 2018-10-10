@@ -48,24 +48,18 @@ public interface OMSSOAP {
 
     /**
      * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
+     * @return
+     *     returns uts.wsd.soap.client.User
      * @throws Exception_Exception
      */
     @WebMethod
-    @RequestWrapper(localName = "placeOrder", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrder")
-    @ResponseWrapper(localName = "placeOrderResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrderResponse")
-    @Action(input = "http://soap.wsd.uts/OMSSOAP/placeOrderRequest", output = "http://soap.wsd.uts/OMSSOAP/placeOrderResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "logout", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.Logout")
+    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.LogoutResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/logoutRequest", output = "http://soap.wsd.uts/OMSSOAP/logoutResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception")
     })
-    public void placeOrder(
-        @WebParam(name = "arg0", targetNamespace = "")
-        User arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        List<Item> arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2)
+    public User logout()
         throws Exception_Exception
     ;
 
@@ -94,18 +88,24 @@ public interface OMSSOAP {
 
     /**
      * 
-     * @return
-     *     returns uts.wsd.soap.client.User
+     * @param arg2
+     * @param arg1
+     * @param arg0
      * @throws Exception_Exception
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "logout", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.Logout")
-    @ResponseWrapper(localName = "logoutResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.LogoutResponse")
-    @Action(input = "http://soap.wsd.uts/OMSSOAP/logoutRequest", output = "http://soap.wsd.uts/OMSSOAP/logoutResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/logout/Fault/Exception")
+    @RequestWrapper(localName = "placeOrder", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrder")
+    @ResponseWrapper(localName = "placeOrderResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.PlaceOrderResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/placeOrderRequest", output = "http://soap.wsd.uts/OMSSOAP/placeOrderResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/placeOrder/Fault/Exception")
     })
-    public User logout()
+    public void placeOrder(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        List<Item> arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2)
         throws Exception_Exception
     ;
 
@@ -220,6 +220,40 @@ public interface OMSSOAP {
     public List<Order> fetchHistoryByTitle(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @throws Exception_Exception
+     */
+    @WebMethod(operationName = "CancelOrder")
+    @RequestWrapper(localName = "CancelOrder", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.CancelOrder")
+    @ResponseWrapper(localName = "CancelOrderResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.CancelOrderResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/CancelOrderRequest", output = "http://soap.wsd.uts/OMSSOAP/CancelOrderResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/CancelOrder/Fault/Exception")
+    })
+    public void cancelOrder(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Order arg0)
+        throws Exception_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @throws Exception_Exception
+     */
+    @WebMethod(operationName = "CancelAccount")
+    @RequestWrapper(localName = "CancelAccount", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.CancelAccount")
+    @ResponseWrapper(localName = "CancelAccountResponse", targetNamespace = "http://soap.wsd.uts/", className = "uts.wsd.soap.client.CancelAccountResponse")
+    @Action(input = "http://soap.wsd.uts/OMSSOAP/CancelAccountRequest", output = "http://soap.wsd.uts/OMSSOAP/CancelAccountResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://soap.wsd.uts/OMSSOAP/CancelAccount/Fault/Exception")
+    })
+    public void cancelAccount(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0)
         throws Exception_Exception
     ;
 
