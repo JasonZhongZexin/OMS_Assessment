@@ -56,6 +56,12 @@ public class SOAPClient {
                 case '8':
                     placeOrder();
                     break;
+                case '9':
+                    cancelOrder();
+                    break;
+                case '0':
+                    cancelAccount();
+                    break;
                 default:
                     invalidInput();
                     break;
@@ -76,6 +82,8 @@ public class SOAPClient {
         System.out.println("6.Search order by movie title");
         System.out.println("7.Search order by order status");
         System.out.println("8.Place Order");
+        System.out.println("9.Cancel Order");
+        System.out.println("0.Cancel account");
         System.out.println("X.Exit the system.");
     }
 
@@ -272,7 +280,7 @@ public class SOAPClient {
      * @throws Exception_Exception
      */
     private static void invalidInput() {
-        System.out.println("Please enter a number between 1 and 8 or press X to exit.");
+        System.out.println("Please enter a number between 1 and 0 or press X to exit.");
     }
 
     /**
@@ -466,5 +474,32 @@ public class SOAPClient {
         if (choice == 'R') {
             printHelp();
         }
+    }
+    
+    private static void cancelOrder() throws Exception_Exception{
+        String ID = readOrderID();
+        Order order = omsSOAP.fetchHistoryByOrderID(ID);
+        if(order.getEmail() == null){
+            System.out.println("Order " + ID + " not found");
+            printHelp();
+        }else{
+            omsSOAP.cancelOrder(order);
+            System.out.println("Order "+ID+" has been cancelled.");
+            printHelp();
+        }
+    }
+    
+    private static void cancelAccount() throws Exception_Exception{
+        while (user == null) {
+            System.out.println("You have to login for cancel your order.");
+            System.out.println("User not found.");
+            String email = readEmail();
+            String password = readPassword();
+            user = omsSOAP.login(email, password);
+        }
+        omsSOAP.cancelAccount(user);
+        user = omsSOAP.logout();
+        System.out.println("Cancel account successful!");
+        printHelp();
     }
 }
