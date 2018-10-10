@@ -24,6 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _CancelAccount_QNAME = new QName("http://soap.wsd.uts/", "CancelAccount");
+    private final static QName _CancelAccountResponse_QNAME = new QName("http://soap.wsd.uts/", "CancelAccountResponse");
+    private final static QName _CancelOrder_QNAME = new QName("http://soap.wsd.uts/", "CancelOrder");
+    private final static QName _CancelOrderResponse_QNAME = new QName("http://soap.wsd.uts/", "CancelOrderResponse");
     private final static QName _Exception_QNAME = new QName("http://soap.wsd.uts/", "Exception");
     private final static QName _FetchHistory_QNAME = new QName("http://soap.wsd.uts/", "fetchHistory");
     private final static QName _FetchHistoryByEmail_QNAME = new QName("http://soap.wsd.uts/", "fetchHistoryByEmail");
@@ -55,6 +59,38 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link CancelAccount }
+     * 
+     */
+    public CancelAccount createCancelAccount() {
+        return new CancelAccount();
+    }
+
+    /**
+     * Create an instance of {@link CancelAccountResponse }
+     * 
+     */
+    public CancelAccountResponse createCancelAccountResponse() {
+        return new CancelAccountResponse();
+    }
+
+    /**
+     * Create an instance of {@link CancelOrder }
+     * 
+     */
+    public CancelOrder createCancelOrder() {
+        return new CancelOrder();
+    }
+
+    /**
+     * Create an instance of {@link CancelOrderResponse }
+     * 
+     */
+    public CancelOrderResponse createCancelOrderResponse() {
+        return new CancelOrderResponse();
     }
 
     /**
@@ -255,6 +291,42 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CancelAccount }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "CancelAccount")
+    public JAXBElement<CancelAccount> createCancelAccount(CancelAccount value) {
+        return new JAXBElement<CancelAccount>(_CancelAccount_QNAME, CancelAccount.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CancelAccountResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "CancelAccountResponse")
+    public JAXBElement<CancelAccountResponse> createCancelAccountResponse(CancelAccountResponse value) {
+        return new JAXBElement<CancelAccountResponse>(_CancelAccountResponse_QNAME, CancelAccountResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CancelOrder }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "CancelOrder")
+    public JAXBElement<CancelOrder> createCancelOrder(CancelOrder value) {
+        return new JAXBElement<CancelOrder>(_CancelOrder_QNAME, CancelOrder.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CancelOrderResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://soap.wsd.uts/", name = "CancelOrderResponse")
+    public JAXBElement<CancelOrderResponse> createCancelOrderResponse(CancelOrderResponse value) {
+        return new JAXBElement<CancelOrderResponse>(_CancelOrderResponse_QNAME, CancelOrderResponse.class, null, value);
     }
 
     /**

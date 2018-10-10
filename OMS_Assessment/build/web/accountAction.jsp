@@ -56,6 +56,8 @@
                 userApp.cancelUser(user);
                 userApp.saveUsers();
                 userApp.updateXML(usersPath, userApp.getUsers());
+                movieApp.saveMovies();
+                orderApp.saveHistory();
                 //logout the user
                 session.invalidate();
                 //send back the user to the index page
