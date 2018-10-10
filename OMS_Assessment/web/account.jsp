@@ -17,7 +17,7 @@
 
 
         <h2 align="center"> <%=(editAccountResult != null ? editAccountResult : "")%></h2>
-        <%session.setAttribute("editAccountResult", "null");%>
+        <%session.setAttribute("editAccountResult", "");%>
         <!-- account edit form-->
         <form action="accountAction.jsp">
             <center>
