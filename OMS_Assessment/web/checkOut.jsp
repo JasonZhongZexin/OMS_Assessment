@@ -72,12 +72,12 @@
         %>
         <form action="checkoutAction.jsp" method="post">
             <!-- display all items that stored in the shopping cart-->
-            <table align="center" border = "2">      
+            <table align="center" border = "2"style="width:50%">      
                 <tr>
-                    <td>Movie Title</td>
-                    <td>Movie Price</td>
-                    <td>Available Copies</td>
-                    <td>Copies Purchase</td>
+                    <td width="8.5%" align="center">Movie Title</td>
+                    <td width="8.5%" align="center">Movie Price</td>
+                    <td width="10%" align="center">Available Copies</td>
+                    <td width="23%" align="center">Quantity</td>
                 </tr>
                 <%
                     for (Item shoppingCartItem : shoppingCart.getShoppingCart()) {
@@ -100,14 +100,15 @@
                 %>
             </table>
             <center>
-                <button type="button" onclick="location.href = 'index.jsp'" > Add more </button>
-                <button type="button" onclick="location.href = 'clearShoppingCart.jsp'" > Clear Shopping Cart</button><br/>
+                <br><button type="button" onclick="location.href = 'index.jsp'" > Add more </button>
+                <button type="button" onclick="location.href = 'clearShoppingCart.jsp'" > Clear Shopping Cart</button><br><br/>
                 Payment Method <select name="paymentMethod" required>
                     <option value="">choose a payment method</option>
                     <option value = "CreditCard">Credit Card</option>
                     <option value = "PayPal">PayPal</option>
                 </select>
                 <input type="submit" value="check out">
+                
             </center>
         </form>
     </body>
